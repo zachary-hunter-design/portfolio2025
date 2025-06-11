@@ -1,0 +1,121 @@
+/* CSS Custom Properties for Design System */
+:root {
+    /*main colors*/
+    --primary-blue: #225CED;
+    --light-blue: #E5EDFF;
+    --lightest-blue: #F3F7FF;
+    --primary-skyblue: #5898F9;
+    --primary-pink: #DA4DF0;
+    --light-pink: #F8CDFF;
+    --lightest-pink: #FCE8FF;
+    --primary-green: #3CA24B;
+    --light-green: #B8F1C0;
+    --lightest-green: #DCF9E0;
+    --primary-orange: #E6772B;
+    --light-orange: #FFE4D1;
+    --lightest-orange: #FFF1E6;
+    /*functional colors*/
+    --text-dark: #1a1a1a;
+    --text-light: #999797;
+    --border-gray: #C9C7C7;
+    --bg-light: #fefefe;
+    --btn-hover: #4A4A4A;
+    /*fonts*/
+    --font-primary: 'Figtree', sans-serif;
+    --font-accent: 'Roboto Serif', serif;
+    /*other styles*/
+    --border-radius: 16px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    --transition: all 0.3s ease;
+  }
+
+  /* Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding doesn't affect element width */
+  } 
+
+  body { 
+    font-family: var(--font-primary), var(--font-accent);
+    line-height: 1.6;
+    color: var(--text-dark);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Typography Classes */
+
+  .hero-primary {
+    font: 500 48px var(--font-primary), sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-accent {
+    font: 500 48px var(--font-accent), serif;
+    letter-spacing: -0.03em;
+
+  }
+
+  .header1-primary {
+    font: 600 34px var(--font-primary), sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  .header2-primary {
+    font: 600 24px var(--font-primary), sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  .header2-accent {
+    font: 450 24px var(--font-accent), serif;
+  }
+
+  .header3-primary {
+    font: 600 24px var(--font-primary), sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  .body-primarylrg {
+    font: 450 20px var(--font-primary),sans-serif;
+    line-height: 28px;
+  }
+
+  .body-primary-bold {
+    font: 600 18px var(--font-primary),sans-serif;
+    line-height: 24px;
+    letter-spacing: 0.025em;
+  }
+
+  .body-primary {
+    font: 18px var(--font-primary),sans-serif;
+    line-height: 24px;
+    letter-spacing: 0.025em;
+  }
+
+  .btn-label {
+    font: 500 18px var(--font-primary, sans-serif);
+    letter-spacing: .015rem;
+  }
+
+
+  .metric-lrg {
+    font: 500 60px var(--font-primary), sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .caption-spaced {
+    word-spacing: 0.25em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+  }
+
+  .quote {
+    font: 400 52px var(--font-accent), serif;
+  }
+  
+  
