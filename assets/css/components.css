@@ -76,6 +76,11 @@
     transform: var(--transition);
 }
 
+.btn-square:hover {
+  background-color: var(--btn-hover);
+  color: white;
+}
+
 .btn-primary {
   background: var(--text-dark);
   color: white;
