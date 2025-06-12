@@ -37,13 +37,3 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.card, .hero-content').forEach(el => {
     observer.observe(el);
 });
-
-// Get current page URL
-const currentPage = window.location.pathname;
-
-// Find matching nav link and add active class
-document.querySelectorAll('.nav-link a').forEach(link => {
-  if (link.getAttribute('href') === currentPage) {
-    link.classList.add('active');
-  }
-});

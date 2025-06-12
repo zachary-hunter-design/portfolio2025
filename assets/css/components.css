@@ -206,7 +206,7 @@
   color: var(--text-dark);
 }
 
-.nav-link a:active {
+.nav-link-active {
   color: var(--text-dark);
   border-bottom: 2px solid var(--text-dark);
 }
