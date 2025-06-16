@@ -535,6 +535,45 @@ figure {
     text-align: right;
     border-radius: 0 16px 16px 0;
   }
+
+  /*About Page*/
+
+  .about-container {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1040px;
+  }
+
+  .about-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .about-column > .text-block {
+    margin-bottom: 2rem;
+  }
+
+  .about-column > .basic-image {
+    margin-bottom: 3rem;
+  }
+
+  .recent {
+    margin-bottom: 2rem;
+  }
+
+  .recent > h3 {
+    margin-bottom: 1.5rem;
+  }
+
+  .recent > h4 {
+    margin-bottom: 0.25rem;
+  }
+
+  .recent > p {
+    margin-bottom: 1rem;
+  }
   
   
 /*Not Used*/
