@@ -160,66 +160,69 @@
 }
 
 .hi-blue {
-  color: var(--primary-blue);
+  color: var(--primary-blue, #1a73e8);
 }
 .hi-blue::before {
-  background-color: var(--light-blue);
+  background-color: var(--light-blue, #e8f0fe);
 }
 
 .hi-green {
-  color: var(--primary-green);
+  color: var(--primary-green, #34a853);
 }
-.combo-green::before {
-  background-color: var(--light-green);
+.hi-green::before {
+  background-color: var(--light-green, #e6f4ea);
 }
 
 .hi-orange {
-  color: var(--primary-orange);
+  color: var(--primary-orange, #f9ab00);
 }
 .hi-orange::before {
-  background-color: var(--light-orange);
+  background-color: var(--light-orange, #fef4e1);
 }
 
 .hi-pink {
-  color: var(--primary-pink);
+  color: var(--primary-pink, #d01884);
 }
 .hi-pink::before {
-  background-color: var(--light-pink);
+  background-color: var(--light-pink, #fce4ec);
 }
 
 .hi-blue-light {
-  color: var(--primary-blue);
+  color: var(--primary-blue, #1a73e8);
 }
 .hi-blue-light::before {
-  background-color: var(--lightest-blue);
+  background-color: var(--lightest-blue, #f0f6ff);
 }
 
 
-/* Base styles for the highlight spans */
-  .highlight {
-    position: relative;
-    display: inline;
-    padding: 0 2px;
-    z-index: 1;
-  }
-      
-      /* Highlight pseudo-element that will animate in */
-  .highlight::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 100%; /* Start from left (fully hidden) */
-    bottom: 0;
-    left: 0; /* Start from left */
-    z-index: -1;
-    transition: right 0.6s ease-out; /* Animate right property */
-    border-radius: 3px;
-  }
-      
-      /* Active state - highlight fills from left to right */
-      .highlight.active::before {
-          right: 0; /* Expand to full width */
-      }
+/* Highlight element styles */
+.highlight {
+  position: relative;
+  display: inline;
+  padding: 0 2px;
+  z-index: 1;
+  background-color: transparent !important;
+}
+
+/* Highlight animation element */
+.highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transition: right 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 3px;
+  transform: translateZ(0);
+}
+
+/* Active state */
+.highlight.active::before {
+  right: 0;
+}
+
 
 /* Navbar Specific Components */
 
