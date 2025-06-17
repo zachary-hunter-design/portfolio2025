@@ -159,69 +159,111 @@
   background-color: var(--lightest-pink);
 }
 
-.hi-blue {
-  color: var(--primary-blue, #1a73e8);
-}
-.hi-blue::before {
-  background-color: var(--light-blue, #e8f0fe);
-}
-
-.hi-green {
-  color: var(--primary-green, #34a853);
-}
-.hi-green::before {
-  background-color: var(--light-green, #e6f4ea);
-}
-
-.hi-orange {
-  color: var(--primary-orange, #f9ab00);
-}
-.hi-orange::before {
-  background-color: var(--light-orange, #fef4e1);
-}
-
-.hi-pink {
-  color: var(--primary-pink, #d01884);
-}
-.hi-pink::before {
-  background-color: var(--light-pink, #fce4ec);
-}
-
-.hi-blue-light {
-  color: var(--primary-blue, #1a73e8);
-}
-.hi-blue-light::before {
-  background-color: var(--lightest-blue, #f0f6ff);
-}
-
-
-/* Highlight element styles */
-.highlight {
-  position: relative;
+ /* Base highlighting styles */
+ .highlight-text {
   display: inline;
-  padding: 0 2px;
-  z-index: 1;
-  background-color: transparent !important;
+  position: relative;
+  color: inherit;
+  padding: 4px 2px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, transparent 0%, transparent 100%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+  transition: background-size 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              color 0.3s ease,
+              transform 0.3s ease,
+              box-shadow 0.3s ease;
 }
 
-/* Highlight animation element */
-.highlight::before {
+/* Highlighted state with animated background */
+.highlight-text.highlighted {
+  background-size: 100% 100%;
+  transform: translateY(-1px);
+}
+
+/* Color-specific gradients */
+.highlight-text.combo-blue {
+  background-image: linear-gradient(90deg, var(--light-blue) 0%, var(--light-blue) 100%);
+}
+.highlight-text.combo-blue.highlighted {
+  color: var(--primary-blue);
+}
+
+.highlight-text.combo-green {
+  background-image: linear-gradient(90deg, var(--light-green) 0%, var(--light-green) 100%);
+}
+.highlight-text.combo-green.highlighted {
+  color: var(--primary-green);
+}
+
+.highlight-text.combo-orange {
+  background-image: linear-gradient(90deg, var(--light-orange) 0%, var(--light-orange) 100%);
+}
+.highlight-text.combo-orange.highlighted {
+  color: var(--primary-orange);
+}
+
+.highlight-text.combo-pink {
+  background-image: linear-gradient(90deg, var(--light-pink) 0%, var(--light-pink) 100%);
+}
+.highlight-text.combo-pink.highlighted {
+  color: var(--primary-pink);
+}
+
+.highlight-text.combo-blue-light {
+  background-image: linear-gradient(90deg, var(--lightest-blue) 0%, var(--lightest-blue) 100%);
+}
+.highlight-text.combo-blue-light.highlighted {
+  color: var(--primary-blue);
+}
+
+.highlight-text.combo-green-light {
+  background-image: linear-gradient(90deg, var(--lightest-green) 0%, var(--lightest-green) 100%);
+}
+.highlight-text.combo-green-light.highlighted {
+  color: var(--primary-green);
+}
+
+.highlight-text.combo-orange-light {
+  background-image: linear-gradient(90deg, var(--lightest-orange) 0%, var(--lightest-orange) 100%);
+}
+.highlight-text.combo-orange-light.highlighted {
+  color: var(--primary-orange);
+}
+
+.highlight-text.combo-pink-light {
+  background-image: linear-gradient(90deg, var(--lightest-pink) 0%, var(--lightest-pink) 100%);
+}
+.highlight-text.combo-pink-light.highlighted {
+  color: var(--primary-pink);
+}
+
+/* Extra visual emphasis with a subtle glow effect */
+.highlight-text.highlighted {
+  position: relative;
+}
+
+.highlight-text.highlighted::after {
   content: '';
   position: absolute;
-  top: 0;
-  right: 100%;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  transition: right 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  border-radius: 3px;
-  transform: translateZ(0);
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: inherit;
+  border-radius: inherit;
+  opacity: 0.3;
+  z-index: -2;
+  filter: blur(4px);
+  animation: glow-pulse 2s ease-in-out infinite alternate;
 }
 
-/* Active state */
-.highlight.active::before {
-  right: 0;
+@keyframes glow-pulse {
+  0% { opacity: 0.2; transform: scale(0.98); }
+  100% { opacity: 0.4; transform: scale(1.02); }
 }
+
 
 
 /* Navbar Specific Components */

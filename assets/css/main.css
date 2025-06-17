@@ -81,18 +81,18 @@
 
   .body-primarylrg {
     font: 450 20px var(--font-primary),sans-serif;
-    line-height: 28px;
+    line-height: 32px;
   }
 
   .body-primary-bold {
     font: 600 18px var(--font-primary),sans-serif;
-    line-height: 24px;
+    line-height: 28px;
     letter-spacing: 0.025em;
   }
 
   .body-primary {
     font: 18px var(--font-primary),sans-serif;
-    line-height: 24px;
+    line-height: 28px;
     letter-spacing: 0.025em;
   }
 
