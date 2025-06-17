@@ -159,6 +159,68 @@
   background-color: var(--lightest-pink);
 }
 
+.hi-blue {
+  color: var(--primary-blue);
+}
+.hi-blue::before {
+  background-color: var(--light-blue);
+}
+
+.hi-green {
+  color: var(--primary-green);
+}
+.combo-green::before {
+  background-color: var(--light-green);
+}
+
+.hi-orange {
+  color: var(--primary-orange);
+}
+.hi-orange::before {
+  background-color: var(--light-orange);
+}
+
+.hi-pink {
+  color: var(--primary-pink);
+}
+.hi-pink::before {
+  background-color: var(--light-pink);
+}
+
+.hi-blue-light {
+  color: var(--primary-blue);
+}
+.hi-blue-light::before {
+  background-color: var(--lightest-blue);
+}
+
+
+/* Base styles for the highlight spans */
+  .highlight {
+    position: relative;
+    display: inline;
+    padding: 0 2px;
+    z-index: 1;
+  }
+      
+      /* Highlight pseudo-element that will animate in */
+  .highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%; /* Start from left (fully hidden) */
+    bottom: 0;
+    left: 0; /* Start from left */
+    z-index: -1;
+    transition: right 0.6s ease-out; /* Animate right property */
+    border-radius: 3px;
+  }
+      
+      /* Active state - highlight fills from left to right */
+      .highlight.active::before {
+          right: 0; /* Expand to full width */
+      }
+
 /* Navbar Specific Components */
 
 .navbar {
