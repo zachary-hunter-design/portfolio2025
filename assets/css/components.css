@@ -362,7 +362,7 @@
 
 .hero-cards {
   position: absolute;
-  bottom: 5rem; /* Lower position (relative unit) */
+  bottom: 3rem; /* Lower position (relative unit) */
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
