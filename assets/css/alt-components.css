@@ -329,7 +329,7 @@
     align-items: center;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
     .hero-content {
         flex-direction: row;
         text-align: left;
@@ -379,6 +379,7 @@
     .hero-cards {
         flex-direction: row;
         gap: clamp(1rem, 2vw, 1.5rem);
+        margin: 0 12px;
     }
 }
 
