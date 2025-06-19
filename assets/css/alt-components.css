@@ -13,8 +13,9 @@
 
 .grid-2-2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: clamp(1rem, 3vw, 2rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); /* 2 equal columns */
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); /* 2 equal rows */
+    gap: 1rem;
     width: 100%;
 }
 
