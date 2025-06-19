@@ -1,0 +1,147 @@
+/* CSS Custom Properties for Design System */
+:root {
+    /*main colors*/
+    --primary-blue: #225CED;
+    --light-blue: #E5EDFF;
+    --lightest-blue: #F3F7FF;
+    --primary-skyblue: #5898F9;
+    --primary-pink: #DA4DF0;
+    --light-pink: #F8CDFF;
+    --lightest-pink: #FCE8FF;
+    --primary-green: #3CA24B;
+    --light-green: #B8F1C0;
+    --lightest-green: #DCF9E0;
+    --primary-orange: #E6772B;
+    --light-orange: #FFE4D1;
+    --lightest-orange: #FFF1E6;
+    /*functional colors*/
+    --text-dark: #1a1a1a;
+    --text-light: #999797;
+    --border-gray: #C9C7C7;
+    --bg-light: #fefefe;
+    --btn-hover: #4A4A4A;
+    /*fonts*/
+    --font-primary: 'Figtree', sans-serif;
+    --font-accent: 'Roboto Serif', serif;
+    /*other styles*/
+    --border-radius: 16px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    --transition: all 0.3s ease;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: var(--font-primary), var(--font-accent);
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Responsive Typography Classes */
+.hero-primary {
+    font: 500 clamp(2.5rem, 5vw, 3rem) var(--font-primary), sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.hero-accent {
+    font: 500 clamp(2.5rem, 5vw, 3rem) var(--font-accent), serif;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.header1-primary {
+    font: 600 clamp(1.75rem, 4vw, 2.125rem) var(--font-primary), sans-serif;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.header2-primary {
+    font: 600 clamp(1.25rem, 3vw, 1.5rem) var(--font-primary), sans-serif;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+}
+
+.header2-accent {
+    font: 450 clamp(1.25rem, 3vw, 1.5rem) var(--font-accent), serif;
+    line-height: 1.3;
+}
+
+.header3-primary {
+    font: 600 clamp(1.125rem, 2.5vw, 1.5rem) var(--font-primary), sans-serif;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+}
+
+.body-primarylrg {
+    font: 450 clamp(1.125rem, 2vw, 1.25rem) var(--font-primary), sans-serif;
+    line-height: clamp(1.75rem, 3vw, 2rem);
+}
+
+.body-primary-bold {
+    font: 600 clamp(1rem, 2vw, 1.125rem) var(--font-primary), sans-serif;
+    line-height: clamp(1.5rem, 3vw, 1.75rem);
+    letter-spacing: 0.025em;
+}
+
+.body-primary {
+    font: clamp(1rem, 2vw, 1.125rem) var(--font-primary), sans-serif;
+    line-height: clamp(1.5rem, 3vw, 1.75rem);
+    letter-spacing: 0.025em;
+}
+
+.btn-label {
+    font: 500 clamp(1rem, 2vw, 1.125rem) var(--font-primary, sans-serif);
+    letter-spacing: .015rem;
+}
+
+.metric-lrg {
+    font: 500 clamp(2.5rem, 8vw, 3.75rem) var(--font-primary), sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.caption-spaced {
+    word-spacing: 0.25em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+}
+
+.quote {
+    font: 400 clamp(1.75rem, 5vw, 3.25rem) var(--font-accent), serif;
+    line-height: 1.2;
+}
+
+/* Responsive Media Queries for Typography Fine-tuning */
+@media (max-width: 768px) {
+    .hero-primary,
+    .hero-accent {
+        text-align: center;
+    }
+    
+    .header1-primary,
+    .header2-primary,
+    .header2-accent,
+    .header3-primary {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .quote {
+        text-align: center;
+        padding: 0 1rem;
+    }
+}
