@@ -514,17 +514,12 @@
     flex-direction: column;
     align-items: center;
     gap: clamp(1rem, 3vw, 1.5rem);
+    margin: 0 16px;
 }
 
 @media (max-width: 640px) {
     .basic-section {
-        margin: 0 12px;
-    }
-}
-
-@media (max-width: px) {
-    .basic-section {
-        margin: 0 12px;
+        margin: 0 8px;
     }
 }
 
