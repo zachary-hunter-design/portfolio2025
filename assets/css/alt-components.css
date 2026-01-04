@@ -47,6 +47,10 @@
     gap: 1rem;
 }
 
+.hero-card {
+    flex: 1;
+}
+
 .card > hr {
     width: 33%;
     height: 2px;
@@ -380,7 +384,6 @@
     .hero-cards {
         flex-direction: row;
         gap: clamp(1rem, 2vw, 1.5rem);
-        align-items: center;
     }
 }
 
