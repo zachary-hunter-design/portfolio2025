@@ -1,0 +1,141 @@
+
+{
+  "version": "1.0.0",
+  "designSystem": {
+    "schema": "./design-system-schema.json",
+    "cssFiles": [
+      "./assets/css/alt-main.css",
+      "./assets/css/alt-components.css"
+    ],
+    "jsFiles": [
+      "./assets/js/main.js",
+      "./assets/js/highlighter.js"
+    ],
+    
+    "corePrinciples": [
+      "Mobile-first responsive design",
+      "Accessibility-first approach",
+      "Consistent use of design tokens",
+      "Semantic HTML structure",
+      "Performance optimized assets"
+    ],
+    
+    "strictRules": [
+      "NEVER use inline styles (except for background images on project cards)",
+      "ALWAYS use CSS variables from alt-main.css",
+      "ONLY use typography classes defined in the schema",
+      "FOLLOW the component patterns exactly",
+      "ENSURE all interactive elements have min-height: 44px",
+      "INCLUDE appropriate ARIA labels for accessibility",
+      "USE clamp() for all responsive spacing and typography"
+    ],
+    
+    "patterns": {
+      "caseStudy": {
+        "requiredStructure": [
+          "case-header-img (full-width header image)",
+          "case-titles (h1.hero-primary + h2.header2-accent)",
+          "summary-duties (split layout with .summary and .duties-list)",
+          "#intro section with .text-block"
+        ],
+        "contentFlow": [
+          "Alternate between .image-text and .text-block sections",
+          "Use .cards-3 for research overviews",
+          "Use .grid-2-2 for metrics display",
+          "Use .comparison-table for results comparison"
+        ],
+        "highlightUsage": "Use .highlight-text with -light variants for key metrics: combo-blue-light, combo-orange-light, etc."
+      },
+      
+      "homePage": {
+        "requiredComponents": [
+          ".hero with .hero-background",
+          ".hero-content with avatar and text",
+          ".hero-cards with 3 .stat-card elements",
+          ".projects section with .project-card-container"
+        ],
+        "projectCardStructure": "Always wrap project cards in .card-description-div"
+      }
+    },
+    
+    "componentRules": {
+      "buttons": {
+        "primaryAction": "Use .btn.btn-primary",
+        "secondaryAction": "Use .btn.btn-secondary",
+        "externalLinks": "Use .btn-square.btn-primary for case study demo links",
+        "hoverStates": "Always include :hover styles"
+      },
+      
+      "cards": {
+        "statCards": "Use .stat-card with .metric-lrg and .header2-accent",
+        "projectCards": "Use .project-card with background-image styles",
+        "contentCards": "Use .card with appropriate headings and paragraphs"
+      },
+      
+      "typography": {
+        "hierarchy": "Follow h1→h2→h3 hierarchy strictly",
+        "highlighting": "Use .highlight-text for emphasis, not bold tags",
+        "metrics": "Use .metric-lrg for large numbers"
+      }
+    },
+    
+    "responsiveRules": {
+      "breakpoints": {
+        "mobile": "max-width: 768px",
+        "tablet": "min-width: 769px",
+        "desktop": "min-width: 1024px",
+        "large": "min-width: 1440px"
+      },
+      "spacing": "Use clamp(min, preferred, max) for all padding/margin",
+      "images": "Use width: 100% and height: auto for responsive images"
+    },
+    
+    "accessibility": {
+      "altText": "All images must have descriptive alt text",
+      "ariaLabels": "Interactive elements need appropriate ARIA labels",
+      "focusStates": "All interactive elements must have visible focus states",
+      "contrast": "Maintain WCAG AA contrast ratios (4.5:1 for normal text)"
+    }
+  },
+  
+  "codeGeneration": {
+    "examples": {
+      "goodTypography": "<!-- Good: Using design system classes -->\n<h1 class=\"hero-primary\">Project Title</h1>\n<h2 class=\"header2-accent\">Supporting description with key <span class=\"highlight-text combo-blue-light\">metrics highlighted</span></h2>\n<p class=\"body-primary\">Main content that explains the project in detail.</p>",
+      
+      "goodCard": "<!-- Good: Stat card component -->\n<div class=\"card stat-card\">\n  <h2 class=\"metric-lrg statichighlight-blue\">23%</h2>\n  <h3 class=\"header2-accent\">Success Rate Increase</h3>\n  <hr/>\n  <p class=\"body-primary\">Improved user success rates through data-driven redesign.</p>\n</div>",
+      
+      "goodButton": "<!-- Good: Button with proper structure -->\n<a href=\"https://example.com\" target=\"_blank\" class=\"btn-square btn-primary btn-label\" aria-label=\"View live demo of project\">\n  View Live Demo\n</a>",
+      
+      "badExamples": {
+        "inlineStyles": "<!-- Bad: Inline styles -->\n<div style=\"color: #225CED; padding: 20px; background: #F3F7FF;\">",
+        "wrongTypography": "<!-- Bad: Not using design system classes -->\n<h1 style=\"font-size: 3rem; font-weight: bold;\">Project Title</h1>",
+        "missingStructure": "<!-- Bad: Missing required wrapper -->\n<a href=\"#\" class=\"project-card\">Project</a>\n<!-- Should be wrapped in .card-description-div -->"
+      }
+    },
+    
+    "templates": {
+      "newCaseStudy": "When creating a new case study, follow this exact structure:\n1. case-header-img\n2. case-titles (h1.hero-primary + h2.header2-accent)\n3. summary-duties\n4. #intro section\n5. Content sections alternating image-text and text-block\n6. comparison-table for metrics\n7. Standard footer",
+      
+      "newComponent": "When creating a new component:\n1. Check if similar component exists in schema\n2. Use existing CSS classes where possible\n3. Add to alt-components.css if truly new\n4. Document in schema.json\n5. Create usage example"
+    }
+  },
+  
+  "validation": {
+    "preCommitChecks": [
+      "No hardcoded colors (only CSS variables)",
+      "All typography uses design system classes",
+      "Images have alt text",
+      "Buttons have proper hover states",
+      "Responsive breakpoints are correct",
+      "Accessibility requirements met"
+    ],
+    
+    "commonMistakes": [
+      "Forgetting .card-description-div wrapper for project cards",
+      "Using hex codes instead of CSS variables",
+      "Missing .highlighted class on highlight-text elements",
+      "Not using clamp() for responsive values",
+      "Forgetting min-height: 44px on interactive elements"
+    ]
+  }
+}
