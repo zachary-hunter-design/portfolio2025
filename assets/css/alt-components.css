@@ -1183,13 +1183,24 @@ figure {
     }
 }
 
-/* Research quote, V2 (big serif quote glyph).
-   Use for participant / stakeholder quotes inside case studies. Pair with a
-   combo-{color} modifier on the figure to tint the glyph to the case study accent. */
+/* Per-page accent. Set on <body class="accent-{color}"> at the case-study root.
+   Components that want to react to the case study's accent read var(--accent)
+   for the bold tone and var(--accent-tint) for the soft fill tone. Defaults
+   fall back to the blue family when no class is present. */
+body.accent-blue   { --accent: var(--primary-blue);   --accent-tint: var(--lightest-blue); }
+body.accent-orange { --accent: var(--primary-orange); --accent-tint: var(--lightest-orange); }
+body.accent-green  { --accent: var(--primary-green);  --accent-tint: var(--lightest-green); }
+body.accent-pink   { --accent: var(--primary-pink);   --accent-tint: var(--lightest-pink); }
+
+/* Research quote, V2 (big serif quote glyph + soft tinted block).
+   For participant / stakeholder quotes inside case studies. Glyph and tint
+   pick up the case-study accent automatically via var(--accent) and var(--accent-tint). */
 .research-quote {
     margin: 0;
     position: relative;
-    padding-left: clamp(2.5rem, 6vw, 3.5rem);
+    padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.5rem, 4vw, 2rem) clamp(1.25rem, 3vw, 1.75rem) clamp(3rem, 6vw, 4rem);
+    background-color: var(--accent-tint, var(--lightest-blue));
+    border-radius: 12px;
 }
 
 .research-quote-mark {
@@ -1197,7 +1208,7 @@ figure {
     left: 0;
     top: -0.5rem;
     font: 700 clamp(3.5rem, 9vw, 5rem)/1 var(--font-accent), serif;
-    color: var(--primary-blue);
+    color: var(--accent, var(--primary-blue));
     opacity: 0.85;
     user-select: none;
 }
@@ -1213,11 +1224,6 @@ figure {
     font: 500 0.875rem/1.4 var(--font-primary), sans-serif;
     color: var(--text-light);
 }
-
-.research-quote.combo-orange .research-quote-mark { color: var(--primary-orange); }
-.research-quote.combo-pink .research-quote-mark { color: var(--primary-pink); }
-.research-quote.combo-green .research-quote-mark { color: var(--primary-green); }
-.research-quote.combo-blue .research-quote-mark { color: var(--primary-blue); }
 
 @media (max-width: 480px) {
     .research-quote {

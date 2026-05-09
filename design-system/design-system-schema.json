@@ -142,8 +142,12 @@
             "weight": "400",
             "wrapper": {
               "class": "research-quote",
-              "description": "Figure wrapping a big serif quote-mark glyph (.research-quote-mark) and a blockquote (.research-quote-text). Tint glyph via combo-{color} modifier on the figure.",
-              "modifiers": ["combo-blue", "combo-pink", "combo-green", "combo-orange"]
+              "description": "Figure with soft tinted background (var(--accent-tint)), rounded corners, and a big serif quote-mark glyph (.research-quote-mark) in var(--accent). Both vars are inherited from a body.accent-{color} class at the page root."
+            },
+            "accentSource": {
+              "selector": "body.accent-{color}",
+              "description": "Sets --accent (bold) and --accent-tint (soft fill) for the entire page. Applies to .research-quote and any future component that reads either var.",
+              "values": ["accent-blue", "accent-orange", "accent-green", "accent-pink"]
             }
           }
         }
