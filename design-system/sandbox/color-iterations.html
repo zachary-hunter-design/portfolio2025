@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Iterations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { margin: 0; background: #FAFAFA; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" data-presets="env,react">
+    const sans = 'Figtree, system-ui, sans-serif';
+    const serif = '"Roboto Serif", Georgia, serif';
+    const ink = '#1A1A1A';
+    const muted = '#6B7280';
+    const border = '#E5E7EB';
+    const bg = '#FEFEFE';
+
+    // The committed four-color palette. One color per case study.
+    const FOUR_COLORS = [
+      {
+        name: 'Indigo',
+        caseStudy: 'Doc verification',
+        primary: '#4F46E5',
+        light: '#E0E7FF',
+        lightest: '#EEF2FF',
+      },
+      {
+        name: 'Emerald',
+        caseStudy: 'Calendar',
+        primary: '#059669',
+        light: '#D1FAE5',
+        lightest: '#ECFDF5',
+      },
+      {
+        name: 'Orange',
+        caseStudy: 'Volunteer bidding',
+        primary: '#EA580C',
+        light: '#FFEDD5',
+        lightest: '#FFF7ED',
+      },
+      {
+        name: 'Fuchsia',
+        caseStudy: 'AI design workflow',
+        primary: '#C026D3',
+        light: '#FAE8FF',
+        lightest: '#FAF5FF',
+      },
+    ];
+
+    // Five palette options. Each defines a primary + derived lights.
+    const PALETTES = [
+      {
+        name: 'A. Current — Indigo (baseline)',
+        note: 'AI-startup default. Safe, but invisible by 2026.',
+        primary: '#4F46E5',
+        light: '#E0E7FF',
+        lightest: '#EEF2FF',
+        winnerColor: '#059669', // emerald-600
+      },
+      {
+        name: 'B. Bold violet — purple-600',
+        note: 'My pick. Same family, more distinctive. Pairs with your pink.',
+        primary: '#7C3AED',
+        light: '#EDE9FE',
+        lightest: '#F5F3FF',
+        winnerColor: '#059669',
+      },
+      {
+        name: 'C. Stripe brand — #635BFF',
+        note: 'Stripe\'s actual brand. Slightly less bold than violet, still in family.',
+        primary: '#635BFF',
+        light: '#E5E2FF',
+        lightest: '#F0EEFF',
+        winnerColor: '#059669',
+      },
+      {
+        name: 'D. Burnt orange — orange-700',
+        note: 'Warm pivot. More editorial / personal. Bigger shift from current.',
+        primary: '#C2410C',
+        light: '#FED7AA',
+        lightest: '#FFEDD5',
+        winnerColor: '#059669',
+      },
+      {
+        name: 'E. Coral — rose-500',
+        note: 'Vibrant warm. Closer to "modern startup with personality" energy.',
+        primary: '#F43F5E',
+        light: '#FFE4E6',
+        lightest: '#FFF1F2',
+        winnerColor: '#059669',
+      },
+    ];
+
+    // Sample content
+    const SAMPLE_QUOTE = "It feels like a game designed to introduce a gambling element to the benefit of the house, which is Breeze.";
+    const ATTRIBUTION = "P1, usability test, Mar 2026";
+    const SAMPLE_TABLE = [
+      { label: 'Comprehension', original: '50%', new: '100%', change: '+50%' },
+      { label: 'Engagement intent', original: '40%', new: '67%', change: '+27%' },
+      { label: 'Confidence score', original: '3.2/5', new: '5/5', change: '+1.8' },
+    ];
+
+    // ============================================================
+    // Component renderers (parameterized by palette)
+    // ============================================================
+
+    const Swatches = ({ p }) => (
+      <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-end', marginBottom: '2rem', flexWrap: 'wrap' }}>
+        {[
+          { label: 'primary', color: p.primary },
+          { label: 'light', color: p.light },
+          { label: 'lightest', color: p.lightest },
+          { label: 'success', color: p.winnerColor },
+          { label: 'ink', color: ink },
+          { label: 'muted', color: muted },
+          { label: 'border', color: border },
+        ].map((s) => (
+          <div key={s.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.375rem' }}>
+            <div style={{
+              width: 56,
+              height: 56,
+              borderRadius: 8,
+              backgroundColor: s.color,
+              border: `1px solid ${border}`,
+            }} />
+            <span style={{ font: `500 0.6875rem ${sans}`, color: muted, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+              {s.label}
+            </span>
+            <span style={{ font: `400 0.6875rem ${sans}`, color: muted, fontFamily: 'monospace' }}>
+              {s.color}
+            </span>
+          </div>
+        ))}
+      </div>
+    );
+
+    const Buttons = ({ p }) => (
+      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+        <a style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          padding: '0.75rem 1.5rem',
+          borderRadius: 50,
+          backgroundColor: ink,
+          color: 'white',
+          font: `500 1rem ${sans}`,
+          textDecoration: 'none',
+        }}>Case Studies <span style={{ marginLeft: '0.5rem' }}>↓</span></a>
+        <a style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          padding: '0.75rem 1.5rem',
+          borderRadius: 50,
+          backgroundColor: 'white',
+          color: ink,
+          font: `500 1rem ${sans}`,
+          textDecoration: 'none',
+          border: `1px solid ${border}`,
+        }}>About Me <span style={{ marginLeft: '0.5rem' }}>→</span></a>
+        <a style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          padding: '0.75rem 1.5rem',
+          borderRadius: 50,
+          backgroundColor: p.primary,
+          color: 'white',
+          font: `500 1rem ${sans}`,
+          textDecoration: 'none',
+        }}>Primary CTA</a>
+      </div>
+    );
+
+    const HighlightProse = ({ p }) => (
+      <p style={{
+        font: `400 1.0625rem ${sans}`,
+        lineHeight: 1.6,
+        color: ink,
+        marginBottom: '2rem',
+      }}>
+        The redesign improved comprehension from <span style={{
+          backgroundColor: p.light,
+          color: p.primary,
+          padding: '2px 4px',
+          borderRadius: 4,
+          fontWeight: 500,
+        }}>50 percent to 100 percent</span>, eliminated trust concerns, and{' '}
+        <span style={{
+          backgroundColor: p.lightest,
+          color: p.primary,
+          padding: '2px 4px',
+          borderRadius: 4,
+          fontWeight: 500,
+        }}>increased engagement intent by 27 percent</span>.
+      </p>
+    );
+
+    // V2 quote (the one Zac liked)
+    const Quote = ({ p }) => (
+      <figure style={{ margin: '0 0 2rem 0', position: 'relative', paddingLeft: '3.5rem' }}>
+        <span aria-hidden="true" style={{
+          position: 'absolute',
+          left: 0,
+          top: '-0.5rem',
+          font: `700 5rem ${serif}`,
+          lineHeight: 1,
+          color: p.primary,
+          opacity: 0.85,
+        }}>“</span>
+        <blockquote style={{
+          font: `400 1.5rem ${serif}`,
+          lineHeight: 1.35,
+          color: ink,
+          margin: 0,
+        }}>{SAMPLE_QUOTE}</blockquote>
+        <figcaption style={{
+          marginTop: '0.75rem',
+          font: `500 0.875rem ${sans}`,
+          color: muted,
+        }}>{ATTRIBUTION}</figcaption>
+      </figure>
+    );
+
+    // Monochrome comparison table (single accent, winner highlighted)
+    const Table = ({ p }) => (
+      <table style={{
+        width: '100%',
+        borderCollapse: 'separate',
+        borderSpacing: '0.4rem',
+        marginBottom: '1rem',
+      }}>
+        <thead>
+          <tr>
+            <th style={{ padding: '0.5rem 1rem', textAlign: 'left', font: `600 0.875rem ${sans}`, color: muted }}></th>
+            <th style={{ padding: '0.5rem 1rem', textAlign: 'right', font: `600 0.875rem ${sans}`, color: muted }}>Original</th>
+            <th style={{ padding: '0.5rem 1rem', textAlign: 'right', font: `600 0.875rem ${sans}`, color: muted }}>Redesign</th>
+            <th style={{ padding: '0.5rem 1rem', textAlign: 'right', font: `600 0.875rem ${sans}`, color: muted }}>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          {SAMPLE_TABLE.map((row, i) => {
+            const isWinner = i === 0;
+            const bgColor = isWinner ? p.light : p.lightest;
+            const textColor = isWinner ? p.primary : ink;
+            const labelBg = isWinner ? p.primary : p.light;
+            const labelColor = isWinner ? 'white' : p.primary;
+            return (
+              <tr key={row.label}>
+                <th style={{
+                  padding: '0.75rem 1.25rem',
+                  textAlign: 'left',
+                  borderRadius: '12px 0 0 12px',
+                  backgroundColor: labelBg,
+                  color: labelColor,
+                  font: `600 1rem ${sans}`,
+                }}>{row.label}</th>
+                <td style={{
+                  padding: '0.75rem 1.25rem',
+                  textAlign: 'right',
+                  backgroundColor: bgColor,
+                  color: textColor,
+                  font: `500 1rem ${sans}`,
+                }}>{row.original}</td>
+                <td style={{
+                  padding: '0.75rem 1.25rem',
+                  textAlign: 'right',
+                  backgroundColor: bgColor,
+                  color: textColor,
+                  font: `500 1rem ${sans}`,
+                }}>{row.new}</td>
+                <td style={{
+                  padding: '0.75rem 1.25rem',
+                  textAlign: 'right',
+                  borderRadius: '0 12px 12px 0',
+                  backgroundColor: bgColor,
+                  color: textColor,
+                  font: `500 1rem ${sans}`,
+                }}>{row.change}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
+
+    // ============================================================
+    // Showcase
+    // ============================================================
+
+    // Four-color quartet: all four colors side by side, plus prose preview.
+    const Quartet = () => (
+      <section style={{
+        padding: 'clamp(2rem, 5vw, 3rem)',
+        marginBottom: '2.5rem',
+        backgroundColor: 'white',
+        borderRadius: 16,
+        border: `2px solid ${ink}`,
+      }}>
+        <header style={{ marginBottom: '2rem' }}>
+          <h2 style={{
+            font: `600 1.375rem ${sans}`,
+            margin: '0 0 0.375rem 0',
+            color: ink,
+          }}>Final four-color palette</h2>
+          <p style={{
+            font: `400 0.9375rem ${sans}`,
+            color: muted,
+            margin: 0,
+            lineHeight: 1.5,
+          }}>
+            One color per case study. Home page keeps the multi-colored highlights so all four show up together.
+            Indigo unchanged, emerald replaces the old generic green, orange and fuchsia kept.
+          </p>
+        </header>
+
+        {/* Per-color rows: name + case study + a highlight-text sample in that color */}
+        <div style={{ marginBottom: '2.5rem' }}>
+          {FOUR_COLORS.map((c, i) => (
+            <div key={c.name} style={{
+              display: 'grid',
+              gridTemplateColumns: '160px 1fr',
+              gap: '2rem',
+              alignItems: 'center',
+              padding: '1rem 0',
+              borderTop: i === 0 ? `1px solid ${border}` : 'none',
+              borderBottom: `1px solid ${border}`,
+            }}>
+              <div>
+                <div style={{ font: `600 0.9375rem ${sans}`, color: ink, marginBottom: 2 }}>
+                  {c.name}
+                </div>
+                <div style={{ font: `400 0.8125rem ${sans}`, color: muted, marginBottom: 4 }}>
+                  {c.caseStudy}
+                </div>
+                <div style={{ font: `400 0.6875rem monospace`, color: muted }}>
+                  {c.primary}
+                </div>
+              </div>
+              <div style={{ font: `400 1rem ${sans}`, color: ink, lineHeight: 1.6 }}>
+                A redesign that improved{' '}
+                <span style={{ backgroundColor: c.light, color: c.primary, padding: '2px 6px', borderRadius: 4, fontWeight: 500 }}>
+                  comprehension by 50%
+                </span>
+                {' '}and{' '}
+                <span style={{ color: c.primary, fontWeight: 600 }}>
+                  cut drop-off
+                </span>
+                .
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Together in prose: mimics the hero bio */}
+        <div style={{
+          padding: '1.75rem',
+          backgroundColor: bg,
+          borderRadius: 12,
+          border: `1px solid ${border}`,
+        }}>
+          <div style={{ font: `500 0.6875rem ${sans}`, color: muted, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+            Together in the hero bio
+          </div>
+          <p style={{ font: `400 1.125rem ${sans}`, color: ink, lineHeight: 1.6, margin: 0, maxWidth: 600 }}>
+            I'm a UX designer who bridges the gap between user needs and business goals.
+            I specialize in{' '}
+            <span style={{ backgroundColor: FOUR_COLORS[2].light, color: FOUR_COLORS[2].primary, padding: '2px 6px', borderRadius: 4, fontWeight: 500 }}>data-driven design</span>,{' '}
+            <span style={{ backgroundColor: FOUR_COLORS[0].light, color: FOUR_COLORS[0].primary, padding: '2px 6px', borderRadius: 4, fontWeight: 500 }}>user interface design</span>, and{' '}
+            <span style={{ backgroundColor: FOUR_COLORS[1].light, color: FOUR_COLORS[1].primary, padding: '2px 6px', borderRadius: 4, fontWeight: 500 }}>design systems</span>.
+          </p>
+          <p style={{ font: `400 0.875rem ${sans}`, color: muted, margin: '1rem 0 0 0', fontStyle: 'italic' }}>
+            (Fuchsia would appear on the AI workflow case study card below the bio.)
+          </p>
+        </div>
+      </section>
+    );
+
+    const PaletteSection = ({ palette }) => (
+      <section style={{
+        padding: 'clamp(2rem, 5vw, 3rem)',
+        marginBottom: '2.5rem',
+        backgroundColor: 'white',
+        borderRadius: 16,
+        border: `1px solid ${border}`,
+      }}>
+        <header style={{ marginBottom: '2rem' }}>
+          <h2 style={{
+            font: `600 1.375rem ${sans}`,
+            margin: '0 0 0.375rem 0',
+            color: ink,
+          }}>{palette.name}</h2>
+          <p style={{
+            font: `400 0.9375rem ${sans}`,
+            color: muted,
+            margin: 0,
+            lineHeight: 1.5,
+          }}>{palette.note}</p>
+        </header>
+        <Swatches p={palette} />
+        <Buttons p={palette} />
+        <HighlightProse p={palette} />
+        <Quote p={palette} />
+        <Table p={palette} />
+      </section>
+    );
+
+    function App() {
+      return (
+        <div style={{
+          maxWidth: 920,
+          margin: '0 auto',
+          padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 1.5rem)',
+          fontFamily: sans,
+          color: ink,
+        }}>
+          <header style={{ marginBottom: '3rem' }}>
+            <h1 style={{
+              font: `600 clamp(1.75rem, 4vw, 2.25rem) ${sans}`,
+              letterSpacing: '-0.02em',
+              margin: '0 0 0.5rem 0',
+            }}>Color Palette Iterations</h1>
+            <p style={{
+              font: `400 1rem ${sans}`,
+              color: muted,
+              margin: 0,
+              lineHeight: 1.5,
+            }}>
+              Top section is the committed four-color palette (one color per case study).
+              Below: the original primary-color exploration kept for reference.
+            </p>
+          </header>
+
+          <Quartet />
+
+          <h2 style={{
+            font: `600 1rem ${sans}`,
+            color: muted,
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase',
+            marginBottom: '1.5rem',
+            paddingTop: '1rem',
+            borderTop: `1px solid ${border}`,
+          }}>Reference: original primary-color exploration</h2>
+
+          {PALETTES.map((p) => (
+            <PaletteSection key={p.name} palette={p} />
+          ))}
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

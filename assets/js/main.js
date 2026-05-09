@@ -13,9 +13,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 
-if (navToggle) {
+if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
+        const isActive = navToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', isActive);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
     });
 }
 

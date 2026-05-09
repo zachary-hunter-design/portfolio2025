@@ -1,25 +1,25 @@
 /* CSS Custom Properties for Design System */
 :root {
-    /*main colors*/
-    --primary-blue: #225CED;
-    --light-blue: #E5EDFF;
-    --lightest-blue: #F3F7FF;
-    --primary-skyblue: #5898F9;
-    --primary-pink: #DA4DF0;
-    --light-pink: #F8CDFF;
-    --lightest-pink: #FCE8FF;
-    --primary-green: #3CA24B;
-    --light-green: #B8F1C0;
-    --lightest-green: #DCF9E0;
-    --primary-orange: #E6772B;
-    --light-orange: #FFE4D1;
-    --lightest-orange: #FFF1E6;
-    /*functional colors*/
+    /* Primary brand colors. Refined / less saturated than v1, Stripe-leaning. */
+    --primary-blue: #4F46E5;        /* indigo-600, slight purple lean for distinction */
+    --light-blue: #E0E7FF;          /* indigo-100 */
+    --lightest-blue: #EEF2FF;       /* indigo-50 */
+    --primary-skyblue: #6366F1;     /* indigo-500, secondary blue for hover/accents */
+    --primary-pink: #C026D3;        /* fuchsia-600, deeper than v1 */
+    --light-pink: #FAE8FF;          /* fuchsia-100 */
+    --lightest-pink: #FAF5FF;       /* fuchsia-50 */
+    --primary-green: #059669;       /* emerald-600 */
+    --light-green: #D1FAE5;         /* emerald-100 */
+    --lightest-green: #ECFDF5;      /* emerald-50 */
+    --primary-orange: #EA580C;      /* orange-600, warmer/deeper than v1 */
+    --light-orange: #FFEDD5;        /* orange-100 */
+    --lightest-orange: #FFF7ED;     /* orange-50 */
+    /* Functional colors */
     --text-dark: #1a1a1a;
-    --text-light: #999797;
-    --border-gray: #C9C7C7;
+    --text-light: #6B7280;          /* gray-500, slightly cooler than v1 #999797 */
+    --border-gray: #E5E7EB;         /* gray-200, lighter than v1 #C9C7C7 for cleaner separation */
     --bg-light: #fefefe;
-    --btn-hover: #4A4A4A;
+    --btn-hover: #374151;           /* gray-700, less harsh than v1 #4A4A4A */
     /*fonts*/
     --font-primary: 'Figtree', sans-serif;
     --font-accent: 'Roboto Serif', serif;
@@ -36,8 +36,8 @@
     box-sizing: border-box;
 }
 
-body { 
-    font-family: var(--font-primary), var(--font-accent);
+body {
+    font-family: var(--font-primary), sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
 }

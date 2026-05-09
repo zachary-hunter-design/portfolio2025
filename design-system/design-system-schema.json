@@ -2,37 +2,38 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "ZacHunter Design System",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Design system for Zac Hunter's UX portfolio",
-    "lastUpdated": "2025-01-05",
-    
+    "lastUpdated": "2026-05-08",
+    "notes": "v2: refined Stripe-leaning palette (less saturated). Added nav-toggle, back-link, next-case-link, testing-results-row components. See ./README.md for the markdown version of this spec, which is the preferred reference for AI agents.",
+
     "foundations": {
       "colors": {
         "primary": {
-          "blue": { "value": "#225CED", "variable": "--primary-blue", "description": "Primary brand blue" },
-          "skyblue": { "value": "#5898F9", "variable": "--primary-skyblue", "description": "Secondary blue for accents" },
-          "pink": { "value": "#DA4DF0", "variable": "--primary-pink", "description": "Primary brand pink" },
-          "green": { "value": "#3CA24B", "variable": "--primary-green", "description": "Primary brand green" },
-          "orange": { "value": "#E6772B", "variable": "--primary-orange", "description": "Primary brand orange" }
+          "blue": { "value": "#4F46E5", "variable": "--primary-blue", "description": "Primary brand accent (indigo, slight purple lean)" },
+          "skyblue": { "value": "#6366F1", "variable": "--primary-skyblue", "description": "Secondary blue for hover/icons" },
+          "pink": { "value": "#C026D3", "variable": "--primary-pink", "description": "Warm accent for emphasis (fuchsia)" },
+          "green": { "value": "#059669", "variable": "--primary-green", "description": "Emerald, calendar case study identity" },
+          "orange": { "value": "#EA580C", "variable": "--primary-orange", "description": "Warm tertiary accent" }
         },
         "light": {
-          "blue": { "value": "#E5EDFF", "variable": "--light-blue", "description": "Light blue background" },
-          "pink": { "value": "#F8CDFF", "variable": "--light-pink", "description": "Light pink background" },
-          "green": { "value": "#B8F1C0", "variable": "--light-green", "description": "Light green background" },
-          "orange": { "value": "#FFE4D1", "variable": "--light-orange", "description": "Light orange background" }
+          "blue": { "value": "#E0E7FF", "variable": "--light-blue", "description": "Light blue background fill (combo)" },
+          "pink": { "value": "#FAE8FF", "variable": "--light-pink", "description": "Light pink background fill (combo)" },
+          "green": { "value": "#D1FAE5", "variable": "--light-green", "description": "Light emerald background fill (combo)" },
+          "orange": { "value": "#FFEDD5", "variable": "--light-orange", "description": "Light orange background fill (combo)" }
         },
         "lightest": {
-          "blue": { "value": "#F3F7FF", "variable": "--lightest-blue", "description": "Lightest blue for subtle highlights" },
-          "pink": { "value": "#FCE8FF", "variable": "--lightest-pink", "description": "Lightest pink for subtle highlights" },
-          "green": { "value": "#DCF9E0", "variable": "--lightest-green", "description": "Lightest green for subtle highlights" },
-          "orange": { "value": "#FFF1E6", "variable": "--lightest-orange", "description": "Lightest orange for subtle highlights" }
+          "blue": { "value": "#EEF2FF", "variable": "--lightest-blue", "description": "Subtle blue background (combo-light)" },
+          "pink": { "value": "#FAF5FF", "variable": "--lightest-pink", "description": "Subtle pink background (combo-light)" },
+          "green": { "value": "#ECFDF5", "variable": "--lightest-green", "description": "Subtle emerald background (combo-light)" },
+          "orange": { "value": "#FFF7ED", "variable": "--lightest-orange", "description": "Subtle orange background (combo-light)" }
         },
         "functional": {
-          "text-dark": { "value": "#1a1a1a", "variable": "--text-dark", "description": "Primary text color" },
-          "text-light": { "value": "#999797", "variable": "--text-light", "description": "Secondary text color" },
-          "border-gray": { "value": "#C9C7C7", "variable": "--border-gray", "description": "Border and divider color" },
-          "bg-light": { "value": "#fefefe", "variable": "--bg-light", "description": "Light background color" },
-          "btn-hover": { "value": "#4A4A4A", "variable": "--btn-hover", "description": "Button hover background" }
+          "text-dark": { "value": "#1A1A1A", "variable": "--text-dark", "description": "Primary text color" },
+          "text-light": { "value": "#6B7280", "variable": "--text-light", "description": "Muted secondary text (gray-500)" },
+          "border-gray": { "value": "#E5E7EB", "variable": "--border-gray", "description": "Border and divider color (gray-200)" },
+          "bg-light": { "value": "#FEFEFE", "variable": "--bg-light", "description": "Page background" },
+          "btn-hover": { "value": "#374151", "variable": "--btn-hover", "description": "Button hover background (gray-700)" }
         }
       },
       
@@ -133,12 +134,17 @@
             "weight": "700",
             "textTransform": "uppercase"
           },
-          "quote": { 
-            "class": "quote",
-            "description": "Large quote text",
-            "size": "clamp(1.75rem, 5vw, 3.25rem)",
-            "lineHeight": "1.2",
-            "weight": "400"
+          "quote": {
+            "class": "research-quote-text",
+            "description": "Pull-quote body text inside the .research-quote figure (V2). The legacy .quote class is deprecated for participant quotes.",
+            "size": "clamp(1.375rem, 3.5vw, 1.75rem)",
+            "lineHeight": "1.35",
+            "weight": "400",
+            "wrapper": {
+              "class": "research-quote",
+              "description": "Figure wrapping a big serif quote-mark glyph (.research-quote-mark) and a blockquote (.research-quote-text). Tint glyph via combo-{color} modifier on the figure.",
+              "modifiers": ["combo-blue", "combo-pink", "combo-green", "combo-orange"]
+            }
           }
         }
       },
@@ -205,6 +211,21 @@
           "gap": "clamp(1rem, 3vw, 1.5rem)",
           "margin": "0 16px",
           "usage": "All case study sections, about page sections"
+        },
+        "about-container": {
+          "class": "about-container",
+          "description": "Single-column flow for the about page. Children get consistent gap via flex; per-element margins zeroed.",
+          "maxWidth": "720px",
+          "gap": "clamp(2rem, 5vw, 3rem)",
+          "addedInVersion": "2.0.0",
+          "supersedes": ".about-column (removed in v2)"
+        },
+        "testing-results-row": {
+          "class": "testing-results-row",
+          "description": "Calendar case study: row that wraps a metric grid + side card. Stacks on mobile, becomes a row at >=900px.",
+          "maxWidth": "1040px",
+          "addedInVersion": "2.0.0",
+          "child": { "class": "testing-summary-card", "description": "Side card next to grid-2-2 metric block" }
         }
       },
       
@@ -282,12 +303,36 @@
           "structure": {
             "wrapper": { "class": "name-links-div", "maxWidth": "1600px", "padding": "0 clamp(1rem, 4vw, 2rem)" },
             "logo": { "class": "name-div" },
+            "toggle": {
+              "class": "nav-toggle",
+              "description": "Mobile hamburger toggle. Hidden on desktop (>=769px). Animates lines into X when active.",
+              "structure": "<button class=\"nav-toggle\" aria-label=\"Toggle navigation\" aria-expanded=\"false\"><span></span><span></span><span></span></button>",
+              "behavior": "JS toggles .active on toggle and .nav-links. See assets/js/main.js."
+            },
             "links": { "class": "nav-links", "gap": "clamp(0.5rem, 2vw, 1rem)" },
-            "link": { 
+            "link": {
               "class": "nav-link",
               "active": { "class": "nav-link-active", "color": "var(--text-dark)", "borderBottom": "2px solid var(--text-dark)" }
             }
           }
+        },
+        "back-link": {
+          "class": "back-link",
+          "description": "Small muted back-nav link with left arrow. Top of every case study, inside .case-titles above the h1.",
+          "color": "var(--text-light)",
+          "hover": "color: var(--text-dark)",
+          "fontSize": "clamp(0.875rem, 1.5vw, 0.9375rem)",
+          "weight": "500",
+          "structure": "<a class=\"back-link\" href=\"...\"><span aria-hidden=\"true\">←</span> Back to projects</a>",
+          "addedInVersion": "2.0.0"
+        },
+        "next-case-link": {
+          "class": "next-case-link",
+          "description": "Bordered card at the bottom of every case study, pointing to the next study in the loop. Hover lifts 2px with soft shadow.",
+          "wrapper": { "class": "next-case-section", "maxWidth": "1040px", "margin": "clamp(3rem, 6vw, 5rem) auto clamp(2rem, 4vw, 3rem)" },
+          "structure": "<a class=\"next-case-link\"><div class=\"next-case-text\"><span class=\"next-case-label caption-spaced\">Next case study</span><span class=\"next-case-title header3-primary\">{title}</span></div><span class=\"next-case-arrow\" aria-hidden=\"true\">→</span></a>",
+          "composition": "next-case-label composes with caption-spaced; next-case-title composes with header3-primary. Wrapper classes only carry color.",
+          "addedInVersion": "2.0.0"
         }
       },
       
@@ -320,9 +365,11 @@
         },
         "case-header-img": {
           "class": "case-header-img",
-          "description": "Full-width case study header image",
+          "description": "Full-width case study header image. Capped at 60vh with object-fit: cover so portrait images don't dominate the viewport on mobile.",
           "width": "100%",
           "height": "auto",
+          "maxHeight": "60vh",
+          "objectFit": "cover",
           "marginBottom": "clamp(2rem, 6vw, 4rem)",
           "borderBottom": "1px var(--border-gray) solid"
         }
@@ -391,12 +438,24 @@
       },
       
       "aboutPage": {
-        "description": "About page structure",
+        "description": "About page structure. v2 refactored from two-column to single-column narrative flow.",
         "requiredSections": [
-          { "name": "Header", "components": [".case-titles"], "required": true },
-          { "name": "Two Column Layout", "components": [".about-container", ".about-column"], "required": true }
+          { "name": "Header", "components": [".case-titles"], "required": true, "notes": "Apply inline style=\"max-width: 720px\" to match the body width" },
+          { "name": "Single Column Flow", "components": [".about-container"], "required": true }
         ],
         "example": "about.html"
+      },
+
+      "caseStudyV2": {
+        "description": "v2 case study pattern: adds back-link at the top of .case-titles and .next-case-section before </main>.",
+        "requiredSections": [
+          { "name": "Header image", "components": [".case-header-img"], "required": true },
+          { "name": "Title block", "components": [".case-titles", ".back-link"], "required": true },
+          { "name": "Summary & Duties", "components": [".summary-duties"], "required": true },
+          { "name": "Content sections", "components": [".basic-section"], "required": true, "notes": "Pick 3-6 beats: Introduction, Problem/Spark, Research, Decisions/Design, Results, Production Impact, What I Learned, Coda" },
+          { "name": "Next case footer", "components": [".next-case-section", ".next-case-link"], "required": true, "notes": "Maintain the loop: each case points to the next in home grid order" }
+        ],
+        "example": "doc-verification.html"
       }
     },
     

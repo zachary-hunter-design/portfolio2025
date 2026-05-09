@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Iterations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { margin: 0; background: #FAFAFA; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" data-type="module" data-presets="env,react">
+    const SAMPLE_LONG = "It feels like a game designed to introduce a gambling element to the benefit of the house, which is Breeze.";
+    const SAMPLE_SHORT = "I'd rather not be locked into something.";
+    const ATTRIBUTION = "P1, usability test, Mar 2026";
+
+    const t = {
+      blue: '#4F46E5',
+      pink: '#C026D3',
+      green: '#059669',
+      orange: '#EA580C',
+      lightBlue: '#E0E7FF',
+      lightPink: '#FAE8FF',
+      lightGreen: '#D1FAE5',
+      lightestBlue: '#EEF2FF',
+      ink: '#1A1A1A',
+      muted: '#6B7280',
+      border: '#E5E7EB',
+      bg: '#FEFEFE',
+      sans: 'Figtree, system-ui, sans-serif',
+      serif: '"Roboto Serif", Georgia, serif',
+    };
+
+    const V0_Current = ({ text }) => (
+      <p style={{
+        font: `400 clamp(1.75rem, 5vw, 2.5rem) ${t.serif}`,
+        lineHeight: 1.2,
+        color: t.ink,
+        backgroundColor: t.lightBlue,
+        padding: '0.25rem 0.5rem',
+        borderRadius: '4px',
+        margin: 0,
+      }}>{text}</p>
+    );
+
+    const V1_VerticalBar = ({ text, attribution }) => (
+      <figure style={{ margin: 0, paddingLeft: '1.25rem', borderLeft: `3px solid ${t.blue}` }}>
+        <blockquote style={{
+          font: `400 clamp(1.5rem, 4vw, 2rem) ${t.serif}`,
+          lineHeight: 1.3,
+          color: t.ink,
+          margin: 0,
+        }}>{text}</blockquote>
+        {attribution && (
+          <figcaption style={{
+            marginTop: '0.75rem',
+            font: `500 0.875rem ${t.sans}`,
+            color: t.muted,
+            letterSpacing: '0.02em',
+          }}>{attribution}</figcaption>
+        )}
+      </figure>
+    );
+
+    const V2_BigQuoteMark = ({ text, attribution }) => (
+      <figure style={{ margin: 0, position: 'relative', paddingLeft: '3.5rem' }}>
+        <span aria-hidden="true" style={{
+          position: 'absolute',
+          left: 0,
+          top: '-0.5rem',
+          font: `700 5rem ${t.serif}`,
+          lineHeight: 1,
+          color: t.blue,
+          opacity: 0.85,
+        }}>“</span>
+        <blockquote style={{
+          font: `400 clamp(1.375rem, 3.5vw, 1.75rem) ${t.serif}`,
+          lineHeight: 1.35,
+          color: t.ink,
+          margin: 0,
+        }}>{text}</blockquote>
+        {attribution && (
+          <figcaption style={{
+            marginTop: '0.75rem',
+            font: `500 0.875rem ${t.sans}`,
+            color: t.muted,
+          }}>{attribution}</figcaption>
+        )}
+      </figure>
+    );
+
+    const V3_Eyebrow = ({ text, attribution, label = "Participant Quote" }) => (
+      <figure style={{ margin: 0 }}>
+        <p style={{
+          font: `700 0.75rem ${t.sans}`,
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          color: t.blue,
+          margin: '0 0 0.75rem 0',
+        }}>{label}</p>
+        <blockquote style={{
+          font: `400 italic clamp(1.375rem, 3.5vw, 1.75rem) ${t.serif}`,
+          lineHeight: 1.35,
+          color: t.ink,
+          margin: 0,
+        }}>{text}</blockquote>
+        {attribution && (
+          <figcaption style={{
+            marginTop: '0.875rem',
+            font: `500 0.875rem ${t.sans}`,
+            color: t.muted,
+          }}>— {attribution}</figcaption>
+        )}
+      </figure>
+    );
+
+    const V4_Card = ({ text, attribution }) => (
+      <figure style={{
+        margin: 0,
+        border: `1px solid ${t.border}`,
+        borderRadius: '12px',
+        padding: 'clamp(1.25rem, 3vw, 1.75rem)',
+        backgroundColor: t.bg,
+      }}>
+        <blockquote style={{
+          font: `400 clamp(1.25rem, 3vw, 1.5rem) ${t.serif}`,
+          lineHeight: 1.4,
+          color: t.ink,
+          margin: 0,
+        }}>{text}</blockquote>
+        {attribution && (
+          <figcaption style={{
+            marginTop: '1.25rem',
+            paddingTop: '1rem',
+            borderTop: `1px solid ${t.border}`,
+            font: `600 0.8125rem ${t.sans}`,
+            letterSpacing: '0.05em',
+            color: t.muted,
+            textTransform: 'uppercase',
+          }}>{attribution}</figcaption>
+        )}
+      </figure>
+    );
+
+    const V5_PureType = ({ text, attribution }) => (
+      <figure style={{ margin: 0 }}>
+        <blockquote style={{
+          font: `300 italic clamp(1.75rem, 5vw, 2.75rem) ${t.serif}`,
+          lineHeight: 1.25,
+          color: t.ink,
+          margin: 0,
+          letterSpacing: '-0.01em',
+        }}>{text}</blockquote>
+        {attribution && (
+          <figcaption style={{
+            marginTop: '1rem',
+            font: `400 0.9375rem ${t.sans}`,
+            color: t.muted,
+          }}>{attribution}</figcaption>
+        )}
+      </figure>
+    );
+
+    const V6_CornerBracket = ({ text, attribution }) => (
+      <figure style={{ margin: 0, position: 'relative', padding: '1.25rem 0 0 1.25rem' }}>
+        <span aria-hidden="true" style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '1.5rem',
+          height: '1.5rem',
+          borderTop: `2px solid ${t.blue}`,
+          borderLeft: `2px solid ${t.blue}`,
+        }} />
+        <blockquote style={{
+          font: `400 clamp(1.25rem, 3.5vw, 1.625rem) ${t.serif}`,
+          lineHeight: 1.4,
+          color: t.ink,
+          margin: 0,
+        }}>{text}</blockquote>
+        {attribution && (
+          <figcaption style={{
+            marginTop: '0.875rem',
+            font: `500 0.8125rem ${t.sans}`,
+            color: t.muted,
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase',
+          }}>{attribution}</figcaption>
+        )}
+      </figure>
+    );
+
+    const V7_Tint = ({ text, attribution }) => (
+      <figure style={{
+        margin: 0,
+        backgroundColor: t.lightestBlue,
+        padding: 'clamp(1.25rem, 3vw, 1.75rem) clamp(1.5rem, 4vw, 2rem)',
+        borderRadius: '12px',
+      }}>
+        <blockquote style={{
+          font: `400 clamp(1.25rem, 3vw, 1.5rem) ${t.serif}`,
+          lineHeight: 1.4,
+          color: t.ink,
+          margin: 0,
+        }}>{text}</blockquote>
+        {attribution && (
+          <figcaption style={{
+            marginTop: '1rem',
+            font: `500 0.8125rem ${t.sans}`,
+            color: t.muted,
+          }}>{attribution}</figcaption>
+        )}
+      </figure>
+    );
+
+    const Variant = ({ name, note, children }) => (
+      <section style={{
+        padding: 'clamp(2rem, 5vw, 3rem) 0',
+        borderBottom: `1px solid ${t.border}`,
+      }}>
+        <header style={{ marginBottom: '1.5rem' }}>
+          <p style={{
+            font: `700 0.75rem ${t.sans}`,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            color: t.muted,
+            margin: '0 0 0.25rem 0',
+          }}>{name}</p>
+          {note && (
+            <p style={{
+              font: `400 0.9375rem ${t.sans}`,
+              color: t.muted,
+              margin: 0,
+            }}>{note}</p>
+          )}
+        </header>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+          {children}
+        </div>
+      </section>
+    );
+
+    function App() {
+      return (
+        <div style={{
+          maxWidth: 720,
+          margin: '0 auto',
+          padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 1.5rem)',
+          fontFamily: t.sans,
+          color: t.ink,
+          backgroundColor: t.bg,
+        }}>
+          <header style={{ marginBottom: '3rem' }}>
+            <h1 style={{
+              font: `600 clamp(1.75rem, 4vw, 2.25rem) ${t.sans}`,
+              letterSpacing: '-0.02em',
+              margin: '0 0 0.5rem 0',
+            }}>Quote Component Iterations</h1>
+            <p style={{
+              font: `400 1rem ${t.sans}`,
+              color: t.muted,
+              margin: 0,
+              lineHeight: 1.5,
+            }}>
+              Each variant rendered with a long quote and a short quote so you can see how it handles
+              both. Pick one (or a hybrid) and we'll wire it into the case studies.
+            </p>
+          </header>
+
+          <Variant name="V0 — Current" note="Baseline. Highlight-text scaled up. Reads as a long highlighted phrase, not a person speaking.">
+            <V0_Current text={SAMPLE_LONG} />
+            <V0_Current text={SAMPLE_SHORT} />
+          </Variant>
+
+          <Variant name="V1 — Vertical bar accent" note="Classic editorial pull-quote. Left bar in accent color, attribution below.">
+            <V1_VerticalBar text={SAMPLE_LONG} attribution={ATTRIBUTION} />
+            <V1_VerticalBar text={SAMPLE_SHORT} attribution={ATTRIBUTION} />
+          </Variant>
+
+          <Variant name="V2 — Big opening quote mark" note="Decorative serif quote glyph in accent color. NYT pull-quote energy.">
+            <V2_BigQuoteMark text={SAMPLE_LONG} attribution={ATTRIBUTION} />
+            <V2_BigQuoteMark text={SAMPLE_SHORT} attribution={ATTRIBUTION} />
+          </Variant>
+
+          <Variant name="V3 — Eyebrow label + italic serif" note="Small caps eyebrow signals what kind of quote it is. Italic body. Cleanest signal that this is research, not flair.">
+            <V3_Eyebrow text={SAMPLE_LONG} attribution={ATTRIBUTION} />
+            <V3_Eyebrow text={SAMPLE_SHORT} attribution={ATTRIBUTION} label="From the Field" />
+          </Variant>
+
+          <Variant name="V4 — Bordered testimonial card" note="Full chrome. Border, attribution row separated by a divider. Reads more like a testimonial than a research finding.">
+            <V4_Card text={SAMPLE_LONG} attribution={ATTRIBUTION} />
+            <V4_Card text={SAMPLE_SHORT} attribution={ATTRIBUTION} />
+          </Variant>
+
+          <Variant name="V5 — Pure typography, oversized italic" note="No decoration at all. Just oversized italic Roboto Serif. Confident, slightly precious.">
+            <V5_PureType text={SAMPLE_LONG} attribution={ATTRIBUTION} />
+            <V5_PureType text={SAMPLE_SHORT} attribution={ATTRIBUTION} />
+          </Variant>
+
+          <Variant name="V6 — Corner bracket" note="Single corner bracket replaces conventional quote marks. Designerly. Asymmetric.">
+            <V6_CornerBracket text={SAMPLE_LONG} attribution={ATTRIBUTION} />
+            <V6_CornerBracket text={SAMPLE_SHORT} attribution={ATTRIBUTION} />
+          </Variant>
+
+          <Variant name="V7 — Subtle tinted block" note="Closer to current treatment but with tinted bg instead of fill highlight, plus attribution.">
+            <V7_Tint text={SAMPLE_LONG} attribution={ATTRIBUTION} />
+            <V7_Tint text={SAMPLE_SHORT} attribution={ATTRIBUTION} />
+          </Variant>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

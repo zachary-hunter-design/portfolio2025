@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: An AI-Assisted Design Workflow</title>
+    <meta name="description" content="Case study: building a tiered framework for matching design effort to problem complexity, and where AI compression actually fits in the design process.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Matching Workflow to Problem: A Framework for AI-Assisted Design">
+    <meta property="og:description" content="A retrospective at Breeze became a tiered framework for when AI compresses design work, and when it gets in the way.">
+    <meta property="og:image" content="../assets/images/ai-design-workflow/cover.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="../assets/images/avatar.png">
+    <link rel="stylesheet" href="../assets/css/alt-main.css" />
+    <link rel="stylesheet" href="../assets/css/alt-components.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet"/>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8YWZS0MEB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V8YWZS0MEB');
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+          <div class="name-links-div">
+          <div class="name-div">
+                  <a class="header3-primary" href="../index.html">Zachary Hunter</a>
+          </div>
+          <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
+          <ul class="nav-links">
+              <li class="nav-link"><a href="../index.html">Home</a></li>
+              <li class="nav-link"><a href="../about.html">About Me</a></li>
+          </ul>
+          </div>
+        </nav>
+    </header>
+
+    <main>
+      <img src="../assets/images/ai-design-workflow/cover.svg" class="case-header-img" alt="AI-assisted design workflow cover">
+        <section class="basic-section">
+            <div class="case-titles">
+              <a href="../index.html#projects-section" class="back-link">
+                <span aria-hidden="true">←</span> Back to projects
+              </a>
+              <h1 class="hero-primary">Matching Workflow to Problem: A Framework for AI-Assisted Design</h1>
+              <h2 class="header2-accent">Where AI compression actually fits in the design process, and where it gets in the way.</h2>
+            </div>
+            <div class="summary-duties">
+              <div class="summary">
+                <h2 class="header1-primary">Executive Summary</h2>
+                <p class="body-primary">
+                    After several months of using AI in my design work at Breeze, a UX and engineering retrospective on a small WiFi lookup project pushed me to formalize what I had been doing intuitively.
+                </p>
+                <p class="body-primary">
+                    The retrospective surfaced a recurring pattern: <span class="highlight-text combo-pink-light">complex problems benefit from human judgment guiding the process, while routine, well-defined problems can be handed off to agentic systems entirely</span>. The middle ground is where most of my AI usage actually lives.
+                </p>
+                <p class="body-primary">
+                    From that observation, I built a tiered framework that matches problem complexity to approach (from fully agentic at one end to human-led strategy at the other), plus an evolving toolchain that compounds context across sessions instead of resetting it.
+                </p>
+                <p class="body-primary">
+                    <span class="highlight-text combo-pink-light">The thesis: the skill shortens the time between judgment calls. It doesn't skip them.</span>
+                </p>
+              </div>
+              <hr class="vertical-hr"/>
+              <div class="duties-list">
+                <div class="duties-item">
+                  <img src="../assets/images/icons/user-circle-duotone.svg" alt="profile icon"/>
+                  <div class="duties-text-div">
+                    <p>Role:</p>
+                    <p class="body-primary-bold">UX Designer, Process Lead</p>
+                  </div>
+                </div>
+                <div class="duties-item">
+                  <img src="../assets/images/icons/calendar-dots-duotone.svg" alt="Calendar icon">
+                  <div class="duties-text-div">
+                    <p>Duration:</p>
+                    <p class="body-primary-bold">Ongoing</p>
+                  </div>
+                </div>
+                <div class="duties-item">
+                  <img src="../assets/images/icons/list-checks-duotone.svg" alt="Checklist icon">
+                  <div class="duties-text-div">
+                    <p>Responsibilities:</p>
+                    <p class="body-primary-bold">
+                        Process design, AI workflow, retrospective facilitation
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="intro">
+            <div class="text-block">
+              <h2 class="header1-primary">Introduction</h2>
+              <h3 class="header2-accent">A Retrospective That Turned Into a Framework</h3>
+              <p class="body-primary">I had been experimenting with AI in my design work for months, but the conversations about it inside my team were anecdotal. Fragmented demos, isolated wins, no shared frame for when AI was actually helping versus when it was adding overhead.</p>
+              <p class="body-primary">A small UX and engineering collaboration on a WiFi lookup feature turned out to be the right size and shape to surface the underlying pattern. <span class="highlight-text combo-pink-light">What started as a project retrospective became a framework for how design effort scales with problem complexity</span>, and where AI compression fits inside that.</p>
+            </div>
+            </div>
+        </section>
+
+        <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">The Spark</h2>
+                <h3 class="header2-accent">Anonymous WiFi Lookup: A Known Pattern With Fuzzy Edges</h3>
+                <p class="body-primary">Guests on Breeze flights were struggling to connect to in-flight WiFi. The fix was conceptually simple: <span class="highlight-text combo-pink-light">let guests connect anonymously by entering their PNR and last name</span>. Most of the project was a known UI pattern; the interesting parts were the edges: error states, redirect paths for guests without WiFi entitlements, adjacent screens that needed quick improvements.</p>
+            </div>
+
+            <div class="text-block">
+                <h3 class="header2-accent">How We Actually Worked Together</h3>
+                <p class="body-primary">The project ran in three loose phases:</p>
+                <ul class="list-spaced">
+                    <li class="body-primary"><span class="body-primary-bold">Separate prep.</span> Both the developer and I independently started from the same existing UI pattern. I generated a quick prototype; the developer had a branch going.</li>
+                    <li class="body-primary"><span class="body-primary-bold">Pairing call.</span> We converged on a working session to hash out the ambiguous parts: error states, redirect flows, edge cases.</li>
+                    <li class="body-primary"><span class="body-primary-bold">Opportunistic audit.</span> While we were in the code, we spotted and made quick improvements to adjacent screens.</li>
+                </ul>
+            </div>
+
+            <div class="text-block">
+                <h3 class="header2-accent">What We Learned About Where Effort Was Actually Paying Off</h3>
+                <p class="body-primary">The wasted effort: <span class="highlight-text combo-pink-light">we both independently built the first screen, which was a known pattern with no ambiguity</span>. Neither of us wanted to start from zero, so we duplicated work that only needed to happen once.</p>
+                <p class="body-primary">The real value was in the ambiguous decisions: where to redirect guests without WiFi, how to handle errors, what to opportunistically improve nearby. <span class="highlight-text combo-pink-light">The value of pairing wasn't in building the obvious screen together. It was in navigating the decisions around it.</span></p>
+            </div>
+        </section>
+
+        <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">The Framework</h2>
+                <h3 class="header2-accent">Problem Complexity Tiers</h3>
+                <p class="body-primary">The WiFi project was a known pattern with fuzzy edges. One working session resolved it. But not every problem fits that shape. Some can be handed off entirely; others need deep human framing before any work begins. <span class="highlight-text combo-pink-light">The framework below names tiers of problem complexity and matches each to an appropriate approach</span>, from agentic execution at one end to human-led strategy at the other.</p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th class="header3-primary">Problem Type</th>
+                    <th class="header3-primary" style="color: var(--text-light)">Approach</th>
+                    <th class="header3-primary" style="color: var(--text-light)">Artifact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="header3-primary trh combo-pink">Routine</th>
+                    <td class="body-primarylrg combo-pink-light" data-label="Approach">Agent owns end to end; human verifies</td>
+                    <td class="body-primarylrg combo-pink-light td-right" data-label="Artifact">PR / merge request</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-pink">Bounded</th>
+                    <td class="body-primarylrg combo-pink-light" data-label="Approach">Working session: human and AI pair through fuzzy edges</td>
+                    <td class="body-primarylrg combo-pink-light td-right" data-label="Artifact">MR from the session</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-pink">Specifiable</th>
+                    <td class="body-primarylrg combo-pink-light" data-label="Approach">Human writes the brief; AI compresses exploration; dev builds</td>
+                    <td class="body-primarylrg combo-pink-light td-right" data-label="Artifact">Markdown spec + reasoning files</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-pink">Open-ended</th>
+                    <td class="body-primarylrg combo-pink-light" data-label="Approach">Human leads the design; AI compresses research and options</td>
+                    <td class="body-primarylrg combo-pink-light td-right" data-label="Artifact">Figma + spec + prototype</td>
+                  </tr>
+                </tbody>
+            </table>
+
+            <div class="text-block">
+                <h3 class="header2-accent">Where AI Compression Actually Helps</h3>
+                <p class="body-primary">Once the tiers are named, where AI fits becomes obvious. So does where it doesn't.</p>
+                <ul class="list-spaced">
+                    <li class="body-primary"><span class="body-primary-bold">Routine:</span> pure agentic territory. The work is well-defined enough to fully hand off; the human's job is to verify the result.</li>
+                    <li class="body-primary"><span class="body-primary-bold">Bounded:</span> lightweight pairing. AI can generate the obvious starting points, but the value is in human judgment about the ambiguous edges.</li>
+                    <li class="body-primary"><span class="body-primary-bold">Specifiable and Open-ended:</span> <span class="highlight-text combo-pink-light">the sweet spot. AI compresses research, exploration, and specification while human judgment leads the framing and refinement.</span></li>
+                </ul>
+                <p class="body-primary"><span class="highlight-text combo-pink-light">Complex problems are better handled with human judgment guiding the process; routine, well-defined problems can be handed off to agentic systems.</span></p>
+            </div>
+        </section>
+
+        <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">Compressed Design Thinking</h2>
+                <h3 class="header2-accent">The Three Phases I Compress, Adapted From a Designer at Redo</h3>
+                <p class="body-primary">The work that AI accelerates breaks into three phases. They map to the same beats as traditional design thinking, just compressed:</p>
+            </div>
+
+            <div class="cards-3">
+                <div class="card">
+                    <p class="caption-spaced">Phase 1</p>
+                    <h3 class="header2-accent">Build context</h3>
+                    <hr/>
+                    <p class="body-primary">Synthesize the problem space, constraints, domain knowledge, and existing patterns into a shared frame. This is the most expensive part of design work and the part AI compresses most reliably.</p>
+                </div>
+                <div class="card">
+                    <p class="caption-spaced">Phase 2</p>
+                    <h3 class="header2-accent">Explore solutions</h3>
+                    <hr/>
+                    <p class="body-primary">Generate and evaluate competing approaches. Surface tradeoffs between options rather than converging too early. The goal is breadth before depth.</p>
+                </div>
+                <div class="card">
+                    <p class="caption-spaced">Phase 3</p>
+                    <h3 class="header2-accent">Refine for reality</h3>
+                    <hr/>
+                    <p class="body-primary">Narrow to a direction. Pressure-test against feedback, alignment, and technical feasibility. This is where human judgment carries the most weight.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">The Toolchain</h2>
+                <h3 class="header2-accent">Current Artifacts That Travel With the Work</h3>
+                <p class="body-primary">The compressed workflow produces three kinds of artifacts that survive past a single session:</p>
+            </div>
+
+            <div class="cards-3">
+                <div class="card">
+                    <p class="caption-spaced">Artifact</p>
+                    <h3 class="header2-accent">Markdown specs</h3>
+                    <hr/>
+                    <p class="body-primary">Problem framing, decision logs, edge case inventories. They build the reasoning foundation and become the source of truth that other artifacts derive from.</p>
+                </div>
+                <div class="card">
+                    <p class="caption-spaced">Artifact</p>
+                    <h3 class="header2-accent">JSX prototypes</h3>
+                    <hr/>
+                    <p class="body-primary">Lightweight interactive prototypes for refining interactions and testing ideas before committing to a Figma file. Faster to iterate on; closer to the medium the work ships in.</p>
+                </div>
+                <div class="card">
+                    <p class="caption-spaced">Artifact</p>
+                    <h3 class="header2-accent">Design rationale</h3>
+                    <hr/>
+                    <p class="body-primary">Captures all reasoning from the session. Travels to dev as implementation context. Helps me recover context after switching tasks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">Platform Evolution</h2>
+                <h3 class="header2-accent">From Single Sessions to a Compounding System</h3>
+                <p class="body-primary">The platform I run this on has gone through three stages, each addressing a limitation of the last.</p>
+            </div>
+
+            <div class="cards-3">
+                <div class="card">
+                    <p class="caption-spaced">Stage 1</p>
+                    <h3 class="header2-accent">Claude Chat</h3>
+                    <hr/>
+                    <p class="body-primary">Quick prototyping and design thinking compression. Worked for single sessions, but <span class="highlight-text combo-pink-light">context resets between chats</span>. Diminishing returns on complex problems.</p>
+                </div>
+                <div class="card">
+                    <p class="caption-spaced">Stage 2</p>
+                    <h3 class="header2-accent">Claude Chat Projects</h3>
+                    <hr/>
+                    <p class="body-primary">Organized artifacts into projects. Better for managing related work over time. Still stateless across sessions; no way to feed in external context like meeting notes or domain knowledge.</p>
+                </div>
+                <div class="card">
+                    <p class="caption-spaced">Stage 3</p>
+                    <h3 class="header2-accent">Claude Code + Obsidian</h3>
+                    <hr/>
+                    <p class="body-primary">Connected to a personal knowledge base. Meeting notes, past sessions, and domain knowledge feed the same system. Work compounds instead of resetting.</p>
+                </div>
+            </div>
+
+            <div class="text-block">
+                <p class="body-primary"><span class="highlight-text combo-pink-light">Stop resetting context, start compounding it.</span></p>
+            </div>
+        </section>
+
+        <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">Applying the Framework</h2>
+                <h3 class="header2-accent">What This Framework Is and Isn't For</h3>
+                <p class="body-primary">The framework's job is to keep me from over-investing human judgment in routine work and under-investing it in complex work, and to make my AI usage match the shape of the problem instead of the shape of the tool.</p>
+                <p class="body-primary"><span class="highlight-text combo-pink-light">The skill shortens the time between judgment calls. It doesn't skip them.</span></p>
+            </div>
+        </section>
+
+        <section class="next-case-section">
+          <a href="calendar-app.html" class="next-case-link">
+            <div class="next-case-text">
+              <span class="next-case-label caption-spaced">Next case study</span>
+              <span class="next-case-title header3-primary">Completing a Full Redesign to Boost Success Rates by 23%</span>
+            </div>
+            <span class="next-case-arrow" aria-hidden="true">→</span>
+          </a>
+        </section>
+    </main>
+
+      <footer class="site-footer">
+        <div class="footer-div">
+        <div class="footer-content">
+          <h3 class="header3-primary" style="margin-bottom: 1rem;">Contact Info</h3>
+
+          <div class="contact-email">
+            <a href="mailto:zhunterux@gmail.com" class="email-link body-primarylrg">
+              zhunterux@gmail.com
+            </a>
+          </div>
+
+          <div class="social-link">
+            <a href="https://www.linkedin.com/in/zachary-hunter-b646a6227/" target="_blank" rel="noopener noreferrer" class="linkedin-link body-primarylrg">
+              Linkedin
+            </a>
+          </div>
+          <div class="copy-update">
+          <div class="copyright">
+            <p>© 2026 Zachary Hunter. All Rights Reserved.</p>
+          </div>
+
+          <div class="last-updated">
+            <p>Last updated May 8, 2026</p>
+          </div>
+        </div>
+        </div>
+    </div>
+      </footer>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/highlighter.js"></script>
+</body>
+</html>

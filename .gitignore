@@ -1,0 +1,5 @@
+.DS_Store
+node_modules/
+
+# Large image backups kept locally only; not needed on the site
+**/_original/
