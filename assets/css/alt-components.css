@@ -69,11 +69,16 @@
     transition: var(--transition);
     text-align: center;
     min-height: 44px; /* Touch target */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn:hover {
     background-color: var(--btn-hover);
     color: white;
+}
+
+.btn .arrow {
+    margin-left: 0.4rem;
 }
 
 .btn-square {
@@ -263,22 +268,78 @@
     color: inherit;
 }
 
-.nav-link a {
+.nav-link a,
+.nav-dropdown-toggle {
     text-decoration: none;
     position: relative;
-    color: var(--border-gray);
+    color: var(--text-light);
     min-height: 32px;
     display: flex;
     align-items: center;
+    background: transparent;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.nav-link a:hover {
+.nav-link a:hover,
+.nav-dropdown-toggle:hover,
+.nav-dropdown.open .nav-dropdown-toggle {
     color: var(--text-dark);
 }
 
 .nav-link-active {
     color: var(--text-dark);
     border-bottom: 2px solid var(--text-dark);
+}
+
+.nav-link-active > a,
+.nav-link-active > .nav-dropdown-toggle {
+    color: var(--text-dark);
+}
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-toggle .arrow {
+    margin-left: 0.35rem;
+    font-size: 0.85em;
+}
+
+.nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.75rem);
+    min-width: 260px;
+    list-style: none;
+    background: white;
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.nav-dropdown:focus-within .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.nav-dropdown-menu a {
+    color: var(--text-dark);
+    min-height: 40px;
+    padding: 0.625rem 0.75rem;
+    border-radius: 8px;
+}
+
+.nav-dropdown-menu a:hover {
+    background: var(--lightest-blue);
 }
 
 /* Hamburger toggle */
@@ -345,17 +406,41 @@
         border-bottom: none;
     }
 
-    .nav-link a {
+    .nav-link a,
+    .nav-dropdown-toggle {
         width: 100%;
         padding: 0.875rem 0.75rem;
         color: var(--text-light);
+        justify-content: space-between;
     }
 
-    .nav-link-active a {
+    .nav-link-active a,
+    .nav-link-active .nav-dropdown-toggle {
         width: 100%;
         padding: 0.875rem 0.75rem;
         color: var(--text-dark);
         font-weight: 600;
+    }
+
+    .nav-dropdown {
+        width: 100%;
+    }
+
+    .nav-dropdown-menu {
+        position: static;
+        min-width: 0;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        border-left: 2px solid var(--border-gray);
+        border-radius: 0;
+        margin: 0 0 0.5rem 0.75rem;
+        padding: 0 0 0 0.75rem;
+    }
+
+    .nav-dropdown-menu a {
+        color: var(--text-light);
+        padding: 0.625rem 0.75rem;
     }
 }
 
@@ -373,7 +458,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 3vw, 2rem);
+    padding: clamp(1.25rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem) clamp(2rem, 5vw, 5rem);
 }
 
 .hero-content {
@@ -421,10 +506,14 @@
     }
 }
 
+.hero-text-buttons > .body-primarylrg {
+    text-align: left;
+}
+
 .hero-cards {
     width: 100%;
     max-width: 975px;
-    margin: clamp(1.5rem, 4vw, 2.5rem) auto 0;
+    margin: clamp(2rem, 5vw, 3.5rem) auto 0;
     padding: 0 clamp(1rem, 3vw, 1.5rem);
     display: flex;
     flex-direction: column;
@@ -439,9 +528,9 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
     .hero-cards {
-        margin-top: -8rem;
+        margin-top: -7rem;
         position: relative;
         z-index: 2;
     }
@@ -495,6 +584,7 @@
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .email-link:hover, 
@@ -1139,13 +1229,24 @@ figure {
 }
 
 /* Focus states for keyboard navigation */
-.btn:focus,
-.btn-square:focus,
-.nav-link a:focus,
-.email-link:focus,
-.linkedin-link:focus {
+.btn:focus-visible,
+.btn-square:focus-visible,
+.nav-link a:focus-visible,
+.nav-dropdown-toggle:focus-visible,
+.email-link:focus-visible,
+.linkedin-link:focus-visible {
     outline: 2px solid var(--primary-blue);
     outline-offset: 2px;
+    border-radius: 8px;
+}
+
+.btn:focus:not(:focus-visible),
+.btn-square:focus:not(:focus-visible),
+.nav-link a:focus:not(:focus-visible),
+.nav-dropdown-toggle:focus:not(:focus-visible),
+.email-link:focus:not(:focus-visible),
+.linkedin-link:focus:not(:focus-visible) {
+    outline: none;
 }
 
 /* List utility: vertical list with consistent spacing, indented */

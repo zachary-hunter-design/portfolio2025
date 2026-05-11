@@ -29,18 +29,29 @@
     <header class="header">
         <nav class="navbar">
             <div class="name-links-div">
-            <div class="name-div">
-                <a class="header3-primary" href="index.html">Zachary Hunter</a>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li class="nav-link"><a href="index.html">Home</a></li>
-                <li class="nav-link-active"><a href="about.html">About Me</a></li>
-            </ul>
+                <div class="name-div">
+                    <a class="header3-primary" href="index.html">Zachary Hunter</a>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li class="nav-link"><a href="index.html">Home</a></li>
+                    <li class="nav-link nav-dropdown">
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                            Case Studies <span class="arrow">▾</span>
+                        </button>
+                        <ul class="nav-dropdown-menu">
+                            <li><a href="case-studies/volunteer-bidding.html">Volunteer Bidding</a></li>
+                            <li><a href="case-studies/doc-verification.html">Document Verification</a></li>
+                            <li><a href="case-studies/ai-design-workflow.html">AI Design Workflow</a></li>
+                            <li><a href="case-studies/calendar-app.html">Calendar Redesign</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-link-active"><a href="about.html">About Me</a></li>
+                </ul>
             </div>
         </nav>
     </header>

@@ -26,22 +26,33 @@
     </script>
 </head>
 <body class="accent-orange">
-    <header>
+    <header class="header">
         <nav class="navbar">
-          <div class="name-links-div">
-          <div class="name-div">
-                  <a class="header3-primary" href="../index.html">Zachary Hunter</a>
-          </div>
-          <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-              <span></span>
-              <span></span>
-              <span></span>
-          </button>
-          <ul class="nav-links">
-              <li class="nav-link"><a href="../index.html">Home</a></li>
-              <li class="nav-link"><a href="../about.html">About Me</a></li>
-          </ul>
-          </div>
+            <div class="name-links-div">
+                <div class="name-div">
+                    <a class="header3-primary" href="../index.html">Zachary Hunter</a>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li class="nav-link"><a href="../index.html">Home</a></li>
+                    <li class="nav-link-active nav-dropdown">
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                            Case Studies <span class="arrow">▾</span>
+                        </button>
+                        <ul class="nav-dropdown-menu">
+                            <li><a href="volunteer-bidding.html">Volunteer Bidding</a></li>
+                            <li><a href="doc-verification.html">Document Verification</a></li>
+                            <li><a href="ai-design-workflow.html">AI Design Workflow</a></li>
+                            <li><a href="calendar-app.html">Calendar Redesign</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-link"><a href="../about.html">About Me</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
