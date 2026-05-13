@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study Card Iterations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #4F46E5;
+      --lightest-blue: #EEF2FF;
+      --primary-pink: #C026D3;
+      --lightest-pink: #FAF5FF;
+      --primary-green: #059669;
+      --lightest-green: #ECFDF5;
+      --primary-orange: #EA580C;
+      --lightest-orange: #FFF7ED;
+      --text-dark: #1a1a1a;
+      --text-light: #6B7280;
+      --border-gray: #E5E7EB;
+      --font-primary: "Figtree", sans-serif;
+      --font-accent: "Roboto Serif", serif;
+      --shadow-soft: 0 18px 50px rgba(17, 24, 39, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #fbfbfb;
+      color: var(--text-dark);
+      font-family: var(--font-primary);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .sandbox-shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: clamp(32px, 6vw, 72px) 0;
+    }
+
+    .sandbox-header {
+      max-width: 760px;
+      margin-bottom: 48px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--primary-blue);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font: 500 clamp(2.4rem, 7vw, 4.8rem) / 0.98 var(--font-accent);
+      letter-spacing: 0;
+      margin-bottom: 18px;
+    }
+
+    .intro {
+      color: var(--text-light);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 62ch;
+    }
+
+    .iteration {
+      padding: clamp(28px, 5vw, 48px) 0;
+      border-top: 1px solid var(--border-gray);
+    }
+
+    .iteration-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    .iteration-title {
+      font: 650 clamp(1.35rem, 3vw, 2rem) / 1.15 var(--font-primary);
+      letter-spacing: 0;
+    }
+
+    .iteration-note {
+      max-width: 420px;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .case-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .case-row {
+      --accent: var(--primary-blue);
+      --tint: var(--lightest-blue);
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      min-height: 300px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border-gray);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .case-row:hover,
+    .case-row:focus-visible {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 30%, var(--border-gray));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .case-row:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 45%, white);
+      outline-offset: 4px;
+    }
+
+    .accent-orange {
+      --accent: var(--primary-orange);
+      --tint: var(--lightest-orange);
+    }
+
+    .accent-blue {
+      --accent: var(--primary-blue);
+      --tint: var(--lightest-blue);
+    }
+
+    .accent-pink {
+      --accent: var(--primary-pink);
+      --tint: var(--lightest-pink);
+    }
+
+    .accent-green {
+      --accent: var(--primary-green);
+      --tint: var(--lightest-green);
+    }
+
+    .media {
+      min-height: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      padding: clamp(22px, 4vw, 36px);
+    }
+
+    .meta {
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      font: 650 clamp(1.2rem, 2.6vw, 1.75rem) / 1.12 var(--font-primary);
+      letter-spacing: 0;
+    }
+
+    .description {
+      color: var(--text-light);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.55;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      width: fit-content;
+      margin-top: 4px;
+      color: var(--text-dark);
+      font-weight: 750;
+    }
+
+    .cta span {
+      transition: transform 180ms ease;
+    }
+
+    a:hover .cta span {
+      transform: translateX(3px);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border-gray));
+      border-radius: 999px;
+      color: color-mix(in srgb, var(--accent) 80%, var(--text-dark));
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 0.82rem;
+      font-weight: 750;
+    }
+
+    /* A: editorial strips */
+    .editorial-card {
+      background: linear-gradient(135deg, #fff 0%, var(--tint) 150%);
+    }
+
+    .editorial-card .media {
+      border-right: 1px solid var(--border-gray);
+    }
+
+    /* B: image-led, text below */
+    .image-led {
+      display: grid;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      background: #fff;
+    }
+
+    .image-led .media {
+      min-height: 330px;
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .image-led .copy {
+      min-height: 230px;
+      justify-content: flex-start;
+    }
+
+    /* C: compact board */
+    .compact-board {
+      grid-template-columns: 128px minmax(0, 1fr);
+      min-height: 168px;
+      border-radius: 10px;
+    }
+
+    .compact-board .media {
+      min-height: 168px;
+    }
+
+    .compact-board .copy {
+      gap: 8px;
+      padding: 22px 24px;
+    }
+
+    .compact-board .title {
+      max-width: 34ch;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+    }
+
+    .compact-board .description {
+      max-width: 66ch;
+      font-size: 0.98rem;
+    }
+
+    .compact-board .cta {
+      position: absolute;
+      right: 24px;
+      bottom: 22px;
+      margin: 0;
+    }
+
+    /* D: overlay */
+    .overlay-card {
+      display: flex;
+      min-height: 430px;
+      align-items: flex-end;
+      background-position: center;
+      background-size: cover;
+      color: white;
+    }
+
+    .overlay-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(10, 10, 10, 0.78), rgba(10, 10, 10, 0.08) 68%);
+    }
+
+    .overlay-card .copy {
+      position: relative;
+      max-width: 620px;
+      justify-content: flex-end;
+      margin: 18px;
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 10px;
+      background: rgba(10, 10, 10, 0.42);
+      backdrop-filter: blur(10px);
+    }
+
+    .overlay-card .meta,
+    .overlay-card .description,
+    .overlay-card .cta {
+      color: white;
+    }
+
+    .overlay-card .chip {
+      color: white;
+      border-color: rgba(255, 255, 255, 0.42);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* E: current-plus */
+    .current-plus {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      color: var(--text-dark);
+    }
+
+    .current-plus .thumb {
+      position: relative;
+      min-height: clamp(280px, 42vw, 420px);
+      overflow: hidden;
+      border: 1px solid var(--border-gray);
+      border-radius: 16px;
+      background-position: center;
+      background-size: cover;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .current-plus:hover .thumb,
+    .current-plus:focus-visible .thumb {
+      transform: scale(0.985);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .current-plus .pill {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: white;
+      color: var(--text-dark);
+      font-weight: 750;
+      box-shadow: 0 8px 24px rgba(17, 24, 39, 0.12);
+    }
+
+    .current-plus .below {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .current-plus .below-copy {
+      display: grid;
+      gap: 8px;
+    }
+
+    .current-plus .meta {
+      color: var(--accent);
+    }
+
+    @media (max-width: 820px) {
+      .iteration-head,
+      .current-plus .below {
+        display: grid;
+      }
+
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case-row,
+      .compact-board {
+        grid-template-columns: 1fr;
+      }
+
+      .case-row .media,
+      .compact-board .media {
+        min-height: 240px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border-gray);
+      }
+
+      .compact-board .cta {
+        position: static;
+      }
+
+      .overlay-card {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="sandbox-shell">
+    <header class="sandbox-header">
+      <p class="eyebrow">Portfolio sandbox</p>
+      <h1>Case study card explorations</h1>
+      <p class="intro">Five directions using the current project assets and copy. This page is isolated from the live home page so we can pick a direction before wiring anything in.</p>
+    </header>
+
+    <section class="iteration">
+      <div class="iteration-head">
+        <div>
+          <p class="eyebrow">Option A</p>
+          <h2 class="iteration-title">Editorial split cards</h2>
+        </div>
+        <p class="iteration-note">More structured than the current cards, but still airy. Best if we want the home page to feel like a curated set of stories.</p>
+      </div>
+      <div class="case-stack">
+        <a href="../../case-studies/volunteer-bidding.html" class="case-row editorial-card accent-orange">
+          <span class="media" style="background-image: url(../../assets/images/volunteer-bidding/cover.svg);"></span>
+          <span class="copy">
+            <span class="meta">Airline workflow</span>
+            <span class="title">Trust and comprehension in an oversold-flight workflow.</span>
+            <span class="description">Redesigning Breeze's volunteer bidding flow so guests could understand the offer, trust the process, and make a confident decision.</span>
+            <span class="cta">Read case study <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <a href="../../case-studies/doc-verification.html" class="case-row editorial-card accent-blue">
+          <span class="media" style="background-image: url(../../assets/images/doc-verification/cover.svg);"></span>
+          <span class="copy">
+            <span class="meta">Check-in systems</span>
+            <span class="title">System design for international check-in complexity.</span>
+            <span class="description">Turning repeated traveler requirements into a booking-level document verification system at Breeze.</span>
+            <span class="cta">Read case study <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="iteration">
+      <div class="iteration-head">
+        <div>
+          <p class="eyebrow">Option B</p>
+          <h2 class="iteration-title">Image-led grid</h2>
+        </div>
+        <p class="iteration-note">Keeps the existing “big visual first” rhythm, but gives each card a clearer frame and makes the text feel intentionally attached.</p>
+      </div>
+      <div class="case-grid">
+        <a href="../../case-studies/volunteer-bidding.html" class="case-row image-led accent-orange">
+          <span class="media" style="background-image: url(../../assets/images/volunteer-bidding/cover.svg);"></span>
+          <span class="copy">
+            <span class="meta">Airline workflow</span>
+            <span class="title">Trust and comprehension in an oversold-flight workflow.</span>
+            <span class="description">Redesigning Breeze's volunteer bidding flow so guests could understand the offer, trust the process, and make a confident decision.</span>
+            <span class="cta">Read case study <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <a href="../../case-studies/doc-verification.html" class="case-row image-led accent-blue">
+          <span class="media" style="background-image: url(../../assets/images/doc-verification/cover.svg);"></span>
+          <span class="copy">
+            <span class="meta">Check-in systems</span>
+            <span class="title">System design for international check-in complexity.</span>
+            <span class="description">Turning repeated traveler requirements into a booking-level document verification system at Breeze.</span>
+            <span class="cta">Read case study <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <a href="../../case-studies/ai-design-workflow.html" class="case-row image-led accent-pink">
+          <span class="media" style="background-image: url(../../assets/images/ai-design-workflow/cover.svg);"></span>
+          <span class="copy">
+            <span class="meta">Design ops</span>
+            <span class="title">A practical framework for AI help and human judgment.</span>
+            <span class="description">A tiered model for where AI speeds up product work and where human judgment needs to stay in control.</span>
+            <span class="cta">Read case study <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <a href="../../case-studies/calendar-app.html" class="case-row image-led accent-green">
+          <span class="media" style="background-image: url(../../assets/images/calendar/calcover.webp);"></span>
+          <span class="copy">
+            <span class="meta">Metrics case</span>
+            <span class="title">A broader redesign and metrics case.</span>
+            <span class="description">A full scheduling app redesign that improved success rate by 23 percent and satisfaction from 74 percent to 95 percent.</span>
+            <span class="cta">Read case study <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="iteration">
+      <div class="iteration-head">
+        <div>
+          <p class="eyebrow">Option C</p>
+          <h2 class="iteration-title">Compact project board</h2>
+        </div>
+        <p class="iteration-note">Less portfolio-drama, more scannable product designer index. Useful if the hero already carries enough personality.</p>
+      </div>
+      <div class="case-stack">
+        <a href="../../case-studies/volunteer-bidding.html" class="case-row compact-board accent-orange">
+          <span class="media" style="background-image: url(../../assets/images/volunteer-bidding/cover.svg);"></span>
+          <span class="copy">
+            <span class="meta">Airline workflow</span>
+            <span class="title">Trust and comprehension in an oversold-flight workflow.</span>
+            <span class="description">Redesigning Breeze's volunteer bidding flow so guests could understand the offer, trust the process, and make a confident decision.</span>
+            <span class="cta">Open <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <a href="../../case-studies/doc-verification.html" class="case-row compact-board accent-blue">
+          <span class="media" style="background-image: url(../../assets/images/doc-verification/cover.svg);"></span>
+          <span class="copy">
+            <span class="meta">Check-in systems</span>
+            <span class="title">System design for international check-in complexity.</span>
+            <span class="description">Turning repeated traveler requirements into a booking-level document verification system at Breeze.</span>
+            <span class="cta">Open <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <a href="../../case-studies/ai-design-workflow.html" class="case-row compact-board accent-pink">
+          <span class="media" style="background-image: url(../../assets/images/ai-design-workflow/cover.svg);"></span>
+          <span class="copy">
+            <span class="meta">Design ops</span>
+            <span class="title">A practical framework for AI help and human judgment.</span>
+            <span class="description">A tiered model for where AI speeds up product work and where human judgment needs to stay in control.</span>
+            <span class="cta">Open <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="iteration">
+      <div class="iteration-head">
+        <div>
+          <p class="eyebrow">Option D</p>
+          <h2 class="iteration-title">Full-bleed editorial overlays</h2>
+        </div>
+        <p class="iteration-note">Closest to a magazine/portfolio treatment. Strong and visual, but depends on whether the covers hold up with text over them.</p>
+      </div>
+      <div class="case-grid">
+        <a href="../../case-studies/volunteer-bidding.html" class="case-row overlay-card accent-orange" style="background-image: url(../../assets/images/volunteer-bidding/cover.svg);">
+          <span class="copy">
+            <span class="meta">Airline workflow</span>
+            <span class="title">Trust and comprehension in an oversold-flight workflow.</span>
+            <span class="description">Redesigning Breeze's volunteer bidding flow so guests could understand the offer, trust the process, and make a confident decision.</span>
+            <span class="chips"><span class="chip">Trust</span><span class="chip">Decision clarity</span></span>
+          </span>
+        </a>
+        <a href="../../case-studies/calendar-app.html" class="case-row overlay-card accent-green" style="background-image: url(../../assets/images/calendar/calcover.webp);">
+          <span class="copy">
+            <span class="meta">Metrics case</span>
+            <span class="title">A broader redesign and metrics case.</span>
+            <span class="description">A full scheduling app redesign that improved success rate by 23 percent and satisfaction from 74 percent to 95 percent.</span>
+            <span class="chips"><span class="chip">+23% success</span><span class="chip">95% satisfaction</span></span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="iteration">
+      <div class="iteration-head">
+        <div>
+          <p class="eyebrow">Option E</p>
+          <h2 class="iteration-title">Current card, sharpened</h2>
+        </div>
+        <p class="iteration-note">The smallest move: preserve the existing vertical composition, add a clearer affordance, tighten spacing, and avoid extra card chrome.</p>
+      </div>
+      <div class="case-stack">
+        <a href="../../case-studies/volunteer-bidding.html" class="current-plus accent-orange">
+          <span class="thumb" style="background-image: url(../../assets/images/volunteer-bidding/cover.svg);"><span class="pill">View case study →</span></span>
+          <span class="below">
+            <span class="below-copy">
+              <span class="meta">Airline workflow</span>
+              <span class="title">Trust and comprehension in an oversold-flight workflow.</span>
+              <span class="description">Redesigning Breeze's volunteer bidding flow so guests could understand the offer, trust the process, and make a confident decision.</span>
+            </span>
+          </span>
+        </a>
+        <a href="../../case-studies/doc-verification.html" class="current-plus accent-blue">
+          <span class="thumb" style="background-image: url(../../assets/images/doc-verification/cover.svg);"><span class="pill">View case study →</span></span>
+          <span class="below">
+            <span class="below-copy">
+              <span class="meta">Check-in systems</span>
+              <span class="title">System design for international check-in complexity.</span>
+              <span class="description">Turning repeated traveler requirements into a booking-level document verification system at Breeze.</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

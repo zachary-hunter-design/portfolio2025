@@ -22,7 +22,7 @@ Refined Stripe-leaning palette. Four primary accents plus functional grays.
 | `--lightest-{color}` | `#EEF2FF`, `#FAF5FF`, `#ECFDF5`, `#FFF7ED` | Subtle background fills (combo-light highlight bg) |
 | `--text-dark` | `#1A1A1A` | Body and heading text |
 | `--text-light` | `#6B7280` | Muted secondary text (gray-500) |
-| `--border-gray` | `#E5E7EB` | Borders and dividers (gray-200) |
+| `--border-gray` | `#9CA3AF` | Borders and dividers (gray-400) |
 | `--btn-hover` | `#374151` | Button hover background (gray-700) |
 | `--bg-light` | `#FEFEFE` | Page background |
 

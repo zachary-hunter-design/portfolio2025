@@ -31,7 +31,7 @@
         "functional": {
           "text-dark": { "value": "#1A1A1A", "variable": "--text-dark", "description": "Primary text color" },
           "text-light": { "value": "#6B7280", "variable": "--text-light", "description": "Muted secondary text (gray-500)" },
-          "border-gray": { "value": "#E5E7EB", "variable": "--border-gray", "description": "Border and divider color (gray-200)" },
+          "border-gray": { "value": "#9CA3AF", "variable": "--border-gray", "description": "Border and divider color (gray-400)" },
           "bg-light": { "value": "#FEFEFE", "variable": "--bg-light", "description": "Page background" },
           "btn-hover": { "value": "#374151", "variable": "--btn-hover", "description": "Button hover background (gray-700)" }
         }

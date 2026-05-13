@@ -17,7 +17,7 @@
     /* Functional colors */
     --text-dark: #1a1a1a;
     --text-light: #6B7280;          /* gray-500, slightly cooler than v1 #999797 */
-    --border-gray: #E5E7EB;         /* gray-200, lighter than v1 #C9C7C7 for cleaner separation */
+    --border-gray: #9CA3AF;         /* gray-400, stronger default border/divider */
     --bg-light: #fefefe;
     --btn-hover: #374151;           /* gray-700, less harsh than v1 #4A4A4A */
     /*fonts*/
