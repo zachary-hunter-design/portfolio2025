@@ -771,12 +771,6 @@
     max-width: 1000px !important;
 }
 
-@media (max-width: 768px) {
-    body[class*="accent-"] .case-titles > .hero-primary {
-        text-align: left;
-    }
-}
-
 .summary-duties {
     width: 100%;
     max-width: 1040px;
