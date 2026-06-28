@@ -508,6 +508,7 @@
 
 .hero-text-buttons > .body-primarylrg {
     text-align: left;
+    line-height: clamp(2.0625rem, 3.6vw, 2.59375rem);
 }
 
 .hero-cards {
