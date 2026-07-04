@@ -508,7 +508,6 @@
 
 .hero-text-buttons > .body-primarylrg {
     text-align: left;
-    line-height: clamp(2.0625rem, 3.6vw, 2.59375rem);
 }
 
 .hero-cards {
@@ -530,6 +529,12 @@
 }
 
 @media (min-width: 1200px) {
+    .hero-background {
+        /* Reserve room for the cards that pull up 7rem so they only ever
+           float over empty image, never the buttons. */
+        padding-bottom: 9rem;
+    }
+
     .hero-cards {
         margin-top: -7rem;
         position: relative;
