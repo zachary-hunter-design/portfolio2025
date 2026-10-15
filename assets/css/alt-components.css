@@ -1749,3 +1749,164 @@ body { overflow-x: clip; }
         top: -0.25rem;
     }
 }
+
+/* ==========================================================================
+   Nav + buttons, direction B ("soft"), Oct 2026.
+   Segmented nav, rounded-rectangle buttons with a circle arrow icon.
+   Hover lifts and deepens; colors never flip.
+   ========================================================================== */
+.navbar {
+    background-color: rgba(254, 254, 254, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 0.75rem 0;
+}
+
+.name-links-div {
+    flex-wrap: nowrap;
+}
+
+.seg-nav {
+    display: flex;
+    gap: 2px;
+    padding: 4px;
+    list-style: none;
+    background: #F3F4F6;
+    border-radius: 12px;
+}
+
+.seg {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 9px;
+    font: 600 0.92rem var(--font-primary), sans-serif;
+    color: #4B5563;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seg:hover {
+    color: var(--text-dark);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.seg.is-current {
+    color: var(--text-dark);
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+    .name-div a { font-size: 1.05rem; }
+    .seg { padding: 0.4rem 0.7rem; font-size: 0.875rem; }
+}
+
+.btn,
+.btn-square {
+    gap: 0.75rem;
+    padding: 0.7rem 0.8rem 0.7rem 1.3rem;
+    border: 0;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.btn-primary,
+.btn-primary:hover {
+    color: white;
+}
+
+.btn-primary {
+    background: #1F2937;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover {
+    background: #111827;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary,
+.btn-secondary:hover {
+    color: var(--text-dark);
+    border: 0;
+}
+
+.btn-secondary {
+    background: #F3F4F6;
+}
+
+.btn-secondary:hover {
+    background: #E5E7EB;
+}
+
+.btn:hover,
+.btn-square:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active,
+.btn-square:active {
+    transform: translateY(0);
+}
+
+/* Circle arrow. Light circle on the dark button, dark circle on the light one. */
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: white;
+    color: #1F2937;
+}
+
+.btn-secondary .btn-icon {
+    background: #1F2937;
+    color: white;
+}
+
+.btn-icon svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.2s ease;
+}
+
+/* Direction variants rotate the one arrow; hover nudges it along its own axis. */
+.icon-down svg { transform: rotate(90deg); }
+.icon-out svg { transform: rotate(-45deg); }
+
+a:hover > .btn-icon svg { transform: translateX(2px); }
+a:hover > .icon-down svg { transform: rotate(90deg) translateX(2px); }
+a:hover > .icon-out svg { transform: rotate(-45deg) translateX(2px); }
+
+.next-case-link .btn-icon {
+    width: 40px;
+    height: 40px;
+    background: #1F2937;
+    color: white;
+}
+
+.next-case-link .btn-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.next-case-link {
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.next-case-link:hover {
+    border-color: #D1D5DB;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}

@@ -11,8 +11,8 @@
     <meta property="og:image" content="../assets/images/calendar/calcover.webp">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="../assets/images/avatar.png">
-    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261015j" />
-    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261015j" />
+    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261016b" />
+    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261016b" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet"/>
@@ -27,34 +27,18 @@
   </head>
   <body class="accent-green" style="background-color: var(--base-light);">
     <header class="header">
-      <nav class="navbar">
-        <div class="name-links-div">
-          <div class="name-div">
-            <a class="header3-primary" href="../index.html">Zachary Hunter</a>
-          </div>
-          <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-          <ul class="nav-links">
-            <li class="nav-link"><a href="../index.html">Home</a></li>
-            <li class="nav-link-active nav-dropdown">
-              <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
-                Case Studies <span class="arrow">▾</span>
-              </button>
-              <ul class="nav-dropdown-menu">
-                            <li><a href="volunteer-bidding.html">Volunteer Bidding</a></li>
-                            <li><a href="airport-kiosks.html">Airport Kiosks</a></li>
-                            <li><a href="doc-verification.html">Document Verification</a></li>
-                            <li><a href="notification-center.html">Notification Center</a></li>
-                            <li><a href="calendar-app.html">Calendar Redesign</a></li>
-              </ul>
-            </li>
-            <li class="nav-link"><a href="../about.html">About Me</a></li>
-          </ul>
-        </div>
-      </nav>
+        <nav class="navbar">
+            <div class="name-links-div">
+                <div class="name-div">
+                    <a class="header3-primary" href="../index.html">Zachary Hunter</a>
+                </div>
+                <ul class="seg-nav">
+                    <li><a class="seg is-current" href="../index.html#projects-section" aria-current="page">Work</a></li>
+                    <li><a class="seg" href="../about.html">About</a></li>
+                    <li><a class="seg" href="mailto:zhunterux@gmail.com">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <img src="../assets/images/calendar/calcover.webp" class="case-header-img">
     <main>
@@ -146,8 +130,8 @@
         <p class="body-primary"><span class="highlight-text combo-green-light">I felt these issues warranted a redesign, but I wanted to confirm this hunch with thorough user research before committing our team's resources to full redesign.</span></p>
         <div class="hero-buttons agree-div">
             <a target="_blank" href="https://test-uvu-app-stale.vercel.app/" class="btn-square btn-primary btn-label">
-            View Scheduling App
-            </a>
+            View Scheduling App <span class="btn-icon icon-out" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
             <div id="agree">
             <h3 class="header3-primary">Want to see if you agree with me?</h3>
             <p class="body-primary">(This tool was only built for desktop)</p>
@@ -244,7 +228,7 @@
 <div class="text-block">
 <div class="hero-buttons agree-div">
   <a target="_blank" href="https://test-uvu-app.vercel.app/" class="btn-square btn-primary btn-label">
-  View Scheduling App
+  View Scheduling App <span class="btn-icon icon-out" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
   </a>
   <div id="agree">
   <h3 class="header3-primary">Want to explore the redesign?</h3>
@@ -319,7 +303,7 @@
           <span class="next-case-label caption-spaced">Next case study</span>
           <span class="next-case-title header3-primary">Turning a 5 Percent Opt In Into an Offer People Trust</span>
         </div>
-        <span class="next-case-arrow" aria-hidden="true">→</span>
+        <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
       </a>
     </section>
   </main>
