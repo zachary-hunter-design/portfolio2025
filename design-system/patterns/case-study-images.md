@@ -53,6 +53,8 @@ In-body composed images sit in a full-bleed `.image-band`: a strip of `--accent-
 
 Compose at 1100px wide, render at 2x (2200px). Screenshots of real UI that already carry their own frame (like `costseg/desktop1.webp`) keep using `.basic-image` instead.
 
+Card groups that want a colored backdrop, like a research overview, use `.research-band`: the same full-bleed width, as a soft gradient from `--accent-tint` to `--accent-soft`.
+
 ## HTML instead of images
 Anything that's mostly text or numbers is built in HTML inside a band, not baked into an image, so it stays readable at phone width:
 - `.flow-compare` for a reordered sequence (stacks into two columns on phones)

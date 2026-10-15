@@ -1390,10 +1390,10 @@ figure {
    Components that want to react to the case study's accent read var(--accent)
    for the bold tone and var(--accent-tint) for the soft fill tone. Defaults
    fall back to the blue family when no class is present. */
-body.accent-blue   { --accent: var(--primary-blue);   --accent-tint: var(--lightest-blue); }
-body.accent-orange { --accent: var(--primary-orange); --accent-tint: var(--lightest-orange); }
-body.accent-green  { --accent: var(--primary-green);  --accent-tint: var(--lightest-green); }
-body.accent-pink   { --accent: var(--primary-pink);   --accent-tint: var(--lightest-pink); }
+body.accent-blue   { --accent: var(--primary-blue);   --accent-tint: var(--lightest-blue);  --accent-soft: var(--light-blue); }
+body.accent-orange { --accent: var(--primary-orange); --accent-tint: var(--lightest-orange);  --accent-soft: var(--light-orange); }
+body.accent-green  { --accent: var(--primary-green);  --accent-tint: var(--lightest-green);  --accent-soft: var(--light-green); }
+body.accent-pink   { --accent: var(--primary-pink);   --accent-tint: var(--lightest-pink);  --accent-soft: var(--light-pink); }
 
 /* Image band. Full-bleed strip in the page's accent tint; the image sits
    centered at its native composition width. Image backgrounds are authored
@@ -1580,6 +1580,16 @@ body.accent-pink   { --accent: var(--primary-pink);   --accent-tint: var(--light
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
+}
+
+/* Research band. Full-bleed soft gradient behind a block of cards, such as
+   a research overview. Same full-width behavior as .image-band. */
+.research-band {
+    width: 100vw;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent-tint, var(--lightest-blue)) 0%, var(--accent-soft, var(--light-blue)) 100%);
+    padding: 2rem 0;
+    margin-bottom: 2rem;
 }
 
 /* 100vw counts the scrollbar on desktop; clip the sliver it would add. */
