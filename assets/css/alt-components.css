@@ -1956,3 +1956,28 @@ a:hover > .btn-icon { border-color: currentColor; }
         padding: 0.85rem 0.9rem 0.85rem 1.25rem;
     }
 }
+
+/* Arrow hover: the arrow stays centered; the ring blinks (solidifies and pings once). */
+a:hover > .btn-icon svg,
+.next-case-link:hover .btn-icon svg { transform: none; }
+a:hover > .icon-down svg { transform: rotate(90deg); }
+a:hover > .icon-out svg { transform: rotate(-45deg); }
+
+.btn-primary .btn-icon { --ring-ping: rgba(255, 255, 255, 0.45); }
+.btn-secondary .btn-icon,
+.next-case-link .btn-icon { --ring-ping: rgba(26, 26, 26, 0.22); }
+
+@keyframes ring-ping {
+    0%   { box-shadow: 0 0 0 0 var(--ring-ping); }
+    100% { box-shadow: 0 0 0 7px rgba(0, 0, 0, 0); }
+}
+
+a:hover > .btn-icon,
+.next-case-link:hover .btn-icon {
+    animation: ring-ping 0.6s ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    a:hover > .btn-icon,
+    .next-case-link:hover .btn-icon { animation: none; }
+}
