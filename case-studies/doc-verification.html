@@ -8,11 +8,11 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="From Four Identical Cards to One">
     <meta property="og:description" content="Designing a booking-level document verification system at Breeze for international check-in.">
-    <meta property="og:image" content="../assets/images/doc-verification/cover.svg">
+    <meta property="og:image" content="../assets/images/doc-verification/cover.webp">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="../assets/images/avatar.png">
-    <link rel="stylesheet" href="../assets/css/alt-main.css" />
-    <link rel="stylesheet" href="../assets/css/alt-components.css" />
+    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261015f" />
+    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261015f" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet"/>
@@ -45,7 +45,9 @@
                         </button>
                         <ul class="nav-dropdown-menu">
                             <li><a href="volunteer-bidding.html">Volunteer Bidding</a></li>
+                            <li><a href="airport-kiosks.html">Airport Kiosks</a></li>
                             <li><a href="doc-verification.html">Document Verification</a></li>
+                            <li><a href="notification-center.html">Notification Center</a></li>
                             <li><a href="calendar-app.html">Calendar Redesign</a></li>
                         </ul>
                     </li>
@@ -56,7 +58,7 @@
     </header>
 
     <main>
-      <img src="../assets/images/doc-verification/cover.svg" class="case-header-img" alt="Doc verification cover">
+      <img src="../assets/images/doc-verification/cover.webp" class="case-header-img" alt="Two results from the International Travel Requirements lookup on mobile">
         <section class="basic-section">
             <div class="case-titles">
               <a href="../index.html#projects-section" class="back-link">
@@ -70,7 +72,7 @@
                 <h2 class="header1-primary">Executive Summary</h2>
                 <p class="body-primary">A booking-level Additional Documents page that <span class="highlight-text combo-blue-light">deduplicates Timatic API requirements across travelers in a booking</span>, gating international check-in until acknowledgment.</p>
                 <p class="body-primary">The prior design produced four identical acknowledgment cards for a family of four flying to the Dominican Republic. The shipped version collapses them to one.</p>
-                <p class="body-primary">Shipped in <span class="highlight-text combo-blue-light">MR 5613</span>, currently in pre-prod review.</p>
+                <p class="body-primary">I reviewed the build (<span class="highlight-text combo-blue-light">MR 5613</span>) against the spec and caught a routing dead end by walking it as a Guest. Then I took the same requirements data public, as a lookup anyone can use before they book.</p>
               </div>
               <hr class="vertical-hr"/>
               <div class="duties-list">
@@ -249,6 +251,43 @@
             </div>
         </section>
 
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">What Came Next</h2>
+                <h3 class="header2-accent">A Public Lookup, Before You Book</h3>
+                <p class="body-primary">Check-in only helps once you've booked. So I designed a public page: enter a route, a passport, and a country of residence, and see what Timatic says you'll need.</p>
+                <p class="body-primary">One call carried over from check-in: <span class="highlight-text combo-blue-light">the page tells you what's required, but never says "you're all set,"</span> because it can't know your full situation. Designing it also meant correcting the requirements doc. Residence had to become a required input, because where you live changes visa rules.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Same page, two travelers
+                </figcaption>
+                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/doc-verification/lookup.webp"
+                     alt="Two results from the International Travel Requirements lookup on mobile. A U.S. passport holder flying Raleigh-Durham to Punta Cana needs a valid passport, an entry form, and proof of onward travel. A Ukraine passport holder flying Charleston to Cancun needs a valid passport and an entry authorization."></div>
+            </figure>
+            <div class="text-block">
+                <h3 class="header2-accent">Tested With 21 People</h3>
+                <p class="body-primary">I set the pass lines before testing. All three research questions cleared them.</p>
+            </div>
+            <div class="cards-3" style="flex-direction: row; flex-wrap: wrap;">
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-blue">100%</h2>
+                    <p class="body-primary">got to a result without help</p>
+                </div>
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-blue">~90%</h2>
+                    <p class="body-primary">understood a result with several documents</p>
+                </div>
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-blue">95%</h2>
+                    <p class="body-primary">edited their search on mobile without confusion</p>
+                </div>
+            </div>
+            <div class="text-block">
+                <p class="body-primary">The one real gap: five people asked how to actually get the visa. Breeze can't issue one, so the page states the requirement and points to government sources instead of pretending to solve it.</p>
+                <p class="body-primary">I handed it off as 20 Figma frames, desktop and mobile. Engineering picked up the build in late July.</p>
+            </div>
+          </section>
         <section class="basic-section">
             <div class="text-block">
                 <h2 class="header1-primary">What I Learned</h2>
@@ -290,10 +329,10 @@
         </section>
 
         <section class="next-case-section">
-          <a href="calendar-app.html" class="next-case-link">
+          <a href="notification-center.html" class="next-case-link">
             <div class="next-case-text">
               <span class="next-case-label caption-spaced">Next case study</span>
-              <span class="next-case-title header3-primary">Completing a Full Redesign to Boost Success Rates by 23%</span>
+              <span class="next-case-title header3-primary">Three Rounds of Testing Measured the Wrong Thing</span>
             </div>
             <span class="next-case-arrow" aria-hidden="true">→</span>
           </a>
@@ -322,7 +361,7 @@
           </div>
 
           <div class="last-updated">
-            <p>Last updated May 8, 2026</p>
+            <p>Last updated October 15, 2026</p>
           </div>
         </div>
         </div>

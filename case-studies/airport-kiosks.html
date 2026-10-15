@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Breeze Common-Use Airport Kiosks</title>
+    <meta name="description" content="Case study: launching Breeze on shared airport kiosks, timing it on the floor, and reporting what it actually does. The saving lands on the agent, not the Guest.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Breeze&#x27;s first airport kiosk, and what it actually does">
+    <meta property="og:description" content="Case study: launching Breeze on shared airport kiosks, timing it on the floor, and reporting what it actually does. The saving lands on the agent, not the Guest.">
+    <meta property="og:image" content="../assets/images/kiosk/cover.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="../assets/images/avatar.png">
+    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261015f" />
+    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261015f" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet"/>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8YWZS0MEB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V8YWZS0MEB');
+    </script>
+</head>
+<body class="accent-pink">
+    <header class="header">
+        <nav class="navbar">
+            <div class="name-links-div">
+                <div class="name-div">
+                    <a class="header3-primary" href="../index.html">Zachary Hunter</a>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li class="nav-link"><a href="../index.html">Home</a></li>
+                    <li class="nav-link-active nav-dropdown">
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                            Case Studies <span class="arrow">▾</span>
+                        </button>
+                        <ul class="nav-dropdown-menu">
+                            <li><a href="volunteer-bidding.html">Volunteer Bidding</a></li>
+                            <li><a href="airport-kiosks.html">Airport Kiosks</a></li>
+                            <li><a href="doc-verification.html">Document Verification</a></li>
+                            <li><a href="notification-center.html">Notification Center</a></li>
+                            <li><a href="calendar-app.html">Calendar Redesign</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-link"><a href="../about.html">About Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+      <img src="../assets/images/kiosk/cover.webp" class="case-header-img" alt="Breeze kiosk screens: the Tag Your Bags Here welcome screen in front of the scan and not-checked-in screens">
+        <section class="basic-section">
+            <div class="case-titles">
+              <a href="../index.html#projects-section" class="back-link">
+                <span aria-hidden="true">←</span> Back to projects
+              </a>
+              <h1 class="hero-primary">Breeze's First Airport Kiosk, and What It Actually Does</h1>
+              <h2 class="header2-accent">A new self-service channel on hardware we don't own</h2>
+            </div>
+            <div class="summary-duties">
+              <div class="summary">
+                <h2 class="header1-primary">Executive Summary</h2>
+                <p class="body-primary">In July 2026 Breeze went live on shared, airport-owned kiosks for the first time, in Las Vegas. Charleston followed in August. I own the live screens: the errors, the copy in English and Spanish, and the scan animation.</p>
+                <p class="body-primary">I also went to the airport and timed it. <span class="highlight-text combo-pink-light">The kiosk proved the technology. It didn't prove the business case yet</span>, and the field research is what told us how to fix the scope.</p>
+              </div>
+              <hr class="vertical-hr"/>
+              <div class="duties-list">
+                <div class="duties-item">
+                  <img src="../assets/images/icons/user-circle-duotone.svg" alt="profile icon"/>
+                  <div class="duties-text-div">
+                    <p>Role:</p>
+                    <p class="body-primary-bold">Product Designer, Field Researcher</p>
+                  </div>
+                </div>
+                <div class="duties-item">
+                  <img src="../assets/images/icons/calendar-dots-duotone.svg" alt="Calendar icon">
+                  <div class="duties-text-div">
+                    <p>Duration:</p>
+                    <p class="body-primary-bold">July to September 2026</p>
+                  </div>
+                </div>
+                <div class="duties-item">
+                  <img src="../assets/images/icons/list-checks-duotone.svg" alt="Checklist icon">
+                  <div class="duties-text-div">
+                    <p>Responsibilities:</p>
+                    <p class="body-primary-bold">
+                        Field research, UX/UI, bilingual copy, live CMS changes
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+              <h2 class="header1-primary">The Setup</h2>
+              <h3 class="header2-accent">Somebody Else's Machine</h3>
+              <p class="body-primary">Common-use kiosks belong to the airport. A vendor runs the software, and we edit our screens through their CMS. There's no release cycle, so a change reaches Guests the same day. So does a mistake.</p>
+              <p class="body-primary">Version one did one thing: print bag tags for Guests who had already checked in.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    The live flow in Las Vegas
+                </figcaption>
+                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/kiosk/flow.webp"
+                     alt="Four kiosk screens: a Tag Your Bags Here welcome screen with a QR code for checking in, a scan your boarding pass screen, a screen for picking how many bag tags to print for each Guest, and a printing screen."></div>
+            </figure>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">Going to the Airport</h2>
+                <h3 class="header2-accent">Timing It on the Floor</h3>
+                <p class="body-primary">Three days after launch I spent a day in the Las Vegas lobby with a stopwatch: 45 timed transactions plus twelve observation notes, counter only against kiosk then counter. A second floor day in August added three observers and 51 full journeys.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Single-bag Guests, Las Vegas, July 24
+                </figcaption>
+                <div class="image-band flow-band">
+                    <div class="bar-chart" aria-hidden="true">
+                        <p class="flow-label">The agent's time</p>
+                        <div class="bar-row">
+                            <span class="bar-label">Counter only</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 90.8%;"></div></div>
+                            <span class="bar-value">1:49</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">After the kiosk</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 56.7%;"></div></div>
+                            <span class="bar-value">1:08</span>
+                        </div>
+                        <p class="flow-label" style="margin-top: 1rem;">The Guest's whole journey</p>
+                        <div class="bar-row">
+                            <span class="bar-label">Counter only</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 90.8%;"></div></div>
+                            <span class="bar-value">1:49</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">Kiosk, then counter</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 93.3%;"></div></div>
+                            <span class="bar-value">1:52</span>
+                        </div>
+                    </div>
+                    <div class="sr-only"><table>
+                        <caption>Median times for single-bag Guests in Las Vegas</caption>
+                        <tr><th>Measure</th><th>Counter only</th><th>With the kiosk</th></tr>
+                        <tr><td>Agent's time</td><td>1:49</td><td>1:08</td></tr>
+                        <tr><td>Guest's whole journey</td><td>1:49</td><td>1:52</td></tr>
+                    </table></div>
+                </div>
+            </figure>
+            <div class="text-block">
+                <h3 class="header2-accent">The Saving Landed on the Agent, Not the Guest</h3>
+                <p class="body-primary">A kiosk Guest prints a tag and then still lines up for an agent to take the bag. Of the ten steps in a counter transaction, the kiosk took one, printing the tag, and it's the cheapest one. For the Guest, the whole trip took about the same time.</p>
+                <p class="body-primary">Guests liked it anyway.</p>
+                <figure class="research-quote">
+                    <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
+                    <blockquote class="research-quote-text">I love these, this saved so much time.</blockquote>
+                </figure>
+                <p class="body-primary">That's real value, and it isn't a time saving. Self-service feels faster than standing in line. I kept the two claims apart.</p>
+            </div>
+            <div class="text-block">
+                <h3 class="header2-accent">What I Would and Wouldn't Claim</h3>
+            </div>
+            <table class="comparison-table comparison-table--text">
+                <thead>
+                  <tr>
+                    <th class="header3-primary">Claim</th>
+                    <th class="header3-primary" style="color: var(--text-light)">Call</th>
+                    <th class="header3-primary" style="color: var(--text-light)">Why</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="header3-primary trh combo-pink">Saves agent time</th>
+                    <td class="body-primary combo-pink-light" data-label="Call">Yes, up to 0:42</td>
+                    <td class="body-primary combo-pink-light td-right" data-label="Why">An upper bound. Kiosk Guests were already checked in and likely had bags paid for, so the gap isn't all the kiosk</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-pink">Saves Guests time</th>
+                    <td class="body-primary combo-pink-light" data-label="Call">No</td>
+                    <td class="body-primary combo-pink-light td-right" data-label="Why">1:52 against 1:49. A wash for success, worse for anyone who failed at the kiosk and lined up twice</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-pink">Makes the lobby predictable</th>
+                    <td class="body-primary combo-pink-light" data-label="Call">Dropped</td>
+                    <td class="body-primary combo-pink-light td-right" data-label="Why">Too few observations to call it a rate</td>
+                  </tr>
+                </tbody>
+              </table>
+            <div class="text-block">
+                <p class="body-primary">The biggest failure was Guests who hadn't checked in, which v1 couldn't fix. Product and I wrote the trial read together, and the fix was a scope change, not a rebuild: <span class="highlight-text combo-pink-light">a QR code on the kiosk that sends Guests to check in on their own phone.</span> That took check-in off the agent's clock without building check-in on the kiosk. It's been live since July 30.</p>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">Fixing the Live Screens</h2>
+                <h3 class="header2-accent">Errors That Tell You What to Do Next</h3>
+                <p class="body-primary">I mapped every error the kiosk could actually fire and cut the set to the 16 a Guest can reach. Each one got a redesign and copy that names the next step. A language pass fixed 54 Spanish strings: machine translation errors, formal and informal drift, and text that was never translated.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Two of the 16 redesigned errors
+                </figcaption>
+                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/kiosk/errors.webp"
+                     alt="Two kiosk error screens. You're Here Nice and Early, explaining tags print 2.5 hours before departure. Looks Like You're Not Checked In, with a QR code to check in on the Breeze app."></div>
+            </figure>
+            <div class="text-block">
+                <h3 class="header2-accent">Teaching a Gesture the Machine Can Actually Do</h3>
+                <p class="body-primary">Scan is where Guests stalled. The old screen showed a phone held up to a reader the Las Vegas machine doesn't have. People did what it said, nothing happened, and they gave up and joined the counter line.</p>
+                <p class="body-primary">I modeled a new animation on the real unit, where the reader hides under the screen. Then Charleston launched on different hardware, a flat bed you look straight down on. I'd recommended one animation for both. <span class="highlight-text combo-pink-light">Side by side, that would have taught half our Guests the wrong move</span>, so I reversed myself and drew Charleston its own.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Two machines, two lessons
+                </figcaption>
+                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/kiosk/scan.webp"
+                     alt="Two scan screens. Las Vegas shows a phone sliding under the lip of the screen to a hidden reader. Charleston shows a pass placed face down on a flat scanning bed, with the caption Place your phone or paper pass face down on the scanner."></div>
+            </figure>
+            <div class="text-block">
+                <p class="body-primary">I built both as code-drawn SVG, with AI helping me write it, and moved them into the CMS media library. That turned a second station's art into an upload instead of a vendor template change.</p>
+                <p class="body-primary">On the floor in Las Vegas, scan confusion dropped and nobody pressed their phone flat against the screen anymore. That's observed, not timed. Nobody has clocked a scan before and after yet.</p>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">Where It Stands</h2>
+                <ul class="list-spaced">
+                    <li class="body-primary">Live on 8 units in Las Vegas and in Charleston since August 26</li>
+                    <li class="body-primary">The on-screen QR is live. A printed lobby sign is waiting on airport approval</li>
+                    <li class="body-primary">Las Vegas is close to a best case for counter layout, so the next city will likely have less margin than these numbers suggest</li>
+                </ul>
+                <p class="body-primary">The question for the next stage is the same one the floor day asked: how many agent minutes does this take off a Guest? That number decides whether the program grows.</p>
+            </div>
+          </section>
+          <section class="next-case-section">
+            <a href="doc-verification.html" class="next-case-link">
+              <div class="next-case-text">
+                <span class="next-case-label caption-spaced">Next case study</span>
+                <span class="next-case-title header3-primary">From Four Identical Cards to One</span>
+              </div>
+              <span class="next-case-arrow" aria-hidden="true">→</span>
+            </a>
+          </section>
+    </main>
+
+      <footer class="site-footer">
+        <div class="footer-div">
+        <div class="footer-content">
+          <h3 class="header3-primary" style="margin-bottom: 1rem;">Contact Info</h3>
+
+          <div class="contact-email">
+            <a href="mailto:zhunterux@gmail.com" class="email-link body-primarylrg">
+              zhunterux@gmail.com
+            </a>
+          </div>
+
+          <div class="social-link">
+            <a href="https://www.linkedin.com/in/zachary-hunter-b646a6227/" target="_blank" rel="noopener noreferrer" class="linkedin-link body-primarylrg">
+              Linkedin
+            </a>
+          </div>
+          <div class="copy-update">
+          <div class="copyright">
+            <p>© 2026 Zachary Hunter. All Rights Reserved.</p>
+          </div>
+
+          <div class="last-updated">
+            <p>Last updated October 15, 2026</p>
+          </div>
+        </div>
+        </div>
+    </div>
+      </footer>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/highlighter.js"></script>
+</body>
+</html>

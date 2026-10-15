@@ -40,6 +40,24 @@ Two screens at equal scale on one accent background. A small caption above each 
 ### Annotated screen (new)
 One screen with numbered circular markers in the accent color. The numbers match a short list in the HTML below the image, not text baked into the image, so it stays readable and accessible.
 
+## Placement: the band
+In-body composed images sit in a full-bleed `.image-band`: a strip of `--accent-tint` that runs edge to edge, with the image centered at its native 1100px width. Author the image background in the exact same tint so band and image read as one surface.
+
+```html
+<figure>
+  <figcaption class="image-caption caption-spaced">Caption</figcaption>
+  <div class="image-band"><img loading="lazy" decoding="async" src="..." alt="..."></div>
+  <ol class="list-spaced">...</ol>  <!-- optional key for annotated images -->
+</figure>
+```
+
+Compose at 1100px wide, render at 2x (2200px). Screenshots of real UI that already carry their own frame (like `costseg/desktop1.webp`) keep using `.basic-image` instead.
+
+## HTML instead of images
+Anything that's mostly text or numbers is built in HTML inside a band, not baked into an image, so it stays readable at phone width:
+- `.flow-compare` for a reordered sequence (stacks into two columns on phones)
+- `.bar-chart` for a few single-series values, with an optional `.bar-threshold` pass line. Always pair it with a `.sr-only` table wrapped in a div, never a table carrying `.sr-only` itself (tables ignore the 1px width and widen the page)
+
 ## Production
 - Compose in HTML, render with headless Chrome at 2x, export.
 - Convert: `cwebp -q 90 -m 6 -sharp_yuv in.png -o out.webp`

@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Study: Breeze Overcapacity Volunteer Bidding</title>
-    <meta name="description" content="Case study: redesigning Breeze Airways' overcapacity volunteer bidding flow. Comprehension up from 50% to 100% and engagement up 27%.">
+    <meta name="description" content="Case study: redesigning Breeze Airways' overcapacity volunteer bidding flow. Comprehension up from 50% to 100% in testing, and completion up 21 to 31 points in production.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Turning a 5% opt-in into a trusted, understandable experience">
+    <meta property="og:title" content="Turning a 5% opt-in into an offer people trust">
     <meta property="og:description" content="Case study: redesigning Breeze Airways' overcapacity volunteer bidding flow for trust and clarity during check-in.">
     <meta property="og:image" content="../assets/images/volunteer-bidding/cover.webp">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="../assets/images/avatar.png">
-    <link rel="stylesheet" href="../assets/css/alt-main.css" />
-    <link rel="stylesheet" href="../assets/css/alt-components.css" />
+    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261015f" />
+    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261015f" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet"/>
@@ -45,7 +45,9 @@
                         </button>
                         <ul class="nav-dropdown-menu">
                             <li><a href="volunteer-bidding.html">Volunteer Bidding</a></li>
+                            <li><a href="airport-kiosks.html">Airport Kiosks</a></li>
                             <li><a href="doc-verification.html">Document Verification</a></li>
+                            <li><a href="notification-center.html">Notification Center</a></li>
                             <li><a href="calendar-app.html">Calendar Redesign</a></li>
                         </ul>
                     </li>
@@ -62,15 +64,15 @@
               <a href="../index.html#projects-section" class="back-link">
                 <span aria-hidden="true">←</span> Back to projects
               </a>
-              <h1 class="hero-primary">Turning a 5 Percent Opt In Into a Trusted, Understandable Experience</h1>
-              <h2 class="header2-accent">Why Overcapacity Volunteering Matters for Breeze and Its Customers</h2>
+              <h1 class="hero-primary">Turning a 5 Percent Opt In Into an Offer People Trust</h1>
+              <h2 class="header2-accent">Breeze's volunteer offer for oversold flights, from research to production</h2>
             </div>
             <div class="summary-duties">
               <div class="summary">
                 <h2 class="header1-primary">Executive Summary</h2>
-                <p class="body-primary">Breeze's overcapacity volunteer bidding system lets passengers proactively offer flexibility when flights are oversold. The team was transitioning compensation from BreezePoints to flight credits, and reviewing performance data revealed the existing experience was underperforming, opening the door to a broader redesign.</p>
-                <p class="body-primary">I led the redesign end to end, from discovery research through validation testing, with a focus on comprehension, trust, and engagement during check in.</p>
-                <p class="body-primary"><span class="highlight-text combo-orange-light">Comprehension improved from 50 percent to 100 percent</span>, trust concerns were eliminated, and <span class="highlight-text combo-orange-light">engagement intent rose 27 percent</span>. After shipping, production data confirmed the impact: <span class="highlight-text combo-orange-light">mid-funnel completion more than doubled at every airport</span>, and at SNA the new flow drove <span class="highlight-text combo-orange-light">33 percent more confirmed bids on 16 percent fewer invitations</span>.</p>
+                <p class="body-primary">When a flight is oversold, Breeze asks Guests during check in if they'll take a different flight for compensation. About 5 percent even opened the offer. I ran the research, redesigned the flow, and validated it before it shipped.</p>
+                <p class="body-primary">In testing, <span class="highlight-text combo-orange-light">comprehension went from 50 percent to 100 percent</span>. Once it was live, <span class="highlight-text combo-orange-light">completion rose 21 to 31 points at every airport</span> for Guests who started the flow.</p>
+                <p class="body-primary">I stayed with it through V3: an option to cancel instead of fly later, set bid offers, and four more rounds of testing before handoff.</p>
               </div>
               <hr class="vertical-hr"/>
               <div class="duties-list">
@@ -85,7 +87,7 @@
                   <img src="../assets/images/icons/calendar-dots-duotone.svg" alt="Calendar icon">
                   <div class="duties-text-div">
                     <p>Duration:</p>
-                    <p class="body-primary-bold">One month</p>
+                    <p class="body-primary-bold">One month, plus follow-ups through 2026</p>
                   </div>
                 </div>
                 <div class="duties-item">
@@ -99,35 +101,37 @@
                 </div>
               </div>
             </div>
-            <div id="intro">
+          </section>
+          <section class="basic-section">
             <div class="text-block">
-              <h2 class="header1-primary">Introduction</h2>
-              <h3 class="header2-accent">A Feature Update That Revealed a Bigger Usability Problem</h3>
-              <p class="body-primary">The initial goal of the work was to manage updates related to the shift from BreezePoints to flight credits. However, reviewing performance data revealed a deeper issue.</p>
-              <p class="body-primary"><span class="highlight-text combo-orange-light">The initial invitation to volunteer had a conversion rate of approximately 5 percent.</span> This was unexpectedly low, especially given that the most disruptive part of the flow occurs later when users evaluate alternate flight options.</p>
-              <p class="body-primary">This suggested that users were disengaging before fully understanding the offer.</p>
-          </div>
-          </div>
+              <h2 class="header1-primary">The Problem</h2>
+              <h3 class="header2-accent">Most Guests Said No Before They Knew What Was Offered</h3>
+              <p class="body-primary">This started as a copy update: compensation was switching from BreezePoints to flight credits. Then I looked at the funnel.</p>
+            </div>
+            <div class="cards-3" style="flex-direction: row; flex-wrap: wrap;">
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-orange">5%</h2>
+                    <p class="body-primary">of invited Guests opened the offer</p>
+                </div>
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-orange">24%</h2>
+                    <p class="body-primary">of those picked a flight</p>
+                </div>
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-orange">&lt;1%</h2>
+                    <p class="body-primary">of invited Guests placed a bid</p>
+                </div>
+            </div>
+            <div class="text-block">
+              <p class="body-primary">I expected people to drop at flight selection, once they saw the alternates didn't fit their plans. They never got that far. <span class="highlight-text combo-orange-light">Most said no at the invite</span>, which pointed at how the offer was introduced, not the trade itself.</p>
+              <p class="body-primary">Check in is a get-it-done moment. The invite asked people to read a paragraph about a system they'd never seen.</p>
+            </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
                 <h2 class="header1-primary">Research</h2>
-                <h3 class="header2-accent">Early Signals of Failure: Low Engagement Where It Was Least Expected</h3>
-                <p class="body-primary">Based on the structure of the flow, I expected abandonment to be highest on the flight selection screen, when customers might realize alternate flights did not work for their schedules.</p>
-                <p class="body-primary"><span class="highlight-text combo-orange-light">Instead, most users were declining immediately at the first invitation.</span> This pointed to a problem with how the offer was being introduced rather than with the tradeoff itself.</p>
-            </div>
-            <div class="text-block">
-                <h3 class="header2-accent">Forming the Hypothesis: Too Much Text, Too Little Clarity</h3>
-                <p class="body-primary">I hypothesized that the low engagement was driven by two primary factors:</p>
-                <ul class="list-spaced">
-                    <li class="body-primary">An overwhelming amount of copy presented during check in</li>
-                    <li class="body-primary">A lack of clarity around what was being offered and how the process worked</li>
-                </ul>
-                <p class="body-primary">Check in is an inherently stressful task. Users are focused on speed and accuracy, not reading dense explanations or evaluating unfamiliar systems.</p>
-            </div>
-            <div class="text-block">
-                <h3 class="header2-accent">Validating the Problem Through Usability Testing</h3>
-                <p class="body-primary">To test this hypothesis, I conducted usability testing with six participants using a think aloud protocol and our staging site to measure the performance of our existing flow.</p>
+                <h3 class="header2-accent">Watching Six People Try It</h3>
+                <p class="body-primary">I ran a moderated think-aloud test of the live flow on our staging site.</p>
             </div>
             <div style="background: linear-gradient(135deg, var(--lightest-orange) 0%, var(--light-orange) 100%); width:100%; padding: 2rem 0; margin-bottom: 2rem;">
             <div class="basic-section">
@@ -138,62 +142,58 @@
                     <h3 class="header2-accent">Participants</h3>
                     <hr/>
                     <ul>
-                        <li class="body-primary">Six users, ages 23 to 66</li>
-                        <li class="body-primary">Primarily infrequent flyers</li>
+                        <li class="body-primary">Six people, ages 23 to 66</li>
+                        <li class="body-primary">Mostly infrequent flyers</li>
                         <li class="body-primary">No prior Breeze experience</li>
-                        <li class="body-primary">Primary airlines were Delta and United</li>
                     </ul>
                 </div>
                 <div class="card">
                     <img src="../assets/images/icons/list-checks-duotone.svg" class="icon" alt="Test structure icon">
-                    <h3 class="header2-accent">Test Structure</h3>
+                    <h3 class="header2-accent">The Flow</h3>
                     <hr/>
-                    <p class="body-primary">Participants walked through the full flow, including:</p>
                     <ul>
-                        <li class="body-primary">Initial invite modal during check in</li>
-                        <li class="body-primary">Bid entry screen</li>
-                        <li class="body-primary">Alternate flight selection</li>
-                        <li class="body-primary">Confirmation screen</li>
-                        <li class="body-primary">Post bid confirmation</li>
+                        <li class="body-primary">Invite</li>
+                        <li class="body-primary">Bid amount</li>
+                        <li class="body-primary">Alternate flight</li>
+                        <li class="body-primary">Confirm and success</li>
                     </ul>
                 </div>
                 <div class="card">
                     <img src="../assets/images/icons/question-duotone.svg" class="icon" alt="Research questions icon">
-                    <h3 class="header2-accent">Research Questions</h3>
+                    <h3 class="header2-accent">Questions</h3>
                     <hr/>
                     <ul>
-                        <li class="body-primary">How do users understand the offer?</li>
-                        <li class="body-primary">Where do users experience confusion?</li>
-                        <li class="body-primary">What prevents users from engaging?</li>
+                        <li class="body-primary">Do people understand the offer?</li>
+                        <li class="body-primary">Where do they get confused?</li>
+                        <li class="body-primary">What stops them?</li>
                     </ul>
                 </div>
             </div>
             </div>
             </div>
             <div class="text-block">
-                <h3 class="header2-accent">First Impressions: Read As a Hustle</h3>
-                <p class="body-primary">Three of six participants initially read the modal as a loyalty or rewards offer because of the BreezePoints framing. The rest read it as something worse:</p>
+                <h3 class="header2-accent">The Invite Read as a Hustle</h3>
+                <p class="body-primary">Two of six thought it was a loyalty program. Others read it as something worse.</p>
                 <figure class="research-quote">
                     <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
                     <blockquote class="research-quote-text">It doesn't necessarily reflect positively on the airline... it's kind of a hustle to avoid having to pay.</blockquote>
                 </figure>
             </div>
             <div class="text-block">
-                <h3 class="header2-accent">The Bidding Step Felt Like Gambling</h3>
-                <p class="body-primary">Participants struggled to understand the bidding screen's purpose, and the strategic framing landed as adversarial rather than fair:</p>
+                <h3 class="header2-accent">Bidding Felt Like Gambling</h3>
+                <p class="body-primary">Only two of six could explain how bidding worked.</p>
                 <figure class="research-quote">
                     <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
                     <blockquote class="research-quote-text">It feels like a game designed to introduce a gambling element to the benefit of the house, which is Breeze.</blockquote>
                 </figure>
             </div>
             <div class="text-block">
-                <h3 class="header2-accent">Flight Selection Eroded Confidence</h3>
-                <p class="body-primary">Users could compare alternate flights, but a handful of specific gaps emerged:</p>
+                <h3 class="header2-accent">Flight Selection Raised More Questions</h3>
                 <ul class="list-spaced">
-                    <li class="body-primary">Original flight details weren't visible alongside alternates</li>
-                    <li class="body-primary">Some alternate flights felt unrealistic due to long delays</li>
-                    <li class="body-primary">Whether seats on alternates were guaranteed wasn't clear</li>
-                    <li class="body-primary">No transparency around how many volunteers were needed</li>
+                    <li class="body-primary">The original flight wasn't shown next to the alternates</li>
+                    <li class="body-primary">Some alternates were long delays</li>
+                    <li class="body-primary">It wasn't clear if a seat on the alternate was guaranteed</li>
+                    <li class="body-primary">No sense of how many volunteers were needed</li>
                 </ul>
                 <figure class="research-quote">
                     <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
@@ -201,222 +201,134 @@
                 </figure>
             </div>
             <div class="text-block">
-                <h3 class="header2-accent">By the Confirmation Screen, Users Backed Out</h3>
-                <p class="body-primary">Multiple participants expressed second thoughts at confirmation. <span class="highlight-text combo-orange-light">Uncertainty around timelines, airport logistics, and guarantees made the process feel risky and not worth the effort.</span> At that point, several said they would abandon and continue check in normally.</p>
+                <h3 class="header2-accent">By Confirmation, People Backed Out</h3>
+                <p class="body-primary">Several said they'd quit here and just check in. <span class="highlight-text combo-orange-light">Timing, airport logistics, and guarantees were all still unclear</span>, so it didn't feel worth the risk.</p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
                 <h2 class="header1-primary">Design</h2>
-                <h3 class="header2-accent">Designing a Clearer, Lower Stress Flow From End to End</h3>
-                <p class="body-primary">Based on research findings, I redesigned the entire experience with a focus on reducing cognitive load, improving clarity, and aligning the flow with user expectations.</p>
+                <h3 class="header2-accent">Say Less on the Invite</h3>
+                <p class="body-primary">Same facts, less than half the words. "Earn BreezePoints" became "Get Paid," and the fine print became two bullets.</p>
             </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    The invite, before and after
+                </figcaption>
+                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/modal-compare.webp"
+                     alt="Two versions of the invite. Before: titled Earn Breeze Points for Taking a Different Flight, with a long paragraph and a Please Note section of three bullets, 116 words. After: titled Get Paid to Take a Different Flight, with one sentence and two short bullets, 48 words."></div>
+            </figure>
             <div class="text-block">
-                <h3 class="header2-accent">Key Design Changes That Addressed Trust, Clarity, and Cognitive Load</h3>
-                <p class="body-primary">Key changes included:</p>
-                <ul class="list-spaced">
-                    <li class="body-primary">Reducing copy throughout the flow</li>
-                    <li class="body-primary">Clarifying selected and hover states on flight cards</li>
-                    <li class="body-primary"><span class="highlight-text combo-orange-light">Reordering the flow so users saw alternate flights before bidding</span></li>
-                    <li class="body-primary">Redesigning how flight credit options were displayed</li>
-                    <li class="body-primary">Simplifying the bid summary UI</li>
-                    <li class="body-primary">Adding persistent reassurance that the original flight remained booked</li>
-                </ul>
+                <h3 class="header2-accent">Flights First, Then the Bid</h3>
+                <p class="body-primary">People wanted to know if an alternate even worked before naming a price. The old flow asked for a bid first, so they were committing to a number for a flight they hadn't seen.</p>
             </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Same steps, new order
+                </figcaption>
+                <div class="image-band flow-band">
+                    <div class="flow-compare">
+                        <div class="flow-row">
+                            <span class="flow-label">Before</span>
+                            <ol class="flow-steps">
+                                <li>Invite</li>
+                                <li class="is-moved">Pick a bid</li>
+                                <li class="is-moved">Pick a flight</li>
+                                <li>Confirm</li>
+                            </ol>
+                        </div>
+                        <div class="flow-row">
+                            <span class="flow-label">After</span>
+                            <ol class="flow-steps">
+                                <li>Invite</li>
+                                <li class="is-moved">Pick a flight</li>
+                                <li class="is-moved">Pick a bid</li>
+                                <li>Confirm</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </figure>
             <div class="text-block">
-                <h3 class="header2-accent">What Changed When We Reordered the Flow</h3>
-                <p class="body-primary"><span class="highlight-text combo-orange-light">Showing flight options before bidding eliminated post-decision regret.</span> No participants expressed second thoughts after seeing alternate flights first, and decisions felt more informed and confident.</p>
+                <h3 class="header2-accent">Reassure the Whole Way</h3>
+                <p class="body-primary">Every step now carries the same line: your original flight stays booked until you're selected at the gate. Smaller fixes rode along: clearer selected states on flight cards, a simpler bid summary, and a cleaner credit picker.</p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">Results</h2>
-                <h3 class="header2-accent">Measuring the Impact: Original vs Redesign</h3>
-                <p class="body-primary">The redesign was validated with Maze testing (n=3) and compared against the original moderated UserTesting study (n=6).</p>
+                <h2 class="header1-primary">Did It Work?</h2>
+                <h3 class="header2-accent">In Testing</h3>
+                <p class="body-primary">I tested the redesign with three people on Maze and compared it to the original six. Small samples, so I treated it as a check before shipping, not proof.</p>
             </div>
             <div class="testing-results-row">
             <div class="grid-2-2">
                 <div class="card">
                     <h2 class="metric-lrg statichighlight-orange">100%</h2>
-                    <h3 class="header2-accent">Comprehension</h3>
+                    <h3 class="header2-accent">Understood the Offer</h3>
                     <p class="body-primary">Up from 50%</p>
                 </div>
                 <div class="card">
                     <h2 class="metric-lrg statichighlight-orange">0</h2>
-                    <h3 class="header2-accent">Cognitive Load Complaints</h3>
-                    <p class="body-primary">Fully eliminated</p>
+                    <h3 class="header2-accent">"Too Many Words"</h3>
+                    <p class="body-primary">Down from 4 of 6</p>
                 </div>
                 <div class="card">
-                    <h2 class="metric-lrg statichighlight-orange">27%</h2>
-                    <h3 class="header2-accent">Engagement Increase</h3>
-                    <p class="body-primary">Willingness to explore</p>
+                    <h2 class="metric-lrg statichighlight-orange">67%</h2>
+                    <h3 class="header2-accent">Would Explore It</h3>
+                    <p class="body-primary">Up from about 40%</p>
                 </div>
                 <div class="card">
                     <h2 class="metric-lrg statichighlight-orange">5/5</h2>
-                    <h3 class="header2-accent">Confidence Score</h3>
-                    <p class="body-primary">Keeping original flight</p>
+                    <h3 class="header2-accent">Confidence</h3>
+                    <p class="body-primary">That their original flight stays booked</p>
                 </div>
             </div>
             </div>
+            <div class="text-block">
+                <h3 class="header2-accent">In Production</h3>
+                <p class="body-primary">The new flow went live in January. Here's August to November against January to March.</p>
+            </div>
             <table class="comparison-table">
                 <thead>
                   <tr>
-                    <th class="header3-primary"></th>
-                    <th class="header3-primary" style="color: var(--text-light)">Original Experience</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Redesign</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Improvement</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th class="header3-primary trh combo-orange">Comprehension</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Original">50%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="Redesign">100%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Improvement">+50%</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-orange">Trust Concerns</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Original">High</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="Redesign">Eliminated</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Improvement">Resolved</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-orange">Engagement Intent</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Original">40%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="Redesign">67%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Improvement">+27%</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-orange">Immediate Declines</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Original">High</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="Redesign">Reduced</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Improvement">-27%</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-orange">Confidence Score</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Original">Lower</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="Redesign">5/5</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Improvement">Perfect</td>
-                  </tr>
-                </tbody>
-              </table>
-            <div class="text-block">
-                <h3 class="header2-accent">What This Project Demonstrated About Transparency and Timing</h3>
-                <p class="body-primary">This project demonstrated that clarity and timing matter most when users are under stress. By reducing complexity, clearly communicating tradeoffs, and aligning the flow with user expectations, the redesigned experience transformed a mistrusted interaction into one users could confidently evaluate.</p>
-                <p class="body-primary">The redesign introduced no new critical issues and was recommended to ship based on validation results.</p>
-            </div>
-          </section>
-          <section class="basic-section">
-            <div class="text-block">
-                <h2 class="header1-primary">Production Impact</h2>
-                <h3 class="header2-accent">What We Saw After the Redesign Shipped</h3>
-                <p class="body-primary">Validation testing was promising, but production data confirmed the redesign delivered real improvements at scale.</p>
-                <p class="body-primary"><span class="highlight-text combo-orange-light">By reordering the flow so guests see available alternate flights before selecting a bid amount</span>, the redesign matched users' actual decision-making process. The funnel data reflected it.</p>
-            </div>
-
-            <div class="text-block">
-                <h3 class="header2-accent">The SNA Story: Pure UX Impact, Not Volume</h3>
-                <p class="body-primary"><span class="highlight-text combo-orange-light">SNA had 16 percent fewer invitations in the new flow but 33 percent more confirmed bids.</span> Strong evidence that the redesign was driving real user behavior change, not just benefiting from increased inventory or traffic.</p>
-            </div>
-
-            <div class="text-block">
-                <h3 class="header2-accent">Mid-Funnel Completion: From Drop-Off to Conversion</h3>
-                <p class="body-primary">For guests who started engaging with the flow, completion rates improved dramatically across every origin airport. This is the metric where UX has the most direct influence: what happens once a guest is already in the experience.</p>
-            </div>
-
-            <table class="comparison-table">
-                <thead>
-                  <tr>
-                    <th class="header3-primary">Origin</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Old Flow (Aug–Nov)</th>
-                    <th class="header3-primary" style="color: var(--text-light)">New Flow (Jan–Mar)</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Change</th>
+                    <th class="header3-primary">Airport</th>
+                    <th class="header3-primary" style="color: var(--text-light)">Finished, Once Started</th>
+                    <th class="header3-primary" style="color: var(--text-light)">Invite to Bid</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th class="header3-primary trh combo-orange">TPA</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Old flow">19%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="New flow">48%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Change">+29 pp</td>
+                    <td class="body-primarylrg combo-orange-light" data-label="Finished, once started">19% → 48%</td>
+                    <td class="body-primarylrg combo-orange-light td-right" data-label="Invite to bid">0.90% → 1.06%</td>
                   </tr>
                   <tr>
                     <th class="header3-primary trh combo-orange">MCO</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Old flow">16%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="New flow">47%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Change">+31 pp</td>
+                    <td class="body-primarylrg combo-orange-light" data-label="Finished, once started">16% → 47%</td>
+                    <td class="body-primarylrg combo-orange-light td-right" data-label="Invite to bid">0.83% → 1.42%</td>
                   </tr>
                   <tr>
                     <th class="header3-primary trh combo-orange">SNA</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Old flow">35%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="New flow">64%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Change">+29 pp</td>
+                    <td class="body-primarylrg combo-orange-light" data-label="Finished, once started">35% → 64%</td>
+                    <td class="body-primarylrg combo-orange-light td-right" data-label="Invite to bid">2.27% → 3.60%</td>
                   </tr>
                   <tr>
                     <th class="header3-primary trh combo-orange">PVU</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Old flow">33%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="New flow">54%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Change">+21 pp</td>
+                    <td class="body-primarylrg combo-orange-light" data-label="Finished, once started">33% → 54%</td>
+                    <td class="body-primarylrg combo-orange-light td-right" data-label="Invite to bid">1.78% → 1.94%</td>
                   </tr>
                 </tbody>
               </table>
-
             <div class="text-block">
-                <h3 class="header2-accent">End-to-End Conversion: Modest Gains, Bounded by Inventory</h3>
-                <p class="body-primary">End-to-end conversion (invite to confirmed) improved across the board, but more modestly than mid-funnel, because top-of-funnel conversion is gated by alternate flight availability, which UX cannot change.</p>
-            </div>
-
-            <table class="comparison-table">
-                <thead>
-                  <tr>
-                    <th class="header3-primary">Origin</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Old</th>
-                    <th class="header3-primary" style="color: var(--text-light)">New</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Change</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th class="header3-primary trh combo-orange">TPA</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Old">0.90%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="New">1.06%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Change">+18%</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-orange">MCO</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Old">0.83%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="New">1.42%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Change">+71%</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-orange">SNA</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Old">2.27%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="New">3.60%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Change">+59%</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-orange">PVU</th>
-                    <td class="body-primarylrg combo-orange-light" data-label="Old">1.78%</td>
-                    <td class="body-primarylrg combo-orange-light" data-label="New">1.94%</td>
-                    <td class="body-primarylrg combo-orange-light td-right" data-label="Change">+9%</td>
-                  </tr>
-                </tbody>
-              </table>
-
-            <div class="text-block">
-                <h3 class="header2-accent">What This Means for the Business</h3>
-                <ul class="list-spaced">
-                    <li class="body-primary">Guests who find a viable flight are now far more likely to complete the flow</li>
-                    <li class="body-primary">Top-of-funnel conversion stays gated by alternate flight availability. UX cannot change inventory.</li>
-                </ul>
-                <p class="body-primary"><span class="highlight-text combo-orange-light">We targeted the UX problem we could solve, not the inventory problem we couldn't.</span></p>
+                <p class="body-primary"><span class="highlight-text combo-orange-light">SNA got 16 percent fewer invites and 33 percent more confirmed bids.</span> Less traffic, more bids. That's the design doing the work, not volume.</p>
+                <p class="body-primary">Invite to bid stayed small everywhere. Once someone found a flight that worked, they finished. Whether a flight worked was never something design could fix.</p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
                 <h2 class="header1-primary">What Came Next</h2>
-                <h3 class="header2-accent">Three New Asks for a Flow I'd Just Cut Down</h3>
-                <p class="body-primary">The redesign shipped, but the flow kept moving. Over the next year legal and product brought three new asks, and each one wanted to add weight back.</p>
+                <h3 class="header2-accent">More Ways to Say Yes</h3>
+                <p class="body-primary">The redesign got people through the flow. It didn't fix the bigger problem: most Guests have somewhere to be. Over the next year the flow came back to me four more times.</p>
             </div>
 
             <table class="comparison-table comparison-table--text">
@@ -431,64 +343,92 @@
                   <tr>
                     <th class="header3-primary trh combo-orange">Legal Disclosure</th>
                     <td class="body-primary combo-orange-light" data-label="What I did">Added denied-boarding terms at the bid step in as few words as the requirement allowed</td>
-                    <td class="body-primary combo-orange-light td-right" data-label="Status">Shipped. Validated with 21 participants, comprehension held</td>
+                    <td class="body-primary combo-orange-light td-right" data-label="Status">Shipped. Tested with 21 people, comprehension held</td>
                   </tr>
                   <tr>
-                    <th class="header3-primary trh combo-orange">Cancel Instead of Rebook</th>
-                    <td class="body-primary combo-orange-light" data-label="What I did">Gave cancel its own step instead of adding it to flight selection</td>
-                    <td class="body-primary combo-orange-light td-right" data-label="Status">Direction chosen, prototyped</td>
+                    <th class="header3-primary trh combo-orange">Offer to Cancel</th>
+                    <td class="body-primary combo-orange-light" data-label="What I did">Gave cancel its own choice next to "fly later," not a spot on flight selection. One page, one job</td>
+                    <td class="body-primary combo-orange-light td-right" data-label="Status">Designed, tested, handed off. Waiting on engineering</td>
                   </tr>
                   <tr>
                     <th class="header3-primary trh combo-orange">Bid Amounts</th>
-                    <td class="body-primary combo-orange-light" data-label="What I did">Dropped the custom amount and labeled each tier as a multiple of the fare</td>
-                    <td class="body-primary combo-orange-light td-right" data-label="Status">Explored, heading to spec</td>
+                    <td class="body-primary combo-orange-light" data-label="What I did">Replaced the custom amount with four set offers, labeled 2x to 5x your fare</td>
+                    <td class="body-primary combo-orange-light td-right" data-label="Status">Designed, tested, handed off</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-orange">Invite Pop-Up</th>
+                    <td class="body-primary combo-orange-light" data-label="What I did">Had an AI agent design it against my brief, then tested it against the current one</td>
+                    <td class="body-primary combo-orange-light td-right" data-label="Status">A/B test recommended</td>
                   </tr>
                 </tbody>
               </table>
 
-            <div class="text-block">
-                <h3 class="header2-accent">Why Cancel Got Its Own Step</h3>
-                <p class="body-primary">Product didn't want another step, so I built three ways to fit cancel onto the flight selection page. All three made the page worse. It already had two boxed elements competing for attention, and cancel is a different job entirely: leave the trip, not pick a flight. <span class="highlight-text combo-orange-light">One page, one job. A full page is the argument for the step.</span></p>
-            </div>
             <figure>
                 <figcaption class="image-caption caption-spaced">
-                    Cancel moves to its own step, so each page has one job
+                    V3: two ways to volunteer, four set offers
                 </figcaption>
-                <img loading="lazy" decoding="async" class="basic-image" src="../assets/images/volunteer-bidding/cancel-step.webp"
-                     alt="Three mobile screens. First, a choice screen asking how you would like to volunteer, with options to bid on a different flight or cancel the trip. Second, the flight selection page for the bid path. Third, a cancel confirmation screen asking whether to cancel just this flight or the entire booking.">
-            </figure>
-            <div class="text-block">
-                <p class="body-primary">I also lightened the page without touching the yellow warning callout. That callout is what tells Guests a change isn't guaranteed, which only 1 in 6 understood in the original test. So the current flight card became a one-line subtitle, and a redundant instruction line went away.</p>
-            </div>
-            <figure>
-                <figcaption class="image-caption caption-spaced">
-                    Flight selection, before and after
-                </figcaption>
-                <img loading="lazy" decoding="async" class="basic-image" style="margin-bottom: 1.5rem;" src="../assets/images/volunteer-bidding/before-after.webp"
-                     alt="Two versions of the flight selection page side by side, with numbered markers. The before version stacks a warning callout, a current flight card, an instruction line, and a cancel card. The after version keeps the warning callout and shows the current flight as a one-line subtitle.">
-                <ol class="list-spaced">
-                    <li class="body-primary"><strong>Warning callout:</strong> kept at full strength</li>
-                    <li class="body-primary"><strong>Current flight card:</strong> now a one-line subtitle</li>
-                    <li class="body-primary"><strong>Instruction line:</strong> cut, the title already says it</li>
-                    <li class="body-primary"><strong>Cancel card:</strong> moved to its own step</li>
-                </ol>
+                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/v3-flow.webp"
+                     alt="Three mobile screens from V3. First, a choice between Offer to Fly Later and Offer to Cancel. Second, a cancel screen asking whether to cancel the entire trip or just this flight. Third, compensation offers of 240, 360, 480, and 600 dollars in flight credits, labeled 2x to 5x fare. Every screen carries the callout: plan to take your original flight, nothing changes unless you're selected at the gate."></div>
             </figure>
 
             <div class="text-block">
-                <h3 class="header2-accent">Why Fare Multiples</h3>
-                <p class="body-primary">Only a third of the original participants understood how bidding worked. The old tiers were dollar amounts with no visible logic. Labeling each one 2x, 3x, or 4x your fare puts the math on the screen.</p>
+                <h3 class="header2-accent">Testing Caught Something I Broke</h3>
+                <p class="body-primary">I ran four unmoderated rounds over two days, about 160 people. An earlier V3 dropped the check that matters most: knowing you still show up for your original flight. One more round brought it back.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Knows to show up for their original flight
+                </figcaption>
+                <div class="image-band flow-band">
+                    <div class="bar-chart" aria-hidden="true">
+                        <div class="bar-row">
+                            <span class="bar-label">Shipped flow</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 92%;"></div><span class="bar-threshold" style="left: 80%;"></span></div>
+                            <span class="bar-value">92%</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">Earlier V3 (n=41)</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 68%;"></div><span class="bar-threshold" style="left: 80%;"></span></div>
+                            <span class="bar-value">68%</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">Final V3 (n=39)</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 90%;"></div><span class="bar-threshold" style="left: 80%;"></span></div>
+                            <span class="bar-value">90%</span>
+                        </div>
+                        <p class="bar-chart-note">Dashed line: the 80% pass line, set before testing. All three scored the same way.</p>
+                    </div>
+                    <div class="sr-only"><table>
+                        <caption>Share of participants who knew to show up for their original flight</caption>
+                        <tr><th>Version</th><th>Result</th></tr>
+                        <tr><td>Shipped flow</td><td>92%</td></tr>
+                        <tr><td>Earlier V3, 41 participants</td><td>68%</td></tr>
+                        <tr><td>Final V3, 39 participants</td><td>90%</td></tr>
+                        <tr><td>Pass line</td><td>80%</td></tr>
+                    </table></div>
+                </div>
+            </figure>
+            <div class="text-block">
+                <p class="body-primary">Wrong-gate answers went from 8 of 41 to 2 of 39. My first write-up said the final V3 beat production. It didn't, it matched it, so I corrected the headline.</p>
+            </div>
+
+            <div class="text-block">
+                <h3 class="header2-accent">Letting an Agent Design the Invite</h3>
+                <p class="body-primary">I use AI to design hand in hand all the time. I hadn't tried handing a screen to an agent and only seeing the result. So I wrote the brief and the pass lines before any design existed, an agent designed two versions on our design system, and I reviewed them, picked one, and ran two rounds of testing with 97 sessions.</p>
+                <p class="body-primary">The agent's version was misread less (1 of 20 against 4 of 19) and met every safety line. Neither round could show more taps, the groups were too small for that. <span class="highlight-text combo-orange-light">So the honest recommendation is a production A/B test, not a ship.</span></p>
             </div>
 
             <div class="text-block">
                 <h3 class="header2-accent">The Ceiling</h3>
-                <p class="body-primary">Bids come in steadily now, but only a small fraction get accepted at the gate. That's the limit I flagged in the original research: the experience was never the main constraint, whether the alternate flights actually work for people is. That's a routes and gate operations question, and it's where the work sits now.</p>
+                <p class="body-primary">Bids come in steadily, but only a small fraction get accepted at the gate. Routes with more alternates do better: after picking a flight, 30% of Guests offered one option placed a bid, against 50% with nine or more. No screen makes a fixed plan flexible.</p>
+                <p class="body-primary">V3 is handed off. The build doesn't have a date yet.</p>
             </div>
           </section>
           <section class="next-case-section">
-            <a href="doc-verification.html" class="next-case-link">
+            <a href="airport-kiosks.html" class="next-case-link">
               <div class="next-case-text">
                 <span class="next-case-label caption-spaced">Next case study</span>
-                <span class="next-case-title header3-primary">From Four Identical Cards to One</span>
+                <span class="next-case-title header3-primary">Breeze's First Airport Kiosk, and What It Actually Does</span>
               </div>
               <span class="next-case-arrow" aria-hidden="true">→</span>
             </a>

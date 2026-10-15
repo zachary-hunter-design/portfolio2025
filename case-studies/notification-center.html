@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Breeze Notification Center Discovery Research</title>
+    <meta name="description" content="Case study: three rounds of discovery testing measured the wrong surface. Catching the flaw, re-testing cleanly, and landing the decision on better reasoning.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Three rounds of testing measured the wrong thing">
+    <meta property="og:description" content="Case study: three rounds of discovery testing measured the wrong surface. Catching the flaw, re-testing cleanly, and landing the decision on better reasoning.">
+    <meta property="og:image" content="../assets/images/notification-center/cover.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="../assets/images/avatar.png">
+    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261015f" />
+    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261015f" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet"/>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8YWZS0MEB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V8YWZS0MEB');
+    </script>
+</head>
+<body class="accent-orange">
+    <header class="header">
+        <nav class="navbar">
+            <div class="name-links-div">
+                <div class="name-div">
+                    <a class="header3-primary" href="../index.html">Zachary Hunter</a>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li class="nav-link"><a href="../index.html">Home</a></li>
+                    <li class="nav-link-active nav-dropdown">
+                        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                            Case Studies <span class="arrow">▾</span>
+                        </button>
+                        <ul class="nav-dropdown-menu">
+                            <li><a href="volunteer-bidding.html">Volunteer Bidding</a></li>
+                            <li><a href="airport-kiosks.html">Airport Kiosks</a></li>
+                            <li><a href="doc-verification.html">Document Verification</a></li>
+                            <li><a href="notification-center.html">Notification Center</a></li>
+                            <li><a href="calendar-app.html">Calendar Redesign</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-link"><a href="../about.html">About Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+      <img src="../assets/images/notification-center/cover.webp" class="case-header-img" alt="Three versions of the Breeze app home screen used to test how people find the Notification Center">
+        <section class="basic-section">
+            <div class="case-titles">
+              <a href="../index.html#projects-section" class="back-link">
+                <span aria-hidden="true">←</span> Back to projects
+              </a>
+              <h1 class="hero-primary">Three Rounds of Testing Measured the Wrong Thing</h1>
+              <h2 class="header2-accent">The Notification Center, and catching a flaw in my own research</h2>
+            </div>
+            <div class="summary-duties">
+              <div class="summary">
+                <h2 class="header1-primary">Executive Summary</h2>
+                <p class="body-primary">The Notification Center is a log of the messages Breeze sends you. Its product impact is small, and I'm not including it for that. I'm including it for the research.</p>
+                <p class="body-primary">Three rounds of my own discovery testing turned out to be measuring a different part of the screen. I found the flaw, re-tested cleanly, and <span class="highlight-text combo-orange-light">the clean test disproved my own explanation.</span> The decision held, but on better reasoning.</p>
+              </div>
+              <hr class="vertical-hr"/>
+              <div class="duties-list">
+                <div class="duties-item">
+                  <img src="../assets/images/icons/user-circle-duotone.svg" alt="profile icon"/>
+                  <div class="duties-text-div">
+                    <p>Role:</p>
+                    <p class="body-primary-bold">Product Designer, UX Researcher</p>
+                  </div>
+                </div>
+                <div class="duties-item">
+                  <img src="../assets/images/icons/calendar-dots-duotone.svg" alt="Calendar icon">
+                  <div class="duties-text-div">
+                    <p>Duration:</p>
+                    <p class="body-primary-bold">May to June 2026</p>
+                  </div>
+                </div>
+                <div class="duties-item">
+                  <img src="../assets/images/icons/list-checks-duotone.svg" alt="Checklist icon">
+                  <div class="duties-text-div">
+                    <p>Responsibilities:</p>
+                    <p class="body-primary-bold">
+                        Study design, testing, analysis, UX/UI
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+              <h2 class="header1-primary">The Question</h2>
+              <h3 class="header2-accent">Can People Find It?</h3>
+              <p class="body-primary">The Notification Center sits behind a bell in the app's top corner. I tested whether Guests could find it from the home screen, using a flight delay as the scenario: "something changed with your flight, go find the updates."</p>
+            </div>
+            <div class="cards-3" style="flex-direction: row; flex-wrap: wrap;">
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-orange">14%</h2>
+                    <p class="body-primary">went to the bell first, round one</p>
+                </div>
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-orange">31%</h2>
+                    <p class="body-primary">after I restyled the bell</p>
+                </div>
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-orange">~60%</h2>
+                    <p class="body-primary">on a home with no trip on it</p>
+                </div>
+            </div>
+            <div class="text-block">
+              <p class="body-primary">Same bell in every round. The only thing that moved the number was whether a trip card was on screen.</p>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">The Flaw</h2>
+                <h3 class="header2-accent">The Test Was Scoring a Different Surface</h3>
+                <p class="body-primary">The trip card showed a big "Delayed" badge. That badge answers "what happened to my flight?" faster than any bell. People who "failed" mostly succeeded at the real job: they saw Delayed and were done. <span class="highlight-text combo-orange-light">We were scoring them for not finding a second door to information already in front of them.</span></p>
+                <p class="body-primary">So the rule I wrote down: before fielding a test, list every surface that answers the scenario's job and rank them by how visible they are. If the one you're studying isn't first, you're testing its competitor. It's now a standing check in our team's research review.</p>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">The Override</h2>
+                <h3 class="header2-accent">Shipping Against My Own Test Winner</h3>
+                <p class="body-primary">Meanwhile a head-to-head (26 people per version) had a clear winner on paper: a labeled "Updates" card under the trip, 85% against the bell's 31%. I set the pass line before testing, and the card cleared it.</p>
+                <p class="body-primary">I chose the bell anyway, and wrote it down as an override, not a re-read of the numbers. My reasons: the card's win looked inflated by the Delayed badge and by the task saying "updates," which matched the card's label. And a quiet bell seemed findable enough when you need it.</p>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">The Clean Test</h2>
+                <h3 class="header2-accent">It Disproved My Explanation</h3>
+                <p class="body-primary">So I re-ran it without the confounds: an on-time trip, no badge, neutral wording, plus a third version with a count on the bell.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Calm home, about 26 people per version
+                </figcaption>
+                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/notification-center/cells.webp"
+                     alt="Three app home screens with an on-time trip. Action card: an Updates row under the trip card, found by about 90 percent. Bell with a dot, the version we chose, found by about 50 percent. Bell with a count of 2, found by about 57 percent."></div>
+            </figure>
+            <div class="text-block">
+                <p class="body-primary">The card still won by about 40 points. It wasn't the confounds. Both of my reasons for picking the bell were wrong.</p>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">The Decision</h2>
+                <h3 class="header2-accent">Same Call, Better Reason</h3>
+                <p class="body-primary">The real question was never "which entry is easiest to find." It was what the Notification Center is for. The trip card is the primary surface: status, time, gate, found almost every time. The Notification Center is a record. You go looking for it when you want it, and the bell is the convention people already know.</p>
+                <p class="body-primary"><span class="highlight-text combo-orange-light">A record that shouts competes for attention it shouldn't have.</span> So about 50% finding it cold is fit for its role, and the count didn't help anyway. We went with the quiet bell and a dot.</p>
+                <p class="body-primary">That call depended on one check: urgent messages have to reach people by push, not by hoping they find the bell. I confirmed push opt-in was healthy before locking it.</p>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">Honest Limits</h2>
+                <ul class="list-spaced">
+                    <li class="body-primary">The platform didn't record taps, so every number here is hand-coded from recordings. Treat them as directional</li>
+                    <li class="body-primary">The Notification Center's real job, the full message stream, still hasn't been cleanly discovery-tested</li>
+                    <li class="body-primary">The design is in code. I don't have usage data on it yet</li>
+                </ul>
+                <p class="body-primary">What I'd point to is the method: set the bar before you test, check what your scenario is really measuring, and when you overrule your own data, say so out loud.</p>
+            </div>
+          </section>
+          <section class="next-case-section">
+            <a href="calendar-app.html" class="next-case-link">
+              <div class="next-case-text">
+                <span class="next-case-label caption-spaced">Next case study</span>
+                <span class="next-case-title header3-primary">Completing a Full Redesign to Boost Success Rates by 23%</span>
+              </div>
+              <span class="next-case-arrow" aria-hidden="true">→</span>
+            </a>
+          </section>
+    </main>
+
+      <footer class="site-footer">
+        <div class="footer-div">
+        <div class="footer-content">
+          <h3 class="header3-primary" style="margin-bottom: 1rem;">Contact Info</h3>
+
+          <div class="contact-email">
+            <a href="mailto:zhunterux@gmail.com" class="email-link body-primarylrg">
+              zhunterux@gmail.com
+            </a>
+          </div>
+
+          <div class="social-link">
+            <a href="https://www.linkedin.com/in/zachary-hunter-b646a6227/" target="_blank" rel="noopener noreferrer" class="linkedin-link body-primarylrg">
+              Linkedin
+            </a>
+          </div>
+          <div class="copy-update">
+          <div class="copyright">
+            <p>© 2026 Zachary Hunter. All Rights Reserved.</p>
+          </div>
+
+          <div class="last-updated">
+            <p>Last updated October 15, 2026</p>
+          </div>
+        </div>
+        </div>
+    </div>
+      </footer>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/highlighter.js"></script>
+</body>
+</html>
