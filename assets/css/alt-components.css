@@ -1981,3 +1981,19 @@ a:hover > .btn-icon,
     a:hover > .btn-icon,
     .next-case-link:hover .btn-icon { animation: none; }
 }
+
+/* Text tables on phones: label stacked above the sentence, both left-aligned. */
+@media (max-width: 768px) {
+    .comparison-table--text td {
+        display: block;
+        text-align: left;
+    }
+
+    .comparison-table--text td::before {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+}

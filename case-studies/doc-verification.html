@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Study: From Four Identical Cards to One</title>
-    <meta name="description" content="Case study: designing a booking-level document verification system at Breeze that deduplicates shared travel requirements across travelers in a booking.">
+    <meta name="description" content="Case study: redesigning international check-in at Breeze as one page per booking, so shared travel requirements show once, plus a public lookup validated with 21 people.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="From Four Identical Cards to One">
-    <meta property="og:description" content="Designing a booking-level document verification system at Breeze for international check-in.">
+    <meta property="og:description" content="International check-in at Breeze for international check-in.">
     <meta property="og:image" content="https://zhunterux.netlify.app/assets/images/og/doc-verification.jpg">
     <meta property="og:url" content="https://zhunterux.netlify.app/case-studies/doc-verification.html">
     <meta name="twitter:image" content="https://zhunterux.netlify.app/assets/images/og/doc-verification.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="../assets/images/avatar.png">
-    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261016e" />
-    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261016e" />
+    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261016f" />
+    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261016f" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet"/>
@@ -51,14 +51,13 @@
                 <span aria-hidden="true">←</span> Back to projects
               </a>
               <h1 class="hero-primary">From Four Identical Cards to One</h1>
-              <h2 class="header2-accent">Designing a booking-level document verification system at Breeze.</h2>
+              <h2 class="header2-accent">International check-in at Breeze, from a messy travel API to one page per booking</h2>
             </div>
             <div class="summary-duties">
               <div class="summary">
                 <h2 class="header1-primary">Executive Summary</h2>
-                <p class="body-primary">A booking-level Additional Documents page that <span class="highlight-text combo-blue-light">deduplicates Timatic API requirements across travelers in a booking</span>, gating international check-in until acknowledgment.</p>
-                <p class="body-primary">The prior design produced four identical acknowledgment cards for a family of four flying to the Dominican Republic. The shipped version collapses them to one.</p>
-                <p class="body-primary">I reviewed the build (MR 5613) against the spec and caught a routing dead end by walking it as a Guest. Then I took the same requirements data public, as a lookup anyone can use before they book.</p>
+                <p class="body-primary">International check-in pulls document rules from Timatic, an industry travel API. The old flow asked each traveler separately, so a family of four flying to the Dominican Republic acknowledged the same entry form four times.</p>
+                <p class="body-primary">I redesigned it as <span class="highlight-text combo-blue-light">one page for the whole booking</span>: shared requirements show once, and anything that applies to one person says so. Then I took the same data public, as a lookup anyone can use before they book, and validated it with 21 people.</p>
               </div>
               <hr class="vertical-hr"/>
               <div class="duties-list">
@@ -73,170 +72,115 @@
                   <img src="../assets/images/icons/calendar-dots-duotone.svg" alt="Calendar icon">
                   <div class="duties-text-div">
                     <p>Duration:</p>
-                    <p class="body-primary-bold">~2 months, 5 working sessions</p>
+                    <p class="body-primary-bold">March to July 2026</p>
                   </div>
                 </div>
                 <div class="duties-item">
                   <img src="../assets/images/icons/list-checks-duotone.svg" alt="Checklist icon">
                   <div class="duties-text-div">
                     <p>Responsibilities:</p>
-                    <p class="body-primary-bold">UX research, system design, prototyping, validation testing</p>
+                    <p class="body-primary-bold">
+                        Research, system design, prototyping, validation testing
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-        </section>
-
-        <section class="basic-section">
+          </section>
+          <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">The Problem</h2>
-                <h3 class="header2-accent">Three Layers of Complexity</h3>
-                <p class="body-primary">International check-in surfaces document requirements from Timatic, an industry travel API. The challenge wasn't surfacing them. It was making sense of what came back.</p>
+              <h2 class="header1-primary">The Problem</h2>
+              <h3 class="header2-accent">What Comes Back From the API</h3>
+              <p class="body-primary">Timatic answers per traveler, across a dozen rule codes. Some results need the Guest to do something, most don't, and nothing tells you whether a form is one per family or one per person.</p>
+              <p class="body-primary">The old flow showed every result inside a step for each traveler. Our engineering manager put it plainly:</p>
+              <figure class="research-quote">
+                  <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
+                  <blockquote class="research-quote-text">Only one family member needs to have the e-ticket and then not having to ask it 4 more times.</blockquote>
+              </figure>
+              <p class="body-primary">The hard part is mixed bookings. A couple on U.S. and Ukrainian passports shares one entry form, but only Olena needs an entry authorization. The page has to say "everyone" and "just Olena" without making "everyone" feel skippable.</p>
             </div>
-
+          </section>
+          <section class="basic-section">
             <div class="text-block">
-                <h3 class="header2-accent">1. API Ambiguity</h3>
-                <p class="body-primary">Timatic AutoCheck v1.3 returns per-pax results with five evaluationResult values (YES, NO, CONDITIONAL, UNKNOWN, transient retry) across multiple RuleSet codes (REQDOC, REQFRM, REQVIS, REQTIX, REQYF, VALDOC, plus INF* informational).</p>
-                <p class="body-primary">Not every code maps to UI. Not every result is actionable. There's no metadata to tell you whether a form is "per-family" or "per-person."</p>
+                <h2 class="header1-primary">The Design</h2>
+                <h3 class="header2-accent">One Page Per Booking</h3>
+                <p class="body-primary">Every traveler's results go into one list. Identical requirements collapse into a single card, tagged with who it applies to, and check-in waits until each one is acknowledged.</p>
             </div>
-
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    The booking-level page, two bookings
+                </figcaption>
+                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/doc-verification/checkin.webp"
+                     alt="Two versions of the Additional Documents page. For a family of four flying to the Dominican Republic, one Entry Form card tagged All Travelers. For a couple with U.S. and Ukraine passports, the same shared Entry Form card plus an Entry Authorization card tagged with only Olena Kovalenko's name."></div>
+            </figure>
             <div class="text-block">
-                <h3 class="header2-accent">2. Per-Traveler vs Booking-Level Structure</h3>
-                <p class="body-primary">The original flow nested documents inside a per-traveler wizard, producing duplicate cards. The engineering manager flagged it directly:</p>
-                <figure class="research-quote">
-                    <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
-                    <blockquote class="research-quote-text">Only one family member needs to have the e-ticket and then not having to ask it 4 more times.</blockquote>
-                </figure>
+                <h3 class="header2-accent">Four Calls That Shaped It</h3>
             </div>
-
-            <div class="text-block">
-                <h3 class="header2-accent">3. Mixed Scope Within One Booking</h3>
-                <p class="body-primary">A US/Ukraine couple flying to DR generates one shared e-ticket card and one Ukraine-only authorization card. <span class="highlight-text combo-blue-light">The UI has to communicate "this applies to everyone" vs "this applies only to Olena"</span> without making the everyone case feel skippable.</p>
-            </div>
-        </section>
-
-        <section class="basic-section">
-            <div class="text-block">
-                <h2 class="header1-primary">The System</h2>
-                <h3 class="header2-accent">A Vault-Based Working Surface</h3>
-                <p class="body-primary">This project ran on a structured vault: project files, atomic reasoning notes, dated session logs, and a live JSX prototype sandbox served the work. Five sessions captured. Seven design decisions extracted into individual reasoning files. The system shows itself through the decisions below.</p>
-                <p class="body-primary"><span class="body-primary-bold">Where AI led:</span> pattern recognition across 29 Timatic scenarios, rapid variant generation in the sandbox, reasoning extraction from rationale docs, typography audit, convention codification.</p>
-                <p class="body-primary"><span class="body-primary-bold">Where AI didn't:</span> stakeholder framing, knowing when to stop iterating, the pre-prod routing bug catch, and the Figma source-of-truth spec.</p>
-            </div>
-        </section>
-
-        <section class="basic-section">
-            <div class="text-block">
-                <h2 class="header1-primary">The Decisions</h2>
-                <h3 class="header2-accent">Four Calls That Shaped the System</h3>
-            </div>
-
-            <div class="text-block">
-                <h3 class="header2-accent">Decision 1: Booking-Level Page, Not Per-Traveler Step</h3>
-                <p class="body-primary"><span class="body-primary-bold">Decision:</span> lift document acknowledgment out of the per-traveler check-in wizard and into a booking-level page.</p>
-                <p class="body-primary"><span class="body-primary-bold">Alternative:</span> keep documents inside the per-traveler wizard.</p>
-                <p class="body-primary"><span class="body-primary-bold">Evidence:</span> a family of four flying to DR was generating four identical REQFRM cards. The EM call confirmed it as a real friction point, not a hypothetical edge case.</p>
-                <p class="body-primary"><span class="body-primary-bold">AI's role:</span> enumerated the dedup edge cases (mixed nationality, partial overlap, all-shared, all-unique) and helped write the dedup algorithm spec.</p>
-            </div>
-
-            <table class="comparison-table">
+            <table class="comparison-table comparison-table--text">
                 <thead>
                   <tr>
-                    <th class="header3-primary">PNR Shape</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Old (per-traveler)</th>
-                    <th class="header3-primary" style="color: var(--text-light)">New (booking-level)</th>
+                    <th class="header3-primary">Call</th>
+                    <th class="header3-primary" style="color: var(--text-light)">What I Did</th>
+                    <th class="header3-primary" style="color: var(--text-light)">Why</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th class="header3-primary trh combo-blue">Family of 4 → DR</th>
-                    <td class="body-primarylrg combo-blue-light" data-label="Old">4 identical REQFRM cards</td>
-                    <td class="body-primarylrg combo-blue-light td-right" data-label="New">1 card</td>
+                    <th class="header3-primary trh combo-blue">Booking, not traveler</th>
+                    <td class="body-primary combo-blue-light" data-label="What I did">Moved documents out of the per-traveler steps into one page</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="Why">A family of four got four identical cards. The engineering manager confirmed it was real friction</td>
                   </tr>
                   <tr>
-                    <th class="header3-primary trh combo-blue">US/Ukraine couple → DR</th>
-                    <td class="body-primarylrg combo-blue-light" data-label="Old">2 e-ticket cards + 1 Ukraine card</td>
-                    <td class="body-primarylrg combo-blue-light td-right" data-label="New">1 shared e-ticket + 1 Ukraine card</td>
+                    <th class="header3-primary trh combo-blue">Collapse matches</th>
+                    <td class="body-primary combo-blue-light" data-label="What I did">Merged results with the same rule and the same text into one card</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="Why">Timatic can't say if a form is per family. Identical results are the signal, so the missing flag stops mattering</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-blue">Only what's actionable</th>
+                    <td class="body-primary combo-blue-light" data-label="What I did">Showed entry forms, entry authorizations with a link, and proof of onward travel</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="Why">Everything else is already satisfied, handled by an agent at the airport, or out of scope</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-blue">Scope by shape</th>
+                    <td class="body-primary combo-blue-light" data-label="What I did">"All travelers" as quiet text, named travelers as pills</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="Why">The original two-pill design scored 70% in a 5-second test (n=20), under my 80% bar</td>
                   </tr>
                 </tbody>
-            </table>
-
+              </table>
             <div class="text-block">
-                <h3 class="header2-accent">Decision 2: Text-Match Deduplication on <code>code + rawText</code></h3>
-                <p class="body-primary"><span class="body-primary-bold">Decision:</span> dedupe results by hashing on the rule code plus the raw response text. If two travelers' responses match exactly, collapse them into a single card.</p>
-                <p class="body-primary"><span class="body-primary-bold">Alternatives:</span> ask Timatic for per-family vs per-person metadata (it doesn't exist), or hard-code per-code policy.</p>
-                <p class="body-primary"><span class="body-primary-bold">Evidence:</span> the per-family vs per-person distinction is irrelevant if you can observe directly whether multiple travelers got identical results. Dedup at the text level sidesteps the missing metadata problem entirely.</p>
-                <p class="body-primary"><span class="body-primary-bold">AI's role:</span> ran the 29 scenarios through the proposed dedup logic to surface collisions. Engineering later shifted the dedup key to <code>title + description</code> (backend pre-maps codes to titles). Behavior preserved, implementation cleaner.</p>
+                <p class="body-primary">AI helped me run the dedup rule across 29 real Timatic scenarios and generate a dozen tag variants in one sitting. Which variant, when to stop, and what to leave off the page were my calls.</p>
             </div>
-
+          </section>
+          <section class="basic-section">
             <div class="text-block">
-                <h3 class="header2-accent">Decision 3: Show Only REQFRM, REQVIS CONDITIONAL with URL, and REQTIX</h3>
-                <p class="body-primary"><span class="body-primary-bold">Decision:</span> display only three response types in the acknowledgment UI. Skip everything else.</p>
-                <p class="body-primary"><span class="body-primary-bold">Alternative:</span> show all CONDITIONAL responses; let guests sort signal from noise.</p>
-                <p class="body-primary"><span class="body-primary-bold">Evidence:</span></p>
-                <ul class="list-spaced">
-                    <li class="body-primary">REQVIS YES is satisfied (skip)</li>
-                    <li class="body-primary">REQVIS NO blocks at boarding pass issuance (skip, agent handles)</li>
-                    <li class="body-primary">REQVIS CONDITIONAL without a URL is a simple exemption (skip)</li>
-                    <li class="body-primary">VALDOC, REQDOC, REQYF, INF* are out of scope by code</li>
-                </ul>
-                <p class="body-primary"><span class="body-primary-bold">AI's role:</span> built the URL-detection regex (<code>/https?:\/\//</code>) as the single discriminator for actionable REQVIS CONDITIONAL cases, and compressed the policy table into a working spec.</p>
+                <h2 class="header1-primary">Research</h2>
+                <h3 class="header2-accent">Three Kinds of Evidence</h3>
             </div>
-
-            <div class="text-block">
-                <h3 class="header2-accent">Decision 4: Shape Asymmetry, Not Color, for "Applies To" Scope</h3>
-                <p class="body-primary"><span class="body-primary-bold">Decision:</span> distinguish "applies to all travelers" from "applies to a named traveler" using shape and icon, not color saturation.</p>
-                <p class="body-primary"><span class="body-primary-bold">Alternative:</span> the original Figma, a gray pill for "all travelers" + sky-blue pill for named traveler.</p>
-                <p class="body-primary"><span class="body-primary-bold">Evidence:</span> a 5-second scan test (n=20) on the original gray-pill design returned <span class="highlight-text combo-blue-light">70% comprehension</span>, below the 80% threshold I'd set for shipping. The stakeholder skippability concern was validated, not speculative.</p>
-                <p class="body-primary"><span class="body-primary-bold">AI's role:</span> 12+ variants iterated in the live sandbox in a single session (variants A through N covering Moxy badge color pairs, eyebrow text in five colors, colored-icon hybrids, asymmetric treatments). Variant N landed: gray eyebrow text with UsersIcon for "All Travelers" + Moxy pill-stroke sky-blue per named traveler.</p>
-            </div>
-        </section>
-
-        <section class="basic-section">
-            <div class="text-block">
-                <h2 class="header1-primary">Research Evidence</h2>
-                <h3 class="header2-accent">Three Streams of Validation</h3>
-            </div>
-
-            <div class="cards-3">
-                <div class="card">
-                    <p class="caption-spaced">Discovery</p>
-                    <h3 class="header2-accent">29 Timatic Scenarios</h3>
-                    <hr/>
-                    <p class="body-primary">API-level discovery across nationalities and routes (CUN, PUJ, NAS, SJO). Documented in <code>research-timatic-results.md</code>. Drove the dedup algorithm and the show/skip policy table.</p>
+            <div class="cards-3" style="flex-direction: row; flex-wrap: wrap;">
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-blue">29</h2>
+                    <p class="body-primary">real Timatic scenarios across routes and passports, which set the dedup and show-or-skip rules</p>
                 </div>
-                <div class="card">
-                    <p class="caption-spaced">MVP Testing</p>
-                    <h3 class="header2-accent">11 Participants, March 2026</h3>
-                    <hr/>
-                    <p class="body-primary">Surfaced <span class="body-primary-bold">7 critical dev issues</span> (Android camera permission, scanner crashes, nationality reset, back-button loop, doc-link round-trip break, false confirmations, save failures) and <span class="body-primary-bold">8 UX issues</span> (instructive scanner errors, "see agent" with no reason, multi-pax structure, blocked early).</p>
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-blue">11</h2>
+                    <p class="body-primary">people in the March MVP test, surfacing 7 critical dev bugs and 8 UX issues</p>
                 </div>
-                <div class="card">
-                    <p class="caption-spaced">Comprehension</p>
-                    <h3 class="header2-accent">5-Second Scan Test, n=20</h3>
-                    <hr/>
-                    <p class="body-primary">70% accuracy on the original gray-pill design, below the 80% threshold. Validated the skippability concern as real, not speculative. Drove Decision 4.</p>
+                <div class="card" style="flex: 1 1 220px;">
+                    <h2 class="metric-lrg statichighlight-blue">70%</h2>
+                    <p class="body-primary">read the original scope tags right in a 5-second test, so the "everyone" case really was skippable</p>
                 </div>
             </div>
-        </section>
-
-        <section class="basic-section">
+          </section>
+          <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">The Handoff</h2>
-                <h3 class="header2-accent">Figma as Source of Truth, JSX as Working Surface</h3>
-                <p class="body-primary">The Figma spec served as the engineering source of truth. JSX prototypes (<code>responsibility-cards-2026-03-31.jsx</code>, <code>responsibility-cards-2026-04-09.jsx</code>) and a live Vite sandbox were iteration surfaces: fast to throw away, useful for variant exploration. Once variant N stabilized, decisions translated to Figma for handoff.</p>
-                <p class="body-primary"><span class="body-primary-bold">MR 5613 shipped most of the spec</span> with a handful of accepted small deviations:</p>
-                <ul class="list-spaced">
-                    <li class="body-primary">Page title renamed to "Additional Travel Requirements"</li>
-                    <li class="body-primary">Domain-only link button</li>
-                    <li class="body-primary">Single primary footer button</li>
-                    <li class="body-primary">Collapsed acknowledged row drops the traveler name</li>
-                    <li class="body-primary">Card divider added</li>
-                </ul>
-                <p class="body-primary"><span class="body-primary-bold">One known divergence:</span> the tag treatment shipped as the original Figma version, not variant N, because Figma wasn't updated before implementation kicked off. Documented in design rationale Section 14. A pattern worth naming (see learnings below).</p>
+                <h2 class="header1-primary">The Build</h2>
+                <h3 class="header2-accent">Reviewing It as a Guest</h3>
+                <p class="body-primary">I reviewed the build (MR 5613) against the spec. Most of it matched, and I accepted a few small changes, like the page title becoming "Additional Travel Requirements."</p>
+                <p class="body-primary">Walking it as a Guest is what caught the real bug: "Complete Later" dropped you on Manage Trip with no way back. I raised it as an expectation ("I'd expect to be able to return to it") rather than a code review note, and let engineering own the fix.</p>
+                <h3 class="header2-accent">The Miss</h3>
+                <p class="body-primary">The build shipped the original tag design, the one that scored 70%. <span class="highlight-text combo-blue-light">That one's on me: I didn't update Figma before engineering started.</span> The fix is queued, and the new tag still needs its own test before I'd call it proven.</p>
             </div>
-        </section>
-
+          </section>
           <section class="basic-section">
             <div class="text-block">
                 <h2 class="header1-primary">What Came Next</h2>
@@ -274,46 +218,15 @@
                 <p class="body-primary">I handed it off as 20 Figma frames, desktop and mobile. Engineering picked up the build in late July.</p>
             </div>
           </section>
-        <section class="basic-section">
+          <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">What I Learned</h2>
-                <h3 class="header2-accent">Four Patterns I'm Carrying Forward</h3>
-            </div>
-
-            <div class="text-block">
-                <h3 class="header2-accent">1. Lock Design Decisions Into Figma Before Implementation Kicks Off</h3>
-                <p class="body-primary">Once engineering builds, the leverage to course-correct shrinks. JSX prototypes are working surfaces, not source of truth. When a test invalidates a Figma version, update Figma before handoff, not after.</p>
-            </div>
-
-            <div class="text-block">
-                <h3 class="header2-accent">2. Surface UX Gaps as Routing Problems, Not Code Reviews</h3>
-                <p class="body-primary">"I'd expect to be able to return to it" lands harder than "the <code>setShowButton</code> condition is wrong." The pre-prod Complete Later → Manage Trip dead-end was caught as a guest-experience gap, not a code review note.</p>
-            </div>
-
-            <div class="text-block">
-                <h3 class="header2-accent">3. Stay In Role</h3>
-                <p class="body-primary">Calling out implementation details (e.g., the <code>clear()</code> wiping partial acks) reads as out-of-role. <span class="highlight-text combo-blue-light">Better: ask the UX expectation question and let engineering answer with what they know.</span></p>
-            </div>
-
-            <div class="text-block">
-                <h3 class="header2-accent">4. Conventions Earn Their Keep</h3>
-                <p class="body-primary">The typography audit during this project surfaced off-scale sizes (11/13/15/18px) leaking into the prototype. Drove the expansion of the team's typography conventions, including a grep-before-shipping audit step.</p>
-            </div>
-        </section>
-
-        <section class="basic-section">
-            <div class="text-block">
-                <h2 class="header1-primary">Coda</h2>
-                <h3 class="header2-accent">Where AI Ended and Design Judgment Began</h3>
-                <ul style="margin-left: 2rem; display: flex; flex-direction: column; gap: .75rem;">
-                    <li class="body-primary">AI iterated 12 tag variants in a session. The decision to stop at variant N and run a second scan test was a design judgment call.</li>
-                    <li class="body-primary">AI compressed the Timatic policy table. The decision to skip Bahamas C17 ("Items to declare") because it would confuse guests was a domain call.</li>
-                    <li class="body-primary">AI flagged the dedup edge cases. The decision to invest in the booking-level architecture rather than patch the per-traveler flow was a structural call backed by EM input.</li>
-                    <li class="body-primary"><span class="highlight-text combo-blue-light">The pre-prod routing bug was caught by walking the flow as a guest, not by reading code.</span></li>
+                <h2 class="header1-primary">What I'd Keep</h2>
+                <ul class="list-spaced">
+                    <li class="body-primary"><strong>Update the source of truth before handoff.</strong> A test result that never reaches Figma doesn't reach the build.</li>
+                    <li class="body-primary"><strong>Raise gaps as experience questions.</strong> "I'd expect to get back here" lands better than pointing at a line of code, and keeps me in my lane.</li>
                 </ul>
             </div>
-        </section>
-
+          </section>
         <section class="next-case-section">
           <a href="notification-center.html" class="next-case-link">
             <div class="next-case-text">
