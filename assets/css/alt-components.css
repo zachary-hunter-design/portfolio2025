@@ -1592,6 +1592,119 @@ body.accent-pink   { --accent: var(--primary-pink);   --accent-tint: var(--light
     margin-bottom: 2rem;
 }
 
+/* Live scan animations (kiosk). The SVGs animate with SMIL, which ignores
+   prefers-reduced-motion, so reduced-motion visitors get the static image. */
+.scan-live {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(2rem, 5vw, 3.5rem) 16px;
+}
+
+.scan-card {
+    width: min(340px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+    font-family: var(--font-primary), sans-serif;
+}
+
+.scan-card .flow-label {
+    margin-bottom: 0.25rem;
+}
+
+.scan-screen {
+    flex: 1;
+    width: 100%;
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 1.25rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.scan-screen img {
+    height: 240px;
+    width: auto;
+    max-width: 100%;
+}
+
+.scan-title {
+    font: 700 1.05rem var(--font-primary), sans-serif;
+    color: var(--text-dark);
+}
+
+.scan-caption {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text-light);
+}
+
+.static-only { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    .static-only { display: block; }
+    .motion-only { display: none; }
+}
+
+/* Scroll motion. motion.js adds .motion-on only when motion is allowed, so
+   without JS or with reduced motion everything renders in its final state. */
+.motion-on .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+@media print {
+    .motion-on .reveal { opacity: 1; transform: none; }
+}
+
+.motion-on .reveal.in-view {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.motion-on .bars-pending .bar-fill {
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.motion-on .bars-pending .bar-value,
+.motion-on .bars-pending .bar-threshold {
+    opacity: 0;
+}
+
+.motion-on .bars-pending.bars-in .bar-fill {
+    transform: scaleX(1);
+    transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.motion-on .bars-pending.bars-in .bar-value {
+    opacity: 1;
+    transition: opacity 0.4s ease 0.8s;
+}
+
+.motion-on .bars-pending.bars-in .bar-threshold {
+    opacity: 0.55;
+    transition: opacity 0.4s ease 1s;
+}
+
+.motion-on .bars-in .bar-row:nth-child(2) .bar-fill { transition-delay: 0.15s; }
+.motion-on .bars-in .bar-row:nth-child(3) .bar-fill { transition-delay: 0.3s; }
+.motion-on .bars-in .bar-row:nth-child(4) .bar-fill { transition-delay: 0.45s; }
+.motion-on .bars-in .bar-row:nth-child(5) .bar-fill { transition-delay: 0.6s; }
+.motion-on .bars-in .bar-row:nth-child(6) .bar-fill { transition-delay: 0.75s; }
+
+.motion-on .flow-in .flow-steps li.is-moved {
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
 /* 100vw counts the scrollbar on desktop; clip the sliver it would add. */
 body { overflow-x: clip; }
 

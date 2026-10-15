@@ -60,6 +60,14 @@ Anything that's mostly text or numbers is built in HTML inside a band, not baked
 - `.flow-compare` for a reordered sequence (stacks into two columns on phones)
 - `.bar-chart` for a few single-series values, with an optional `.bar-threshold` pass line. Always pair it with a `.sr-only` table wrapped in a div, never a table carrying `.sr-only` itself (tables ignore the 1px width and widen the page)
 
+## Motion
+`assets/js/motion.js` adds scroll motion only when JS runs and the visitor allows motion; otherwise everything renders in its final state.
+- Bands, tables, card groups and quotes below the fold fade and rise in. Checked on scroll, so anything jumped past still appears.
+- `.bar-chart` bars grow from the baseline, values fade in after.
+- `.flow-compare`: the two `.is-moved` steps in the last row start swapped and slide into place.
+- Real animated artifacts (like the kiosk SMIL SVGs) go in a `.motion-only` band, with a `.static-only` image fallback for reduced motion.
+Motion has to show something. No parallax, cursor effects or page transitions.
+
 ## Production
 - Compose in HTML, render with headless Chrome at 2x, export.
 - Convert: `cwebp -q 90 -m 6 -sharp_yuv in.png -o out.webp`

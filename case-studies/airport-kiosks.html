@@ -11,8 +11,8 @@
     <meta property="og:image" content="../assets/images/kiosk/cover.webp?v=2">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="../assets/images/avatar.png">
-    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261015g" />
-    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261015g" />
+    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261015j" />
+    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261015j" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet"/>
@@ -224,7 +224,27 @@
                 <figcaption class="image-caption caption-spaced">
                     Two machines, two lessons
                 </figcaption>
-                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/kiosk/scan.webp"
+                <div class="image-band motion-only">
+                    <div class="scan-live">
+                        <div class="scan-card">
+                            <span class="flow-label">Las Vegas &middot; where the reader is</span>
+                            <div class="scan-screen">
+                                <span class="scan-title">Scan Your Boarding Pass</span>
+                                <img src="../assets/images/kiosk/scan-las.svg" alt="Animation: a phone slides under the lip of the kiosk screen to the hidden reader.">
+                                <span class="scan-caption">Hold your phone face up under the red light.</span>
+                            </div>
+                        </div>
+                        <div class="scan-card">
+                            <span class="flow-label">Charleston &middot; which way up</span>
+                            <div class="scan-screen">
+                                <span class="scan-title">Scan Your Boarding Pass</span>
+                                <img src="../assets/images/kiosk/scan-chs.svg" alt="Animation: a boarding pass flips face down onto the kiosk's flat scanning bed.">
+                                <span class="scan-caption">Place your phone or paper pass face down on the scanner. It may take a second or two.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-band static-only"><img loading="lazy" decoding="async" src="../assets/images/kiosk/scan.webp"
                      alt="Two scan screens. Las Vegas shows a phone sliding under the lip of the screen to a hidden reader. Charleston shows a pass placed face down on a flat scanning bed, with the caption Place your phone or paper pass face down on the scanner."></div>
             </figure>
             <div class="text-block">
@@ -284,5 +304,6 @@
       </footer>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/highlighter.js"></script>
+    <script src="../assets/js/motion.js?v=1"></script>
 </body>
 </html>
