@@ -1030,6 +1030,17 @@ figure {
     font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
+/* Text-cell variant: sentences read better left-aligned than numbers do */
+.comparison-table--text td,
+.comparison-table--text th {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.comparison-table--text thead th {
+    padding: 0 clamp(1rem, 3vw, 2.5rem);
+}
+
 @media (max-width: 768px) {
     .comparison-table,
     .comparison-table tbody,

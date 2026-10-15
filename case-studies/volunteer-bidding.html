@@ -412,6 +412,78 @@
                 <p class="body-primary"><span class="highlight-text combo-orange-light">We targeted the UX problem we could solve, not the inventory problem we couldn't.</span></p>
             </div>
           </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">What Came Next</h2>
+                <h3 class="header2-accent">Three New Asks for a Flow I'd Just Cut Down</h3>
+                <p class="body-primary">The redesign shipped, but the flow kept moving. Over the next year legal and product brought three new asks, and each one wanted to add weight back.</p>
+            </div>
+
+            <table class="comparison-table comparison-table--text">
+                <thead>
+                  <tr>
+                    <th class="header3-primary">Ask</th>
+                    <th class="header3-primary" style="color: var(--text-light)">What I Did</th>
+                    <th class="header3-primary" style="color: var(--text-light)">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="header3-primary trh combo-orange">Legal Disclosure</th>
+                    <td class="body-primary combo-orange-light" data-label="What I did">Added denied-boarding terms at the bid step in as few words as the requirement allowed</td>
+                    <td class="body-primary combo-orange-light td-right" data-label="Status">Shipped. Validated with 21 participants, comprehension held</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-orange">Cancel Instead of Rebook</th>
+                    <td class="body-primary combo-orange-light" data-label="What I did">Gave cancel its own step instead of adding it to flight selection</td>
+                    <td class="body-primary combo-orange-light td-right" data-label="Status">Direction chosen, prototyped</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-orange">Bid Amounts</th>
+                    <td class="body-primary combo-orange-light" data-label="What I did">Dropped the custom amount and labeled each tier as a multiple of the fare</td>
+                    <td class="body-primary combo-orange-light td-right" data-label="Status">Explored, heading to spec</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            <div class="text-block">
+                <h3 class="header2-accent">Why Cancel Got Its Own Step</h3>
+                <p class="body-primary">Product didn't want another step, so I built three ways to fit cancel onto the flight selection page. All three made the page worse. It already had two boxed elements competing for attention, and cancel is a different job entirely: leave the trip, not pick a flight. <span class="highlight-text combo-orange-light">One page, one job. A full page is the argument for the step.</span></p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Cancel moves to its own step, so each page has one job
+                </figcaption>
+                <img loading="lazy" decoding="async" class="basic-image" src="../assets/images/volunteer-bidding/cancel-step.webp"
+                     alt="Three mobile screens. First, a choice screen asking how you would like to volunteer, with options to bid on a different flight or cancel the trip. Second, the flight selection page for the bid path. Third, a cancel confirmation screen asking whether to cancel just this flight or the entire booking.">
+            </figure>
+            <div class="text-block">
+                <p class="body-primary">I also lightened the page without touching the yellow warning callout. That callout is what tells Guests a change isn't guaranteed, which only 1 in 6 understood in the original test. So the current flight card became a one-line subtitle, and a redundant instruction line went away.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Flight selection, before and after
+                </figcaption>
+                <img loading="lazy" decoding="async" class="basic-image" style="margin-bottom: 1.5rem;" src="../assets/images/volunteer-bidding/before-after.webp"
+                     alt="Two versions of the flight selection page side by side, with numbered markers. The before version stacks a warning callout, a current flight card, an instruction line, and a cancel card. The after version keeps the warning callout and shows the current flight as a one-line subtitle.">
+                <ol class="list-spaced">
+                    <li class="body-primary"><strong>Warning callout:</strong> kept at full strength</li>
+                    <li class="body-primary"><strong>Current flight card:</strong> now a one-line subtitle</li>
+                    <li class="body-primary"><strong>Instruction line:</strong> cut, the title already says it</li>
+                    <li class="body-primary"><strong>Cancel card:</strong> moved to its own step</li>
+                </ol>
+            </figure>
+
+            <div class="text-block">
+                <h3 class="header2-accent">Why Fare Multiples</h3>
+                <p class="body-primary">Only a third of the original participants understood how bidding worked. The old tiers were dollar amounts with no visible logic. Labeling each one 2x, 3x, or 4x your fare puts the math on the screen.</p>
+            </div>
+
+            <div class="text-block">
+                <h3 class="header2-accent">The Ceiling</h3>
+                <p class="body-primary">Bids come in steadily now, but only a small fraction get accepted at the gate. That's the limit I flagged in the original research: the experience was never the main constraint, whether the alternate flights actually work for people is. That's a routes and gate operations question, and it's where the work sits now.</p>
+            </div>
+          </section>
           <section class="next-case-section">
             <a href="doc-verification.html" class="next-case-link">
               <div class="next-case-text">
@@ -445,7 +517,7 @@
           </div>
 
           <div class="last-updated">
-            <p>Last updated May 8, 2026</p>
+            <p>Last updated October 15, 2026</p>
           </div>
         </div>
         </div>
