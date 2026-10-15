@@ -72,7 +72,7 @@
                 <h2 class="header1-primary">Executive Summary</h2>
                 <p class="body-primary">A booking-level Additional Documents page that <span class="highlight-text combo-blue-light">deduplicates Timatic API requirements across travelers in a booking</span>, gating international check-in until acknowledgment.</p>
                 <p class="body-primary">The prior design produced four identical acknowledgment cards for a family of four flying to the Dominican Republic. The shipped version collapses them to one.</p>
-                <p class="body-primary">I reviewed the build (<span class="highlight-text combo-blue-light">MR 5613</span>) against the spec and caught a routing dead end by walking it as a Guest. Then I took the same requirements data public, as a lookup anyone can use before they book.</p>
+                <p class="body-primary">I reviewed the build (MR 5613) against the spec and caught a routing dead end by walking it as a Guest. Then I took the same requirements data public, as a lookup anyone can use before they book.</p>
               </div>
               <hr class="vertical-hr"/>
               <div class="duties-list">
@@ -110,8 +110,8 @@
 
             <div class="text-block">
                 <h3 class="header2-accent">1. API Ambiguity</h3>
-                <p class="body-primary">Timatic AutoCheck v1.3 returns per-pax results with <span class="highlight-text combo-blue-light">five evaluationResult values (YES, NO, CONDITIONAL, UNKNOWN, transient retry)</span> across multiple RuleSet codes (REQDOC, REQFRM, REQVIS, REQTIX, REQYF, VALDOC, plus INF* informational).</p>
-                <p class="body-primary">Not every code maps to UI. Not every result is actionable. <span class="highlight-text combo-blue-light">There's no metadata to tell you whether a form is "per-family" or "per-person."</span></p>
+                <p class="body-primary">Timatic AutoCheck v1.3 returns per-pax results with five evaluationResult values (YES, NO, CONDITIONAL, UNKNOWN, transient retry) across multiple RuleSet codes (REQDOC, REQFRM, REQVIS, REQTIX, REQYF, VALDOC, plus INF* informational).</p>
+                <p class="body-primary">Not every code maps to UI. Not every result is actionable. There's no metadata to tell you whether a form is "per-family" or "per-person."</p>
             </div>
 
             <div class="text-block">
@@ -180,7 +180,7 @@
                 <p class="body-primary"><span class="body-primary-bold">Decision:</span> dedupe results by hashing on the rule code plus the raw response text. If two travelers' responses match exactly, collapse them into a single card.</p>
                 <p class="body-primary"><span class="body-primary-bold">Alternatives:</span> ask Timatic for per-family vs per-person metadata (it doesn't exist), or hard-code per-code policy.</p>
                 <p class="body-primary"><span class="body-primary-bold">Evidence:</span> the per-family vs per-person distinction is irrelevant if you can observe directly whether multiple travelers got identical results. Dedup at the text level sidesteps the missing metadata problem entirely.</p>
-                <p class="body-primary"><span class="body-primary-bold">AI's role:</span> ran the 29 scenarios through the proposed dedup logic to surface collisions. <span class="highlight-text combo-blue-light">Engineering later shifted the dedup key to <code>title + description</code></span> (backend pre-maps codes to titles). Behavior preserved, implementation cleaner.</p>
+                <p class="body-primary"><span class="body-primary-bold">AI's role:</span> ran the 29 scenarios through the proposed dedup logic to surface collisions. Engineering later shifted the dedup key to <code>title + description</code> (backend pre-maps codes to titles). Behavior preserved, implementation cleaner.</p>
             </div>
 
             <div class="text-block">
@@ -202,7 +202,7 @@
                 <p class="body-primary"><span class="body-primary-bold">Decision:</span> distinguish "applies to all travelers" from "applies to a named traveler" using shape and icon, not color saturation.</p>
                 <p class="body-primary"><span class="body-primary-bold">Alternative:</span> the original Figma, a gray pill for "all travelers" + sky-blue pill for named traveler.</p>
                 <p class="body-primary"><span class="body-primary-bold">Evidence:</span> a 5-second scan test (n=20) on the original gray-pill design returned <span class="highlight-text combo-blue-light">70% comprehension</span>, below the 80% threshold I'd set for shipping. The stakeholder skippability concern was validated, not speculative.</p>
-                <p class="body-primary"><span class="body-primary-bold">AI's role:</span> <span class="highlight-text combo-blue-light">12+ variants iterated in the live sandbox in a single session</span> (variants A through N covering Moxy badge color pairs, eyebrow text in five colors, colored-icon hybrids, asymmetric treatments). Variant N landed: gray eyebrow text with UsersIcon for "All Travelers" + Moxy pill-stroke sky-blue per named traveler.</p>
+                <p class="body-primary"><span class="body-primary-bold">AI's role:</span> 12+ variants iterated in the live sandbox in a single session (variants A through N covering Moxy badge color pairs, eyebrow text in five colors, colored-icon hybrids, asymmetric treatments). Variant N landed: gray eyebrow text with UsersIcon for "All Travelers" + Moxy pill-stroke sky-blue per named traveler.</p>
             </div>
         </section>
 
@@ -229,7 +229,7 @@
                     <p class="caption-spaced">Comprehension</p>
                     <h3 class="header2-accent">5-Second Scan Test, n=20</h3>
                     <hr/>
-                    <p class="body-primary"><span class="highlight-text combo-blue-light">70% accuracy on the original gray-pill design</span>, below the 80% threshold. Validated the skippability concern as real, not speculative. Drove Decision 4.</p>
+                    <p class="body-primary">70% accuracy on the original gray-pill design, below the 80% threshold. Validated the skippability concern as real, not speculative. Drove Decision 4.</p>
                 </div>
             </div>
         </section>
@@ -247,7 +247,7 @@
                     <li class="body-primary">Collapsed acknowledged row drops the traveler name</li>
                     <li class="body-primary">Card divider added</li>
                 </ul>
-                <p class="body-primary"><span class="body-primary-bold">One known divergence:</span> the tag treatment shipped as the original Figma version, not variant N, because Figma wasn't updated before implementation kicked off. <span class="highlight-text combo-blue-light">Documented in design rationale Section 14.</span> A pattern worth naming (see learnings below).</p>
+                <p class="body-primary"><span class="body-primary-bold">One known divergence:</span> the tag treatment shipped as the original Figma version, not variant N, because Figma wasn't updated before implementation kicked off. Documented in design rationale Section 14. A pattern worth naming (see learnings below).</p>
             </div>
         </section>
 
@@ -296,7 +296,7 @@
 
             <div class="text-block">
                 <h3 class="header2-accent">1. Lock Design Decisions Into Figma Before Implementation Kicks Off</h3>
-                <p class="body-primary">Once engineering builds, the leverage to course-correct shrinks. JSX prototypes are working surfaces, not source of truth. <span class="highlight-text combo-blue-light">When a test invalidates a Figma version, update Figma before handoff</span>, not after.</p>
+                <p class="body-primary">Once engineering builds, the leverage to course-correct shrinks. JSX prototypes are working surfaces, not source of truth. When a test invalidates a Figma version, update Figma before handoff, not after.</p>
             </div>
 
             <div class="text-block">
@@ -320,9 +320,9 @@
                 <h2 class="header1-primary">Coda</h2>
                 <h3 class="header2-accent">Where AI Ended and Design Judgment Began</h3>
                 <ul style="margin-left: 2rem; display: flex; flex-direction: column; gap: .75rem;">
-                    <li class="body-primary">AI iterated 12 tag variants in a session. <span class="highlight-text combo-blue-light">The decision to stop at variant N and run a second scan test was a design judgment call.</span></li>
-                    <li class="body-primary">AI compressed the Timatic policy table. <span class="highlight-text combo-blue-light">The decision to skip Bahamas C17 ("Items to declare") because it would confuse guests was a domain call.</span></li>
-                    <li class="body-primary">AI flagged the dedup edge cases. <span class="highlight-text combo-blue-light">The decision to invest in the booking-level architecture rather than patch the per-traveler flow was a structural call backed by EM input.</span></li>
+                    <li class="body-primary">AI iterated 12 tag variants in a session. The decision to stop at variant N and run a second scan test was a design judgment call.</li>
+                    <li class="body-primary">AI compressed the Timatic policy table. The decision to skip Bahamas C17 ("Items to declare") because it would confuse guests was a domain call.</li>
+                    <li class="body-primary">AI flagged the dedup edge cases. The decision to invest in the booking-level architecture rather than patch the per-traveler flow was a structural call backed by EM input.</li>
                     <li class="body-primary"><span class="highlight-text combo-blue-light">The pre-prod routing bug was caught by walking the flow as a guest, not by reading code.</span></li>
                 </ul>
             </div>
