@@ -1910,3 +1910,33 @@ a:hover > .icon-out svg { transform: rotate(-45deg) translateX(2px); }
     border-color: #D1D5DB;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
+
+/* Arrow option 1: outlined ring in the text color. The ring firms up on hover. */
+.btn-icon,
+.btn-secondary .btn-icon,
+.next-case-link .btn-icon {
+    background: transparent;
+    color: inherit;
+    border: 1.5px solid;
+}
+
+.btn-icon { width: 28px; height: 28px; }
+.btn-primary .btn-icon { border-color: rgba(255, 255, 255, 0.5); }
+.btn-secondary .btn-icon { border-color: rgba(26, 26, 26, 0.3); }
+.next-case-link .btn-icon { border-color: rgba(26, 26, 26, 0.3); color: var(--text-dark); }
+.btn-icon svg { stroke-width: 2; }
+
+a:hover > .btn-icon { border-color: currentColor; }
+.next-case-link:hover .btn-icon { border-color: var(--text-dark); }
+.next-case-link:hover .btn-icon svg { transform: translateX(2px); }
+
+/* Secondary: white with a hairline edge, so it reads on tinted heroes and on white. */
+.btn-secondary {
+    background: white;
+    box-shadow: inset 0 0 0 1px rgba(17, 24, 39, 0.14), 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.btn-secondary:hover {
+    background: white;
+    box-shadow: inset 0 0 0 1px rgba(17, 24, 39, 0.24), 0 6px 16px rgba(0, 0, 0, 0.08);
+}
