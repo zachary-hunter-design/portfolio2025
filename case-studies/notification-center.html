@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study: Breeze Notification Center Discovery Research</title>
-    <meta name="description" content="Case study: why the Notification Center went with a bell only half of people found cold. A confounded test, a clean re-test, and a decision on better reasoning.">
+    <title>Case Study: A Record, Not an Alarm</title>
+    <meta name="description" content="Case study: Breeze&#x27;s Notification Center. A record of the pushes guests lose, and why flight status belongs on the trip card while history sits behind a quiet bell.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Three rounds of testing measured the wrong thing">
-    <meta property="og:description" content="Case study: why the Notification Center went with a bell only half of people found cold. A confounded test, a clean re-test, and a decision on better reasoning.">
+    <meta property="og:title" content="A record, not an alarm">
+    <meta property="og:description" content="Case study: Breeze&#x27;s Notification Center. A record of the pushes guests lose, and why flight status belongs on the trip card while history sits behind a quiet bell.">
     <meta property="og:image" content="https://zhunterux.netlify.app/assets/images/og/notification-center.jpg">
     <meta property="og:url" content="https://zhunterux.netlify.app/case-studies/notification-center.html">
     <meta name="twitter:image" content="https://zhunterux.netlify.app/assets/images/og/notification-center.jpg">
@@ -63,14 +63,15 @@
               <a href="../index.html#projects-section" class="back-link">
                 <span aria-hidden="true">←</span> Back to projects
               </a>
-              <h1 class="hero-primary">Three Rounds of Testing Measured the Wrong Thing</h1>
-              <h2 class="header2-accent">The Notification Center, and why 50% was the right answer</h2>
+              <h1 class="hero-primary">A Record, Not an Alarm</h1>
+              <h2 class="header2-accent">Breeze's Notification Center, and where flight updates belong</h2>
             </div>
             <div class="summary-duties">
               <div class="summary">
                 <h2 class="header1-primary">Executive Summary</h2>
-                <p class="body-primary">The Notification Center is a log of the messages Breeze sends you. Its product impact is small, and I'm not including it for that. I'm including it for the research.</p>
-                <p class="body-primary">Three rounds of my own discovery testing turned out to be measuring a different part of the screen. I caught it, re-tested cleanly, and <span class="highlight-text combo-orange-light">the clean test disproved my own explanation.</span> The decision held, but on better reasoning.</p>
+                <p class="body-primary">Breeze sends pushes about delays, gate changes, and check-in. Swipe one away and it's gone. I designed the Notification Center: one place to go back to what Breeze told you.</p>
+                <p class="body-primary">Testing kept saying people couldn't find it. The reason turned out to be good news: they were finding their flight status on the trip card, right where it belongs. <span class="highlight-text combo-orange-light">So the trip card owns what's happening now, and the Notification Center is a quiet record of what we told you.</span></p>
+                <p class="body-primary">It's live in the app and on the web.</p>
               </div>
               <hr class="vertical-hr"/>
               <div class="duties-list">
@@ -93,7 +94,7 @@
                   <div class="duties-text-div">
                     <p>Responsibilities:</p>
                     <p class="body-primary-bold">
-                        Study design, testing, analysis, UX/UI
+                        UX/UI, study design, testing, analysis
                     </p>
                   </div>
                 </div>
@@ -102,79 +103,72 @@
           </section>
           <section class="basic-section">
             <div class="text-block">
-              <h2 class="header1-primary">The Question</h2>
-              <h3 class="header2-accent">Can People Find It?</h3>
-              <p class="body-primary">The Notification Center sits behind a bell in the app's top corner. I tested whether guests could find it from the home screen, using a flight delay as the scenario: "something changed with your flight, go find the updates."</p>
-            </div>
-            <div class="cards-3" style="flex-direction: row; flex-wrap: wrap;">
-                <div class="card" style="flex: 1 1 220px;">
-                    <h2 class="metric-lrg statichighlight-orange">14%</h2>
-                    <p class="body-primary">went to the bell first, round one</p>
-                </div>
-                <div class="card" style="flex: 1 1 220px;">
-                    <h2 class="metric-lrg statichighlight-orange">31%</h2>
-                    <p class="body-primary">after I restyled the bell</p>
-                </div>
-                <div class="card" style="flex: 1 1 220px;">
-                    <h2 class="metric-lrg statichighlight-orange">~60%</h2>
-                    <p class="body-primary">on a home with no trip on it</p>
-                </div>
-            </div>
-            <div class="text-block">
-              <p class="body-primary">Same bell in every round. The only thing that moved the number was whether a trip card was on screen.</p>
+              <h2 class="header1-primary">The Problem</h2>
+              <h3 class="header2-accent">Messages That Disappear</h3>
+              <p class="body-primary">A push is easy to lose. Once it's swiped away, there's nowhere to see it again: not the old gate, not the new time, not the link you didn't tap. The team kept hearing the same thing:</p>
+              <figure class="research-quote">
+                  <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
+                  <blockquote class="research-quote-text">I'm sure you guys sent something, I just can't find it.</blockquote>
+              </figure>
+              <p class="body-primary">It showed up in our survey scores too. In early 2026, 303 detractors said Breeze went silent on them, including guests whose messages were confirmed delivered. If you can't see a message twice, delivered and never sent look the same.</p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">The Catch</h2>
-                <h3 class="header2-accent">The Test Was Scoring a Different Surface</h3>
-                <p class="body-primary">The trip card showed a big "Delayed" badge. That badge answers "what happened to my flight?" faster than any bell. People who "failed" mostly succeeded at the real job: they saw Delayed and were done. <span class="highlight-text combo-orange-light">We were scoring them for not finding a second door to information already in front of them.</span></p>
-                <p class="body-primary">So the rule I wrote down: before fielding a test, list every surface that answers the scenario's job and rank them by how visible they are. If the one you're studying isn't first, you're testing its competitor. It's now a standing check in our team's research review.</p>
+              <h2 class="header1-primary">The Design</h2>
+              <h3 class="header2-accent">A Record of What Breeze Told You</h3>
+              <p class="body-primary">A few calls kept it honest and simple:</p>
+              <ul class="list-spaced">
+                  <li class="body-primary">Push messages only. It never pretends to hold your texts or emails.</li>
+                  <li class="body-primary">Trip updates and everything else get their own tabs, with the latest update first.</li>
+                  <li class="body-primary">The route on every message, so a trip with two flights stays clear.</li>
+                  <li class="body-primary">The whole row is the link. Tap a delay and you land on your flight, with no extra buttons.</li>
+              </ul>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Status on the trip card, history behind the bell
+                </figcaption>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/notification-center/record-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/notification-center/record.webp"
+                     alt="Two screens. Left, the app home: a trip card for BNA to MCO marked Delayed, departing 6:45 PM from gate C12, with a quiet bell and a dot in the top corner. Right, the Updates record: Trip Activity and Other tabs, the latest messages under Most current, like Your Breeze flight to Orlando is now departing at 6:45 PM and Your gate is C12, each with the route Nashville to Orlando, and older updates under Previous."></picture></div>
+            </figure>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+              <h2 class="header1-primary">Can People Find It?</h2>
+              <h3 class="header2-accent">The Trip Card Kept Winning</h3>
+              <p class="body-primary">In the first test, only 14% of people went to the bell when asked to find their flight update. The reason was on the same screen: the trip card showed a big "Delayed" badge, and that's where they tapped.</p>
+              <p class="body-primary">On a home with no trip, about 60% went straight to the bell. Same bell. The only thing that changed was whether the trip card was there to answer the question first.</p>
+              <p class="body-primary"><span class="highlight-text combo-orange-light">People weren't failing to find the record. They were finding their flight status, right where it should be.</span></p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">The Override</h2>
-                <h3 class="header2-accent">Shipping Against My Own Test Winner</h3>
-                <p class="body-primary">Meanwhile a head-to-head (26 people per version) had a clear winner on paper: a labeled "Updates" card under the trip, 85% against the bell's 31%. I set the pass line before testing, and the card cleared it.</p>
-                <p class="body-primary">I chose the bell anyway, and wrote it down as an override, not a re-read of the numbers. My reasons: the card's win looked inflated by the Delayed badge and by the task saying "updates," which matched the card's label. And a quiet bell seemed findable enough when you need it.</p>
-            </div>
-          </section>
-          <section class="basic-section">
-            <div class="text-block">
-                <h2 class="header1-primary">The Clean Test</h2>
-                <h3 class="header2-accent">It Disproved My Explanation</h3>
-                <p class="body-primary">So I re-ran it without the confounds: an on-time trip, no badge, neutral wording, plus a third version with a count on the bell.</p>
+              <h2 class="header1-primary">Two Jobs, Two Places</h2>
+              <h3 class="header2-accent">Status on the Card, History Behind the Bell</h3>
+              <p class="body-primary">That split the problem in two. "What's happening with my flight right now" belongs on the trip card. "What did Breeze tell me" belongs in the record.</p>
+              <p class="body-primary">We still tested how loud the door should be. On a calm, on-time home with neutral wording, an "Updates" button on the trip card was found far more often than the bell.</p>
             </div>
             <figure>
                 <figcaption class="image-caption caption-spaced">
                     Calm home, about 26 people per version
                 </figcaption>
-                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/notification-center/cells.webp"
-                     alt="Three app home screens with an on-time trip. Action card: an Updates row under the trip card, found by about 90 percent. Bell with a dot, the version we chose, found by about 50 percent. Bell with a count of 2, found by about 57 percent."></div>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/notification-center/cells-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/notification-center/cells.webp"
+                     alt="Three app home screens with an on-time trip. Action card: an Updates row under the trip card, found by about 90 percent. Bell with a dot, the version we chose, found by about 50 percent. Bell with a count of 2, found by about 57 percent."></picture></div>
             </figure>
             <div class="text-block">
-                <p class="body-primary">The card still won by about 40 points. It wasn't the confounds. Both of my reasons for picking the bell were wrong.</p>
+              <p class="body-primary">The button won, and we still went with the bell. A record that shouts competes with things that matter more, like check-in and your gate. About half finding it cold is right for a log you open when you want it, and a count on the bell barely helped.</p>
+              <p class="body-primary">That only works if urgent news reaches people by push first, so I checked that push opt-in was healthy before we locked it.</p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">The Decision</h2>
-                <h3 class="header2-accent">Same Call, Better Reason</h3>
-                <p class="body-primary">The real question was never "which entry is easiest to find." It was what the Notification Center is for. The trip card is the primary surface: status, time, gate, found almost every time. The Notification Center is a record. You go looking for it when you want it, and the bell is the convention people already know.</p>
-                <p class="body-primary"><span class="highlight-text combo-orange-light">A record that shouts competes for attention it shouldn't have.</span> So about 50% finding it cold is fit for its role, and the count didn't help anyway. We went with the quiet bell and a dot.</p>
-                <p class="body-primary">That call depended on one check: urgent messages have to reach people by push, not by hoping they find the bell. I confirmed push opt-in was healthy before locking it.</p>
-            </div>
-          </section>
-          <section class="basic-section">
-            <div class="text-block">
-                <h2 class="header1-primary">Honest Limits</h2>
+                <h2 class="header1-primary">Where It Stands</h2>
                 <ul class="list-spaced">
-                    <li class="body-primary">The platform didn't record taps, so every number here is hand-coded from recordings. Treat them as directional</li>
-                    <li class="body-primary">The Notification Center's real job, the full message stream, still hasn't been cleanly discovery-tested</li>
-                    <li class="body-primary">The design is in code. I don't have usage data on it yet</li>
+                    <li class="body-primary">The Notification Center is live in the app and on the web, with the quiet bell and a dot</li>
+                    <li class="body-primary">Live flight status on the trip card became its own piece of work</li>
+                    <li class="body-primary">Every number here is hand-coded from session recordings, since the test platform didn't record taps. Treat them as directional</li>
                 </ul>
-                <p class="body-primary">What I'd point to is the method: set the bar before you test, check what your scenario is really measuring, and when you overrule your own data, say so out loud.</p>
             </div>
           </section>
           <section class="next-case-section">
