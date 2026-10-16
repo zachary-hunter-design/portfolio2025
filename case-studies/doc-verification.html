@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study: From Four Identical Cards to One</title>
-    <meta name="description" content="Case study: redesigning international check-in at Breeze as one page per booking, so shared travel requirements show once, plus a public lookup validated with 21 people.">
+    <title>Case Study: Four Travelers, One Entry Form</title>
+    <meta name="description" content="Case study: international check-in at Breeze. One page per booking so shared travel requirements show once, a system that scales to new routes, and a public lookup tested with 21 people.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="From Four Identical Cards to One">
-    <meta property="og:description" content="International check-in at Breeze for international check-in.">
+    <meta property="og:title" content="Four travelers, one entry form">
+    <meta property="og:description" content="Case study: international check-in at Breeze. One page per booking so shared travel requirements show once, a system that scales to new routes, and a public lookup tested with 21 people.">
     <meta property="og:image" content="https://zhunterux.netlify.app/assets/images/og/doc-verification.jpg">
     <meta property="og:url" content="https://zhunterux.netlify.app/case-studies/doc-verification.html">
     <meta name="twitter:image" content="https://zhunterux.netlify.app/assets/images/og/doc-verification.jpg">
@@ -63,14 +63,15 @@
               <a href="../index.html#projects-section" class="back-link">
                 <span aria-hidden="true">←</span> Back to projects
               </a>
-              <h1 class="hero-primary">From Four Identical Cards to One</h1>
-              <h2 class="header2-accent">International check-in at Breeze, from a messy travel API to one page per booking</h2>
+              <h1 class="hero-primary">Four Travelers, One Entry Form</h1>
+              <h2 class="header2-accent">International check-in at Breeze, from a per-traveler API to one page per booking</h2>
             </div>
             <div class="summary-duties">
               <div class="summary">
                 <h2 class="header1-primary">Executive Summary</h2>
-                <p class="body-primary">International check-in pulls document rules from Timatic, an industry travel API. The old flow asked each traveler separately, so a family of four flying to the Dominican Republic acknowledged the same entry form four times.</p>
-                <p class="body-primary">I redesigned it as <span class="highlight-text combo-blue-light">one page for the whole booking</span>: shared requirements show once, and anything that applies to one person says so. Then I took the same data public, as a lookup anyone can use before they book, and validated it with 21 people.</p>
+                <p class="body-primary">International check-in at Breeze gets its document rules from Timatic, the travel industry's requirements API. It answers one traveler at a time, so a family of four flying to the Dominican Republic confirmed the same entry form four times.</p>
+                <p class="body-primary">I redesigned it as <span class="highlight-text combo-blue-light">one page for the whole booking</span>: shared requirements show once, and anything that applies to one person says who. It's been live in check-in since May 2026. It also replaced document rules that were hardcoded airport by airport, so new routes work without rework.</p>
+                <p class="body-primary">Then I took the same data public, as a lookup anyone can use before they book. I tested it with 21 people, and it's in build now.</p>
               </div>
               <hr class="vertical-hr"/>
               <div class="duties-list">
@@ -103,110 +104,104 @@
           <section class="basic-section">
             <div class="text-block">
               <h2 class="header1-primary">The Problem</h2>
-              <h3 class="header2-accent">What Comes Back From the API</h3>
-              <p class="body-primary">Timatic answers per traveler, across a dozen rule codes. Some results need the guest to do something, most don't, and nothing tells you whether a form is one per family or one per person.</p>
-              <p class="body-primary">The old flow showed every result inside a step for each traveler. Our engineering manager put it plainly:</p>
-              <figure class="research-quote">
-                  <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
-                  <blockquote class="research-quote-text">Only one family member needs to have the e-ticket and then not having to ask it 4 more times.</blockquote>
-              </figure>
-              <p class="body-primary">The hard part is mixed bookings. A couple on U.S. and Ukrainian passports shares one entry form, but only Olena needs an entry authorization. The page has to say "everyone" and "just Olena" without making "everyone" feel skippable.</p>
+              <h3 class="header2-accent">Four Times, the Same Form</h3>
+              <p class="body-primary">The old flow put documents inside each traveler's check-in steps. Every traveler got their own results, even when they were identical. A family of four going to the Dominican Republic saw the same entry form four times and had to confirm it four times.</p>
+              <p class="body-primary">Our engineering manager flagged it first: one person fills out that form for the family, so asking four times was pure friction.</p>
+              <p class="body-primary">The harder case is a mixed booking. A couple on U.S. and Ukrainian passports shares one entry form, but only Olena needs an entry authorization. The page has to say "everyone" and "just Olena" without making "everyone" feel skippable.</p>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+              <h2 class="header1-primary">What the API Actually Says</h2>
+              <h3 class="header2-accent">A Dozen Codes, Three Things to Do</h3>
+              <p class="body-primary">Before this, document rules were hardcoded airport by airport, each time Breeze added an international route. Timatic already knows the rules, but it answers per traveler, in a dozen rule codes, and most of them ask nothing of the guest. It also never says whether a form is one per family or one per person.</p>
+              <p class="body-primary">I ran 29 real scenarios across routes and passports and sorted every answer by one question: does the guest have to do something?</p>
+            </div>
+            <table class="comparison-table comparison-table--text">
+                <thead>
+                  <tr>
+                    <th class="header3-primary">Timatic Says</th>
+                    <th class="header3-primary" style="color: var(--text-light)">The Guest Sees</th>
+                    <th class="header3-primary" style="color: var(--text-light)">What They Do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="header3-primary trh combo-blue">An entry form is required</th>
+                    <td class="body-primary combo-blue-light" data-label="The guest sees">An Entry Form card</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="What they do">Fill it out, then confirm</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-blue">No visa needed with an online authorization</th>
+                    <td class="body-primary combo-blue-light" data-label="The guest sees">An Entry Authorization card with the link</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="What they do">Get the authorization, then confirm</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-blue">A return ticket is required</th>
+                    <td class="body-primary combo-blue-light" data-label="The guest sees">A Proof of Onward Travel card</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="What they do">Confirm they have one</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-blue">No visa needed, or a simple exemption</th>
+                    <td class="body-primary combo-blue-light" data-label="The guest sees">Nothing</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="What they do">Nothing to do</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-blue">A visa is required and missing</th>
+                    <td class="body-primary combo-blue-light" data-label="The guest sees">No card. Check-in sends them to an agent</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="What they do">Sort it out at the airport</td>
+                  </tr>
+                  <tr>
+                    <th class="header3-primary trh combo-blue">Notes and behind-the-scenes checks</th>
+                    <td class="body-primary combo-blue-light" data-label="The guest sees">Nothing</td>
+                    <td class="body-primary combo-blue-light td-right" data-label="What they do">Nothing to do</td>
+                  </tr>
+                </tbody>
+              </table>
+            <div class="text-block">
+              <p class="body-primary">Because the rules key off what Timatic returns, not which airport you fly to, <span class="highlight-text combo-blue-light">a new route works without new rules.</span></p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
                 <h2 class="header1-primary">The Design</h2>
                 <h3 class="header2-accent">One Page Per Booking</h3>
-                <p class="body-primary">Every traveler's results go into one list. Identical requirements collapse into a single card, tagged with who it applies to, and check-in waits until each one is acknowledged.</p>
+                <p class="body-primary">Documents moved out of each traveler's steps and onto one page for the whole booking. The rule that makes it work is simple: if everyone got the same answer, show it once. Timatic doesn't need to say whether a form is per family. Identical answers are the signal.</p>
+                <p class="body-primary">Anything that applies to one person carries their name, and check-in waits until each card is confirmed.</p>
             </div>
             <figure>
                 <figcaption class="image-caption caption-spaced">
-                    The booking-level page, two bookings
+                    The booking page, two bookings
                 </figcaption>
-                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/doc-verification/checkin.webp?v=2"
-                     alt="Two versions of the Additional Documents page. For a family of four flying to the Dominican Republic, one Entry Form card tagged All Travelers. For a couple with U.S. and Ukraine passports, the same shared Entry Form card plus an Entry Authorization card tagged with only Olena Kovalenko's name."></div>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/doc-verification/checkin-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/doc-verification/checkin.webp?v=2"
+                     alt="Two versions of the Additional Documents page. For a family of four flying to the Dominican Republic, one Entry Form card labeled All Travelers. For a couple with U.S. and Ukraine passports, the same shared Entry Form card plus an Entry Authorization card tagged with only Olena Kovalenko's name."></picture></div>
             </figure>
             <div class="text-block">
-                <h3 class="header2-accent">Four Calls That Shaped It</h3>
-            </div>
-            <table class="comparison-table comparison-table--text">
-                <thead>
-                  <tr>
-                    <th class="header3-primary">Call</th>
-                    <th class="header3-primary" style="color: var(--text-light)">What I Did</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Why</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th class="header3-primary trh combo-blue">Booking, not traveler</th>
-                    <td class="body-primary combo-blue-light" data-label="What I did">Moved documents out of the per-traveler steps into one page</td>
-                    <td class="body-primary combo-blue-light td-right" data-label="Why">A family of four got four identical cards. The engineering manager confirmed it was real friction</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-blue">Collapse matches</th>
-                    <td class="body-primary combo-blue-light" data-label="What I did">Merged results with the same rule and the same text into one card</td>
-                    <td class="body-primary combo-blue-light td-right" data-label="Why">Timatic can't say if a form is per family. Identical results are the signal, so the missing flag stops mattering</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-blue">Only what's actionable</th>
-                    <td class="body-primary combo-blue-light" data-label="What I did">Showed entry forms, entry authorizations with a link, and proof of onward travel</td>
-                    <td class="body-primary combo-blue-light td-right" data-label="Why">Everything else is already satisfied, handled by an agent at the airport, or out of scope</td>
-                  </tr>
-                  <tr>
-                    <th class="header3-primary trh combo-blue">Scope by shape</th>
-                    <td class="body-primary combo-blue-light" data-label="What I did">"All travelers" as quiet text, named travelers as pills</td>
-                    <td class="body-primary combo-blue-light td-right" data-label="Why">The original two-pill design scored 70% in a 5-second test (n=20), under my 80% bar</td>
-                  </tr>
-                </tbody>
-              </table>
-            <div class="text-block">
-                <p class="body-primary">AI helped me run the dedup rule across 29 real Timatic scenarios and generate a dozen tag variants in one sitting. Which variant, when to stop, and what to leave off the page were my calls.</p>
+                <h3 class="header2-accent">The Tag I'd Do Differently</h3>
+                <p class="body-primary">The hardest call was telling "everyone" from "just Olena." The first design used two similar pills. In a 5-second test with 20 people, 70% read them right, under my 80% bar, so "everyone" really was easy to skim past. I designed a fix: a quiet "All travelers" label, and a pill only for a named traveler. That's the version in the image above.</p>
+                <p class="body-primary">But I didn't update Figma before engineering started, so the original tags are what shipped. Engineering built exactly what the spec said. <span class="highlight-text combo-blue-light">A test result that never reaches Figma doesn't reach the build.</span> Now I update the source of truth before handoff.</p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">Research</h2>
-                <h3 class="header2-accent">Three Kinds of Evidence</h3>
-            </div>
-            <div class="cards-3" style="flex-direction: row; flex-wrap: wrap;">
-                <div class="card" style="flex: 1 1 220px;">
-                    <h2 class="metric-lrg statichighlight-blue">29</h2>
-                    <p class="body-primary">real Timatic scenarios across routes and passports, which set the dedup and show-or-skip rules</p>
-                </div>
-                <div class="card" style="flex: 1 1 220px;">
-                    <h2 class="metric-lrg statichighlight-blue">11</h2>
-                    <p class="body-primary">people in the March MVP test, surfacing 7 critical dev bugs and 8 UX issues</p>
-                </div>
-                <div class="card" style="flex: 1 1 220px;">
-                    <h2 class="metric-lrg statichighlight-blue">70%</h2>
-                    <p class="body-primary">read the original scope tags right in a 5-second test, so the "everyone" case really was skippable</p>
-                </div>
+                <h2 class="header1-primary">Live in Check-In</h2>
+                <h3 class="header2-accent">Walking It as a Guest</h3>
+                <p class="body-primary">The booking page went live in May 2026. Before it did, I walked the build as a guest. That caught a dead end: "Complete Later" sent you to Manage Trip with no way back to the page. I raised it as an expectation, "I'd expect to be able to come back to this," and engineering fixed it.</p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">The Build</h2>
-                <h3 class="header2-accent">Reviewing It as a Guest</h3>
-                <p class="body-primary">I reviewed the build (MR 5613) against the spec. Most of it matched, and I accepted a few small changes, like the page title becoming "Additional Travel Requirements."</p>
-                <p class="body-primary">Walking it as a guest is what caught the real bug: "Complete Later" dropped you on Manage Trip with no way back. I raised it as an expectation ("I'd expect to be able to return to it") rather than a code review note, and let engineering own the fix.</p>
-                <h3 class="header2-accent">The Miss</h3>
-                <p class="body-primary">The build shipped the original tag design, the one that scored 70%. <span class="highlight-text combo-blue-light">That one's on me: I didn't update Figma before engineering started.</span> The fix is queued, and the new tag still needs its own test before I'd call it proven.</p>
-            </div>
-          </section>
-          <section class="basic-section">
-            <div class="text-block">
-                <h2 class="header1-primary">What Came Next</h2>
-                <h3 class="header2-accent">A Public Lookup, Before You Book</h3>
-                <p class="body-primary">Check-in only helps once you've booked. So I designed a public page: enter a route, a passport, and a country of residence, and see what Timatic says you'll need.</p>
-                <p class="body-primary">One call carried over from check-in: <span class="highlight-text combo-blue-light">the page tells you what's required, but never says "you're all set,"</span> because it can't know your full situation. Designing it also meant correcting the requirements doc. Residence had to become a required input, because where you live changes visa rules.</p>
+                <h2 class="header1-primary">Before You Book</h2>
+                <h3 class="header2-accent">A Public Lookup</h3>
+                <p class="body-primary">Check-in only helps once you've booked. So I designed a public page: enter a route, your passport, and where you live, and see what you'll need.</p>
+                <p class="body-primary">Two calls shaped it. Where you live became a required input, which meant correcting the requirements doc, because residence changes visa rules. And <span class="highlight-text combo-blue-light">the page tells you what's required but never says "you're all set,"</span> because it can't know your full situation.</p>
             </div>
             <figure>
                 <figcaption class="image-caption caption-spaced">
                     Same page, two travelers
                 </figcaption>
-                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/doc-verification/lookup.webp"
-                     alt="Two results from the International Travel Requirements lookup on mobile. A U.S. passport holder flying Raleigh-Durham to Punta Cana needs a valid passport, an entry form, and proof of onward travel. A Ukraine passport holder flying Charleston to Cancun needs a valid passport and an entry authorization."></div>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/doc-verification/lookup-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/doc-verification/lookup.webp"
+                     alt="Two results from the International Travel Requirements lookup on mobile. A U.S. passport holder flying Raleigh-Durham to Punta Cana needs a valid passport, an entry form, and proof of onward travel. A Ukraine passport holder flying Charleston to Cancun needs a valid passport and an entry authorization."></picture></div>
             </figure>
             <div class="text-block">
                 <h3 class="header2-accent">Tested With 21 People</h3>
@@ -227,17 +222,18 @@
                 </div>
             </div>
             <div class="text-block">
-                <p class="body-primary">The one real gap: five people asked how to actually get the visa. Breeze can't issue one, so the page states the requirement and points to government sources instead of pretending to solve it.</p>
-                <p class="body-primary">I handed it off as 20 Figma frames, desktop and mobile. Engineering picked up the build in late July.</p>
+                <p class="body-primary">The one real gap: five people asked how to actually get the visa. Breeze can't issue one, so the page states the requirement and points to government sources.</p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">What I'd Keep</h2>
+                <h2 class="header1-primary">Where It Stands</h2>
                 <ul class="list-spaced">
-                    <li class="body-primary"><strong>Update the source of truth before handoff.</strong> A test result that never reaches Figma doesn't reach the build.</li>
-                    <li class="body-primary"><strong>Raise gaps as experience questions.</strong> "I'd expect to get back here" lands better than pointing at a line of code, and keeps me in my lane.</li>
+                    <li class="body-primary">One page per booking: live in check-in since May 2026</li>
+                    <li class="body-primary">New international routes: no document rules to hardcode</li>
+                    <li class="body-primary">The public lookup: designed, tested, and in build with engineering</li>
                 </ul>
+                <p class="body-primary">One habit I'm keeping: raise gaps as experience questions. "I'd expect to get back here" lands better than pointing at a line of code, and it leaves the fix with the people who know the code best.</p>
             </div>
           </section>
         <section class="next-case-section">
