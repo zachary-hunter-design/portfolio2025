@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Study: Breeze Common-Use Airport Kiosks</title>
-    <meta name="description" content="Case study: launching Breeze on shared airport kiosks, timing it on the floor, and reporting what it actually does. The saving lands on the agent, not the guest.">
+    <meta name="description" content="Case study: Breeze&#x27;s first airport kiosk, built for the crowded lobby. A stopwatch, screens redesigned to keep guests out of the counter line, and what the lobby showed next.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Breeze&#x27;s first airport kiosk, and what it actually does">
-    <meta property="og:description" content="Case study: launching Breeze on shared airport kiosks, timing it on the floor, and reporting what it actually does. The saving lands on the agent, not the guest.">
+    <meta property="og:title" content="Room at the kiosks, a line at the counter">
+    <meta property="og:description" content="Case study: Breeze&#x27;s first airport kiosk, built for the crowded lobby. A stopwatch, screens redesigned to keep guests out of the counter line, and what the lobby showed next.">
     <meta property="og:image" content="https://zhunterux.netlify.app/assets/images/og/airport-kiosks.jpg">
     <meta property="og:url" content="https://zhunterux.netlify.app/case-studies/airport-kiosks.html">
     <meta name="twitter:image" content="https://zhunterux.netlify.app/assets/images/og/airport-kiosks.jpg">
@@ -57,20 +57,21 @@
     </header>
 
     <main>
-      <img src="../assets/images/kiosk/cover.webp?v=3" class="case-header-img" alt="Breeze kiosk screens: the Tag Your Bags Here welcome screen in front of the scan and not-checked-in screens">
+      <img src="../assets/images/kiosk/cover.webp?v=4" class="case-header-img" alt="Breeze kiosk screens: the Tag Your Bags Here welcome screen in front of the scan and not-checked-in screens">
         <section class="basic-section">
             <div class="case-titles">
               <a href="../index.html#projects-section" class="back-link">
                 <span aria-hidden="true">←</span> Back to projects
               </a>
-              <h1 class="hero-primary">Breeze's First Airport Kiosk, and What It Actually Does</h1>
-              <h2 class="header2-accent">A new self-service channel on hardware we don't own</h2>
+              <h1 class="hero-primary">Room at the Kiosks, a Line at the Counter</h1>
+              <h2 class="header2-accent">Breeze's first airport kiosk, built for the crowded lobby</h2>
             </div>
             <div class="summary-duties">
               <div class="summary">
                 <h2 class="header1-primary">Executive Summary</h2>
-                <p class="body-primary">In July 2026 Breeze went live on shared, airport-owned kiosks for the first time, in Las Vegas. Charleston followed in August. I own the live screens: the errors, the copy in English and Spanish, and the scan animation.</p>
-                <p class="body-primary">I also went to the airport and timed it. <span class="highlight-text combo-pink-light">The kiosk proved the technology. It didn't prove the business case yet</span>, and the field research is what told us how to fix the scope.</p>
+                <p class="body-primary">In July 2026 Breeze went live on shared airport kiosks for the first time, in Las Vegas. Charleston followed in August. The goal is the crowded lobby: at peak, the line moves only as fast as agents can take bags.</p>
+                <p class="body-primary">Guests loved it. I wanted to know where the time actually went, so I took a stopwatch to the lobby. Then I redesigned the screens that sent guests back to the counter: check-in, the errors, and the scan step.</p>
+                <p class="body-primary">The day after those changes shipped, I went back. <span class="highlight-text combo-pink-light">Most of the kiosks were free while the counter was busy</span>, which points to the next opportunity: helping guests find them.</p>
               </div>
               <hr class="vertical-hr"/>
               <div class="duties-list">
@@ -103,23 +104,29 @@
           <section class="basic-section">
             <div class="text-block">
               <h2 class="header1-primary">The Setup</h2>
-              <h3 class="header2-accent">Somebody Else's Machine</h3>
-              <p class="body-primary">Common-use kiosks belong to the airport. A vendor runs the software, and we edit our screens through their CMS. There's no release cycle, so a change reaches guests the same day. So does a mistake.</p>
+              <h3 class="header2-accent">Built for the Busy Hours</h3>
+              <p class="body-primary">At peak, agents are the fixed resource. The lobby clears as fast as they can take bags, so the kiosk's job is to give agents some of that time back.</p>
+              <p class="body-primary">It runs on somebody else's machine. Common-use kiosks belong to the airport, a vendor runs the software, and we edit our screens through their CMS. There's no release cycle, so a change reaches guests the same day. So does a mistake.</p>
               <p class="body-primary">Version one did one thing: print bag tags for guests who had already checked in.</p>
             </div>
             <figure>
                 <figcaption class="image-caption caption-spaced">
                     The live flow in Las Vegas
                 </figcaption>
-                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/kiosk/flow.webp"
-                     alt="Four kiosk screens: a Tag Your Bags Here welcome screen with a QR code for checking in, a scan your boarding pass screen, a screen for picking how many bag tags to print for each guest, and a printing screen."></div>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/kiosk/flow-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/kiosk/flow.webp"
+                     alt="Four kiosk screens: a Tag Your Bags Here welcome screen with a QR code for checking in, a scan your boarding pass screen, a screen for picking how many bag tags to print for each guest, and a printing screen."></picture></div>
             </figure>
           </section>
           <section class="basic-section">
             <div class="text-block">
                 <h2 class="header1-primary">Going to the Airport</h2>
-                <h3 class="header2-accent">Timing It on the Floor</h3>
-                <p class="body-primary">Three days after launch I spent a day in the Las Vegas lobby with a stopwatch: 45 timed transactions plus twelve observation notes, counter only against kiosk then counter. A second floor day in August added three observers and 51 full journeys.</p>
+                <h3 class="header2-accent">Where the Time Went</h3>
+                <p class="body-primary">Three days after launch, a guest at the kiosk told us:</p>
+                <figure class="research-quote">
+                    <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
+                    <blockquote class="research-quote-text">I love these, this saved so much time.</blockquote>
+                </figure>
+                <p class="body-primary">I wanted to see it on the clock. I spent a day in the Las Vegas lobby with a stopwatch and timed 45 transactions, some at the counter only, some at the kiosk and then the counter.</p>
             </div>
             <figure>
                 <figcaption class="image-caption caption-spaced">
@@ -159,64 +166,70 @@
                 </div>
             </figure>
             <div class="text-block">
-                <h3 class="header2-accent">The Saving Landed on the Agent, Not the Guest</h3>
-                <p class="body-primary">A kiosk guest prints a tag and then still lines up for an agent to take the bag. Of the ten steps in a counter transaction, the kiosk took one, printing the tag, and it's the cheapest one. For the guest, the whole trip took about the same time.</p>
-                <p class="body-primary">Guests liked it anyway.</p>
-                <figure class="research-quote">
-                    <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
-                    <blockquote class="research-quote-text">I love these, this saved so much time.</blockquote>
-                </figure>
-                <p class="body-primary">That's real value, and it isn't a time saving. Self-service feels faster than standing in line. I kept the two claims apart.</p>
+                <p class="body-primary">The agent's part got shorter. The guest's whole trip took about the same time. A kiosk guest prints a tag and then still lines up for an agent to take the bag. Of the ten steps in a counter transaction, the kiosk handles one: printing the tag.</p>
             </div>
             <div class="text-block">
-                <h3 class="header2-accent">What I Would and Wouldn't Claim</h3>
+                <h3 class="header2-accent">One Line Became Three</h3>
+                <p class="body-primary">Before the kiosk there was one line. Now there were three: the counter, the kiosk, and bag drop, which grew at peak. A guest who got stuck at the kiosk ended up in the counter line anyway. The most common reason was that they hadn't checked in yet, and version one couldn't help with that.</p>
+            </div>
+            <div class="text-block">
+                <h3 class="header2-accent">What We Learned</h3>
             </div>
             <table class="comparison-table comparison-table--text">
                 <thead>
                   <tr>
-                    <th class="header3-primary">Claim</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Call</th>
-                    <th class="header3-primary" style="color: var(--text-light)">Why</th>
+                    <th class="header3-primary">Measure</th>
+                    <th class="header3-primary" style="color: var(--text-light)">What We Saw</th>
+                    <th class="header3-primary" style="color: var(--text-light)">Why It Matters</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th class="header3-primary trh combo-pink">Saves agent time</th>
-                    <td class="body-primary combo-pink-light" data-label="Call">Yes, up to 0:42</td>
-                    <td class="body-primary combo-pink-light td-right" data-label="Why">An upper bound. Kiosk guests were already checked in and likely had bags paid for, so the gap isn't all the kiosk</td>
+                    <th class="header3-primary trh combo-pink">The agent's part</th>
+                    <td class="body-primary combo-pink-light" data-label="What we saw">Shorter, by up to 0:42</td>
+                    <td class="body-primary combo-pink-light td-right" data-label="Why it matters">An upper bound. Kiosk guests had already checked in and likely paid for bags, so not all of the gap is the kiosk</td>
                   </tr>
                   <tr>
-                    <th class="header3-primary trh combo-pink">Saves guests time</th>
-                    <td class="body-primary combo-pink-light" data-label="Call">No</td>
-                    <td class="body-primary combo-pink-light td-right" data-label="Why">1:52 against 1:49. A wash for success, worse for anyone who failed at the kiosk and lined up twice</td>
+                    <th class="header3-primary trh combo-pink">The guest's whole trip</th>
+                    <td class="body-primary combo-pink-light" data-label="What we saw">About the same</td>
+                    <td class="body-primary combo-pink-light td-right" data-label="Why it matters">1:52 against 1:49 for a guest who got through the kiosk</td>
                   </tr>
                   <tr>
-                    <th class="header3-primary trh combo-pink">Makes the lobby predictable</th>
-                    <td class="body-primary combo-pink-light" data-label="Call">Dropped</td>
-                    <td class="body-primary combo-pink-light td-right" data-label="Why">Too few observations to call it a rate</td>
+                    <th class="header3-primary trh combo-pink">How guests felt</th>
+                    <td class="body-primary combo-pink-light" data-label="What we saw">They liked it</td>
+                    <td class="body-primary combo-pink-light td-right" data-label="Why it matters">Self-service feels faster than waiting in line. That's real, and it's a different thing from saving time</td>
                   </tr>
                 </tbody>
               </table>
-            <div class="text-block">
-                <p class="body-primary">The biggest failure was guests who hadn't checked in, which v1 couldn't fix. Product and I wrote the trial read together, and the fix was a scope change, not a rebuild: <span class="highlight-text combo-pink-light">a QR code on the kiosk that sends guests to check in on their own phone.</span> That took check-in off the agent's clock without building check-in on the kiosk. It's been live since July 30.</p>
-            </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
-                <h2 class="header1-primary">Fixing the Live Screens</h2>
-                <h3 class="header2-accent">Errors That Tell You What to Do Next</h3>
-                <p class="body-primary">I mapped every error the kiosk could actually fire and cut the set to the 16 a guest can reach. Each one got a redesign and copy that names the next step. A language pass fixed 54 Spanish strings: machine translation errors, formal and informal drift, and text that was never translated.</p>
+                <h2 class="header1-primary">What I Changed</h2>
+                <p class="body-primary">Every change went after a way a guest ended up back at the counter. The first round went live in Las Vegas on August 4.</p>
+                <h3 class="header2-accent">Check In on Your Own Phone</h3>
+                <p class="body-primary">The biggest snag was guests who hadn't checked in. Product and I looked at building check-in into the kiosk and chose something smaller: a QR code that opens check-in on the guest's own phone. It takes check-in off the agent's plate without a big kiosk build, and it tells us whether a full kiosk check-in is ever needed.</p>
             </div>
             <figure>
                 <figcaption class="image-caption caption-spaced">
-                    Two of the 16 redesigned errors
+                    The QR on the welcome screen, and again when you're not checked in
                 </figcaption>
-                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/kiosk/errors.webp"
-                     alt="Two kiosk error screens. You're Here Nice and Early, explaining tags print 2.5 hours before departure. Looks Like You're Not Checked In, with a QR code to check in on the Breeze app."></div>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/kiosk/qr-checkin-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/kiosk/qr-checkin.webp"
+                     alt="Two live kiosk screens. The welcome screen, Tag Your Bags Here, with a box reading Need to check in? next to a QR code. The Looks Like You're Not Checked In screen, with a QR code labeled Scan to check in, plus Try Again and Exit."></picture></div>
+            </figure>
+            <div class="text-block">
+                <h3 class="header2-accent">Errors That Tell You What to Do Next</h3>
+                <p class="body-primary">I mapped every error the kiosk could fire and narrowed it to the 16 a guest can actually reach. Each one got a redesign and copy that names the next step. A language pass fixed 54 Spanish strings: machine translation slips, formal and informal mixed together, and text that was never translated.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    One of the 16, before and after
+                </figcaption>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/kiosk/error-before-after-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/kiosk/error-before-after.webp"
+                     alt="The same kiosk error before and after. Before: a red alarm icon, the title Trip not found, and a single Try Again button. After: an outline warning icon, the title We Couldn't Find That Trip, and Try Again next to Exit."></picture></div>
             </figure>
             <div class="text-block">
                 <h3 class="header2-accent">Teaching a Gesture the Machine Can Actually Do</h3>
-                <p class="body-primary">Scan is where guests stalled. The old screen showed a phone held up to a reader the Las Vegas machine doesn't have. People did what it said, nothing happened, and they gave up and joined the counter line.</p>
+                <p class="body-primary">Scan is where guests stalled. The old screen showed a phone held up to a reader the Las Vegas machine doesn't have. People did what it said, nothing happened, and some headed to the counter instead.</p>
                 <p class="body-primary">I modeled a new animation on the real unit, where the reader hides under the screen. Then Charleston launched on different hardware, a flat bed you look straight down on. I'd recommended one animation for both. <span class="highlight-text combo-pink-light">Side by side, that would have taught half our guests the wrong move</span>, so I reversed myself and drew Charleston its own.</p>
             </div>
             <figure>
@@ -243,23 +256,57 @@
                         </div>
                     </div>
                 </div>
-                <div class="image-band static-only"><img loading="lazy" decoding="async" src="../assets/images/kiosk/scan.webp"
-                     alt="Two scan screens. Las Vegas shows a phone sliding under the lip of the screen to a hidden reader. Charleston shows a pass placed face down on a flat scanning bed, with the caption Place your phone or paper pass face down on the scanner."></div>
+                <div class="image-band static-only"><picture><source media="(max-width: 600px)" srcset="../assets/images/kiosk/scan-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/kiosk/scan.webp"
+                     alt="Two scan screens. Las Vegas shows a phone sliding under the lip of the screen to a hidden reader. Charleston shows a pass placed face down on a flat scanning bed, with the caption Place your phone or paper pass face down on the scanner."></picture></div>
             </figure>
             <div class="text-block">
-                <p class="body-primary">I built both as code-drawn SVG, with AI helping me write it, and moved them into the CMS media library. That turned a second station's art into an upload instead of a vendor template change.</p>
-                <p class="body-primary">On the floor in Las Vegas, scan confusion dropped and nobody pressed their phone flat against the screen anymore. That's observed, not timed. Nobody has clocked a scan before and after yet.</p>
+                <p class="body-primary">Each station's art is now a file we upload, not a vendor template change, so the next airport's hardware can get its own lesson.</p>
+            </div>
+          </section>
+          <section class="basic-section">
+            <div class="text-block">
+                <h2 class="header1-primary">Back on the Floor</h2>
+                <h3 class="header2-accent">The Day After</h3>
+                <p class="body-primary">On August 5, the day after the first changes shipped, I went back with two more observers. We tracked 51 full journeys.</p>
+                <p class="body-primary">Scan got easier. Confusion at that step dropped, and nobody pressed a phone flat against the screen anymore. That's observed, not timed.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    The same morning, at the busiest point
+                </figcaption>
+                <div class="image-band flow-band">
+                    <div class="cards-3" style="flex-direction: row; flex-wrap: wrap; max-width: 720px; margin: 0 auto;">
+                        <div class="card" style="flex: 1 1 240px;">
+                            <h2 class="metric-lrg statichighlight-pink">6 parties</h2>
+                            <p class="body-primary">waiting at the counter</p>
+                        </div>
+                        <div class="card" style="flex: 1 1 240px;">
+                            <h2 class="metric-lrg statichighlight-pink">3 of 8</h2>
+                            <p class="body-primary">kiosks in use. None ever had a line.</p>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+            <div class="text-block">
+                <h3 class="header2-accent">The Next Opportunity Is the Room</h3>
+                <p class="body-primary"><span class="highlight-text combo-pink-light">The kiosks had room to spare. The counter was where people waited.</span> Guests told us why.</p>
+                <figure class="research-quote">
+                    <span class="research-quote-mark" aria-hidden="true">&ldquo;</span>
+                    <blockquote class="research-quote-text">Thought kiosks were for something else.</blockquote>
+                </figure>
+                <p class="body-primary">Three of the 15 guests we talked to hadn't seen the kiosks or weren't sure what they were for. An observer also saw agents reprinting some kiosk tags. That's worth a closer look, since printing the tag is the step the kiosk takes off their plate.</p>
+                <p class="body-primary">The lobby held up: 50 of 51 journeys finished inside the 15-minute target. So we have room to work with.</p>
             </div>
           </section>
           <section class="basic-section">
             <div class="text-block">
                 <h2 class="header1-primary">Where It Stands</h2>
                 <ul class="list-spaced">
-                    <li class="body-primary">Live on 8 units in Las Vegas and in Charleston since August 26</li>
-                    <li class="body-primary">The on-screen QR is live. A printed lobby sign is waiting on airport approval</li>
-                    <li class="body-primary">Las Vegas is close to a best case for counter layout, so the next city will likely have less margin than these numbers suggest</li>
+                    <li class="body-primary">Live on 8 units in Las Vegas since July 21. Charleston followed in August with its own scan art</li>
+                    <li class="body-primary">The next opportunity is routing: helping guests see the kiosks and know what they're for</li>
+                    <li class="body-primary">Las Vegas is close to a best case for counter layout, so the next city will have less room than these numbers suggest</li>
                 </ul>
-                <p class="body-primary">The question for the next stage is the same one the floor day asked: how many agent minutes does this take off a guest? That number decides whether the program grows.</p>
+                <p class="body-primary">The number that decides how far this grows is agent minutes per guest.</p>
             </div>
           </section>
           <section class="next-case-section">
