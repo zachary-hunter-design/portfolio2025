@@ -1752,7 +1752,7 @@ body { overflow-x: clip; }
 
 /* ==========================================================================
    Nav + buttons, direction B ("soft"), Oct 2026.
-   Segmented nav, rounded-rectangle buttons with a circle arrow icon.
+   Pill nav with a Work menu, rounded-rectangle buttons with a circle arrow icon.
    Hover lifts and deepens; colors never flip.
    ========================================================================== */
 .navbar {
@@ -1777,29 +1777,163 @@ body { overflow-x: clip; }
 }
 
 .seg {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
     padding: 0.5rem 1rem;
+    border: 0;
     border-radius: 9px;
+    background: none;
     font: 600 0.92rem var(--font-primary), sans-serif;
-    color: #4B5563;
+    color: #6B7280;
     text-decoration: none;
+    cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.seg:hover {
-    color: var(--text-dark);
-    background: rgba(255, 255, 255, 0.6);
-}
-
-.seg.is-current {
+/* Links, not tabs: the white chip only shows on hover or an open menu */
+.seg:hover,
+.nav-menu.open > .seg {
     color: var(--text-dark);
     background: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.seg.is-current {
+    color: var(--text-dark);
+}
+
+.seg .chev {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
+}
+
+.nav-menu.open .chev {
+    transform: rotate(180deg);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.6rem 1.05rem;
+    border-radius: 12px;
+    background: var(--text-dark);
+    color: white;
+    font: 600 0.92rem var(--font-primary), sans-serif;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-cta svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Work menu */
+.nav-menu {
+    position: relative;
+}
+
+.work-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 340px;
+    padding: 6px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    list-style: none;
+    z-index: 1001;
+}
+
+/* Bridges the gap so hover doesn't drop on the way down */
+.work-menu::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -14px;
+    height: 14px;
+}
+
+.nav-menu.open .work-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.work-menu a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.7rem;
+    border-radius: 9px;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.work-menu a:hover,
+.work-menu a[aria-current="page"] {
+    background: #F3F4F6;
+}
+
+.work-menu .menu-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.work-menu .menu-name {
+    font: 600 0.95rem var(--font-primary), sans-serif;
+}
+
+.work-menu .menu-meta {
+    font: 500 0.78rem var(--font-primary), sans-serif;
+    color: #6B7280;
+}
+
+.work-menu .menu-here {
+    margin-left: auto;
+    font: 600 0.7rem var(--font-primary), sans-serif;
+    color: #6B7280;
+}
+
+.work-menu .menu-all {
+    justify-content: space-between;
+    margin-top: 4px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 0 0 9px 9px;
+    font: 600 0.88rem var(--font-primary), sans-serif;
+    color: #4B5563;
+}
+
+.work-menu .menu-all svg {
+    width: 14px;
+    height: 14px;
+}
+
 @media (max-width: 480px) {
-    .name-div a { font-size: 1.05rem; }
-    .seg { padding: 0.4rem 0.7rem; font-size: 0.875rem; }
+    .name-links-div { gap: 0.5rem; }
+    .name-div a { font-size: 1rem; }
+    .seg { padding: 0.4rem 0.55rem; font-size: 0.875rem; }
+    .nav-right { gap: 0.5rem; }
+    .nav-cta { padding: 0.45rem 0.7rem; font-size: 0.875rem; }
+    .nav-cta svg { display: none; }
+    /* Menu spans the screen under the nav */
+    .nav-menu { position: static; }
+    .work-menu { left: 0.75rem; right: 0.75rem; width: auto; transform: none; top: calc(100% + 6px); }
 }
 
 .btn,

@@ -54,6 +54,38 @@ document.addEventListener('click', event => {
     });
 });
 
+// Work menu: hover opens on desktop, click or tap toggles, outside click and Esc close
+document.querySelectorAll('.nav-menu').forEach(menu => {
+    const toggle = menu.querySelector('.seg');
+    const setOpen = open => {
+        menu.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open);
+    };
+
+    const canHover = window.matchMedia('(hover: hover)').matches;
+
+    // A mouse click after hover-open keeps it open; keyboard and touch toggle
+    toggle.addEventListener('click', event => {
+        setOpen(canHover && event.detail > 0 ? true : !menu.classList.contains('open'));
+    });
+
+    if (canHover) {
+        menu.addEventListener('mouseenter', () => setOpen(true));
+        menu.addEventListener('mouseleave', () => setOpen(false));
+    }
+
+    document.addEventListener('click', event => {
+        if (!menu.contains(event.target)) setOpen(false);
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menu.classList.contains('open')) {
+            setOpen(false);
+            toggle.focus();
+        }
+    });
+});
+
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
