@@ -1404,6 +1404,11 @@ body.accent-pink   { --accent: var(--primary-pink);   --accent-tint: var(--light
     background-color: var(--accent-tint, var(--lightest-blue));
 }
 
+/* Multi-screen bands swap to a stacked phone version via <picture> (Volunteer Bidding, Oct 2026) */
+.image-band picture {
+    display: block;
+}
+
 .image-band img {
     display: block;
     width: 100%;

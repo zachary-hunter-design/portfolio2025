@@ -13,8 +13,8 @@
     <meta name="twitter:image" content="https://zhunterux.netlify.app/assets/images/og/volunteer-bidding.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="../assets/images/avatar.png">
-    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261016i" />
-    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261016i" />
+    <link rel="stylesheet" href="../assets/css/alt-main.css?v=20261016j" />
+    <link rel="stylesheet" href="../assets/css/alt-components.css?v=20261016j" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet"/>
@@ -210,8 +210,8 @@
                 <figcaption class="image-caption caption-spaced">
                     The invite, before and after
                 </figcaption>
-                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/modal-compare.webp"
-                     alt="Two versions of the invite. Before: titled Earn Breeze Points for Taking a Different Flight, with a long paragraph and a Please Note section of three bullets, 116 words. After: titled Get Paid to Take a Different Flight, with one sentence and two short bullets, 48 words."></div>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/volunteer-bidding/modal-compare-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/modal-compare.webp"
+                     alt="Two versions of the invite. Before: titled Earn Breeze Points for Taking a Different Flight, with a long paragraph and a Please Note section of three bullets, 116 words. After: titled Get Paid to Take a Different Flight, with one sentence and two short bullets, 48 words."></picture></div>
             </figure>
             <div class="text-block">
                 <h3 class="header2-accent">Flights First, Then the Bid</h3>
@@ -246,8 +246,15 @@
             </figure>
             <div class="text-block">
                 <h3 class="header2-accent">Reassure the Whole Way</h3>
-                <p class="body-primary">Every step now carries the same line: your original flight stays booked until you're selected at the gate. Smaller fixes rode along: clearer selected states on flight cards, a simpler bid summary, and a cleaner credit picker.</p>
+                <p class="body-primary">People backed out when the guarantees were unclear. So the answer doesn't live only on the invite. Every step carries it.</p>
             </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Same line, every step
+                </figcaption>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/volunteer-bidding/callout-every-step-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/callout-every-step.webp"
+                     alt="Three mobile screens from the shipped flow: Select an Alternate Flight, Select Your Compensation, and Confirm Your Bid. Each opens with the same yellow callout: Your original flight stays booked until you're selected at the gate."></picture></div>
+            </figure>
           </section>
           <section class="basic-section">
             <div class="text-block">
@@ -358,25 +365,56 @@
             <div class="text-block">
                 <h2 class="header1-primary">What Came Next</h2>
                 <h3 class="header2-accent">A Second Way: Don't Fly at All</h3>
-                <p class="body-primary">V3 stops making a later flight the only option.</p>
-                <ul class="list-spaced">
-                    <li class="body-primary"><strong>Offer to Cancel.</strong> Its own choice next to Offer to Fly Later, for people who'd rather skip the trip than wait days for the next flight. One page, one job.</li>
-                    <li class="body-primary"><strong>Set offers.</strong> Four amounts, 2x to 5x the fare, instead of a blank field. In testing, people kept asking what they should bid.</li>
-                </ul>
+                <p class="body-primary">V3 stops making a later flight the only option. A new first step asks how you'd like to volunteer.</p>
             </div>
-
             <figure>
                 <figcaption class="image-caption caption-spaced">
-                    V3: two ways to volunteer, four set offers
+                    One choice, two paths
                 </figcaption>
-                <div class="image-band"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/v3-flow.webp"
-                     alt="Three mobile screens from V3. First, a choice between Offer to Fly Later and Offer to Cancel. Second, a cancel screen asking whether to cancel the entire trip or just this flight. Third, compensation offers of 240, 360, 480, and 600 dollars in flight credits, labeled 2x to 5x fare. Every screen carries the callout: plan to take your original flight, nothing changes unless you're selected at the gate."></div>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/volunteer-bidding/choice-fork-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/choice-fork.webp"
+                     alt="Three V3 screens. How Would You Like to Volunteer, with two cards: Offer to Fly Later, and Offer to Cancel. Offer to Fly Later leads to If You Are Selected, Which Flight Would You Take, a list of later flights. Offer to Cancel leads to If You Are Selected, What Should We Cancel, with My Entire Trip or Just This Flight."></picture></div>
+            </figure>
+            <div class="text-block">
+                <ul class="list-spaced">
+                    <li class="body-primary">"Offer" leads both labels. In review, "Cancel Your Flight" read like the button that cancels.</li>
+                    <li class="body-primary">Both cards open with "If you're selected, we'll." The condition comes first.</li>
+                    <li class="body-primary">Tapping a card moves you on. The only button is the way out.</li>
+                </ul>
+            </div>
+            <div class="text-block">
+                <h3 class="header2-accent">Four Set Offers</h3>
+                <p class="body-primary">Four amounts, 2x to 5x the fare, instead of a blank field. People kept asking what to bid, and the first round called bidding gambling. A fare multiple on each offer says what the number means. I went with action cards: tap an offer and you move on, no extra Continue step. A list was also the only layout with test evidence behind it.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    What I went with, and what I tried
+                </figcaption>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/volunteer-bidding/bid-layouts-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/bid-layouts.webp"
+                     alt="Three compensation layouts offering 480, 720, 960, or 1,200 dollars in flight credits, each with a 2x to 5x fare badge. Went with: the final Select Your Compensation screen, a list of action cards with a chevron and a per-guest line. Tried: a radio list showing the total only, and a two by two tile grid."></picture></div>
+            </figure>
+            <div class="text-block">
+                <h3 class="header2-accent">When There's No Later Flight</h3>
+                <p class="body-primary">If no other flight works, the screen doesn't dead-end. It points to the other way to say yes. This state hasn't been tested with guests yet.</p>
+            </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Same screen, with and without later flights
+                </figcaption>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/volunteer-bidding/no-later-flights-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/no-later-flights.webp"
+                     alt="Two versions of Select Your Flight. Left: later flights listed under the title If You Are Selected, Which Flight Would You Take? Right: no later flights, with the message No Other Flights to Offer and a button, Offer to Cancel Instead."></picture></div>
             </figure>
 
             <div class="text-block">
                 <h3 class="header2-accent">Testing Caught Something I Broke</h3>
-                <p class="body-primary">I ran four unmoderated rounds over two days, about 160 people. The question that matters most: do you still show up for your original flight? An earlier V3 dropped it to 68%. One more round brought it back, level with the live flow.</p>
+                <p class="body-primary">I ran four unmoderated rounds over two days, about 160 people. The question that matters most: do you still show up for your original flight? An earlier V3 dropped it to 68%. Two changes on the flight screen brought it back: a title that asks the question with the condition in it, and a callout that leads with the instruction.</p>
             </div>
+            <figure>
+                <figcaption class="image-caption caption-spaced">
+                    Same screen, two changes
+                </figcaption>
+                <div class="image-band"><picture><source media="(max-width: 600px)" srcset="../assets/images/volunteer-bidding/flight-title-fix-phone.webp"><img loading="lazy" decoding="async" src="../assets/images/volunteer-bidding/flight-title-fix.webp"
+                     alt="Two versions of the flight screen. Earlier V3, 68 percent: titled Select an Alternate Flight, with the callout Your original flight stays booked until you're selected at the gate. Final V3, 90 percent: titled If You Are Selected, Which Flight Would You Take?, with the callout Plan to take your original flight. Nothing changes unless you're selected at the gate."></picture></div>
+            </figure>
             <figure>
                 <figcaption class="image-caption caption-spaced">
                     Knows to show up for their original flight

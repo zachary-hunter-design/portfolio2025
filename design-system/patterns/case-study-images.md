@@ -51,7 +51,9 @@ In-body composed images sit in a full-bleed `.image-band`: a strip of `--accent-
 </figure>
 ```
 
-Compose at 1100px wide, render at 2x (2200px). Screenshots of real UI that already carry their own frame (like `costseg/desktop1.webp`) keep using `.basic-image` instead.
+Compose at 1100px wide, render at 2x (2200px).
+
+**Phone versions.** Any band with two or more screens side by side also gets a stacked phone version: same screens, one column, composed 440px wide at 2x, named `{name}-phone.webp`. Wire it with `<picture><source media="(max-width: 600px)" srcset="...-phone.webp"><img ...></picture>` so phones never shrink a screen to thumbnail size. Picked over swipe and carousel options (Oct 2026). Screenshots of real UI that already carry their own frame (like `costseg/desktop1.webp`) keep using `.basic-image` instead.
 
 Card groups that want a colored backdrop, like a research overview, use `.research-band`: the same full-bleed width, as a soft gradient from `--accent-tint` to `--accent-soft`.
 
