@@ -86,6 +86,33 @@ document.querySelectorAll('.nav-menu').forEach(menu => {
     });
 });
 
+// Phone menu: one button opens the whole nav as a sheet; outside tap, Esc or a link closes it
+document.querySelectorAll('.menu-btn').forEach(button => {
+    const navbar = button.closest('.navbar');
+    const sheet = document.getElementById(button.getAttribute('aria-controls'));
+    const setOpen = open => {
+        navbar.classList.toggle('menu-open', open);
+        button.setAttribute('aria-expanded', open);
+    };
+
+    button.addEventListener('click', () => setOpen(!navbar.classList.contains('menu-open')));
+
+    sheet.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('click', event => {
+        if (!navbar.contains(event.target)) setOpen(false);
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && navbar.classList.contains('menu-open')) {
+            setOpen(false);
+            button.focus();
+        }
+    });
+});
+
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,

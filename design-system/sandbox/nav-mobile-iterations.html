@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Nav Iterations</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #EDEEF0; padding: 1.5rem 1.5rem 3rem; font-family: Figtree, sans-serif; }
+  h2 { margin: 0 0 0.25rem; font-size: 1.15rem; color: #1a1a1a; }
+  p.note { margin: 0 0 0.9rem; color: #4B5563; font-size: 0.92rem; max-width: 760px; }
+  .opt { margin-bottom: 2.5rem; }
+  .phones { display: flex; gap: 1.25rem; align-items: flex-start; flex-wrap: wrap; }
+  .phone { display: flex; flex-direction: column; gap: 0.4rem; }
+  .phone span { font-size: 0.75rem; font-weight: 600; color: #6B7280; letter-spacing: 0.04em; text-transform: uppercase; }
+  iframe { border: 0; border-radius: 18px; background: white; box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.08); }
+</style>
+</head>
+<body>
+
+<div class="opt" id="A">
+  <h2>A. Tighten the one row</h2>
+  <p class="note">Same nav, squeezed. Under 400px Contact becomes a mail icon. Least change, but it stays cramped and the icon is less obvious than the word.</p>
+  <div class="phones"></div>
+</div>
+
+<div class="opt" id="B">
+  <h2>B. Two rows</h2>
+  <p class="note">Name and Contact on top, the Work / About tray full width underneath. Everything stays visible, nothing hides. Costs about 50px of header height.</p>
+  <div class="phones"></div>
+</div>
+
+<div class="opt" id="C">
+  <h2>C. One Menu button</h2>
+  <p class="note">Name plus a single Menu button. It opens one sheet: the five case studies, About, and a full-width Contact button. Cleanest header, everything is one tap away.</p>
+  <div class="phones"></div>
+</div>
+
+<script>
+const chev = '<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5"/></svg>';
+const out = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg>';
+const arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+const mail = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2"/><path d="M3 5.5l7 5 7-5"/></svg>';
+
+const items = [
+  ['Volunteer Bidding', 'Airline workflow'],
+  ['Airport Kiosks', 'Airport self-service'],
+  ['Document Verification', 'Check-in systems'],
+  ['Notification Center', 'Research'],
+  ['Calendar Redesign', 'Scheduling app'],
+];
+const workItems = items.map(([n, m]) => `<li><a href="#"><span class="menu-text"><span class="menu-name">${n}</span><span class="menu-meta">${m}</span></span></a></li>`).join('')
+  + `<li><a href="#" class="menu-all">All work ${arrow}</a></li>`;
+
+const hero = `<main style="padding:2rem 1rem;text-align:center">
+  <img src="../../assets/images/avatar.png" style="width:150px;height:150px;border-radius:50%">
+  <p style="font:600 0.75rem Figtree;letter-spacing:0.2em;margin:1.2rem 0 0.4rem">PRODUCT DESIGNER</p>
+  <h1 style="font:600 2.2rem 'Roboto Serif',serif;margin:0">Hi, I'm Zac</h1>
+  <p style="text-align:left;font:450 1.05rem/1.6 Figtree;margin-top:1rem">I turn messy product problems into clear, tested experiences that ship.</p></main>`;
+
+const css = {
+A: `
+  @media (max-width: 400px) {
+    .name-div a { font-size: 0.98rem; }
+    .seg-nav { padding: 3px; }
+    .seg { padding: 0.4rem 0.5rem; }
+    .nav-cta { width: 38px; height: 38px; padding: 0; justify-content: center; font-size: 0; gap: 0; }
+    .nav-cta svg { display: block; width: 18px; height: 18px; }
+  }`,
+B: `
+  .name-links-div { flex-wrap: wrap; row-gap: 0.65rem; }
+  .name-div { flex: 1; }
+  .nav-right { display: contents; }
+  .nav-cta { order: 2; }
+  .nav-cta svg { display: inline; }
+  .seg-nav { order: 3; flex: 0 0 100%; }
+  .seg-nav > li { flex: 1; }
+  .seg { width: 100%; justify-content: center; padding: 0.5rem; }
+  .work-menu { top: calc(100% + 6px); }`,
+C: `
+  .menu-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 0.9rem; border: 0; border-radius: 12px; background: #F3F4F6; font: 600 0.92rem Figtree, sans-serif; color: var(--text-dark); }
+  .menu-btn svg { width: 16px; height: 16px; }
+  .open .menu-btn { background: var(--text-dark); color: white; }
+  .sheet { position: absolute; left: 0.75rem; right: 0.75rem; top: calc(100% + 6px); background: white; border-radius: 14px; padding: 6px; box-shadow: 0 12px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05); z-index: 1001; }
+  .sheet .work-menu { display: flex; flex-direction: column; gap: 3px; position: static; box-shadow: none; width: auto; transform: none; padding: 0; }
+  .sheet-label { font: 600 0.7rem Figtree; letter-spacing: 0.08em; color: #9CA3AF; padding: 0.5rem 0.7rem 0.2rem; }
+  .sheet .about { display: block; padding: 0.7rem; margin-top: 4px; border-top: 1px solid rgba(0,0,0,0.06); font: 600 0.95rem Figtree; color: var(--text-dark); text-decoration: none; }
+  .sheet .nav-cta { display: flex; justify-content: center; margin: 4px; padding: 0.75rem; }
+  .sheet .nav-cta svg { display: inline; }
+  .navbar { position: relative; }`
+};
+
+function nav(opt, open) {
+  if (opt === 'C') {
+    const burger = open
+      ? '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>'
+      : '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2.5 5.5h11M2.5 10.5h11"/></svg>';
+    return `<nav class="navbar ${open ? 'open' : ''}"><div class="name-links-div">
+      <div class="name-div"><a class="header3-primary" href="#">Zachary Hunter</a></div>
+      <button class="menu-btn">Menu ${burger}</button></div>
+      ${open ? `<div class="sheet"><div class="sheet-label">WORK</div><ul class="work-menu">${workItems}</ul>
+        <a class="about" href="#">About</a><a class="nav-cta" href="#">Contact ${out}</a></div>` : ''}
+    </nav>`;
+  }
+  const cta = `<a class="nav-cta" href="#">Contact ${opt === 'A' ? mail : out}</a>`;
+  return `<nav class="navbar"><div class="name-links-div">
+    <div class="name-div"><a class="header3-primary" href="#">Zachary Hunter</a></div>
+    <div class="nav-right"><ul class="seg-nav">
+      <li class="nav-menu ${open ? 'open' : ''}"><button class="seg is-current" type="button">Work ${chev}</button><ul class="work-menu">${workItems}</ul></li>
+      <li><a class="seg" href="#">About</a></li></ul>${cta}</div></div></nav>`;
+}
+
+function doc(opt, open) {
+  return `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="${location.href}">
+  <link rel="stylesheet" href="../../assets/css/alt-main.css?v=20261016g">
+  <link rel="stylesheet" href="../../assets/css/alt-components.css?v=20261016g">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Roboto+Serif:opsz,wght@8..144,100..900&display=swap" rel="stylesheet">
+  <style>body{margin:0;overflow-x:auto} ${css[opt]}</style></head>
+  <body><header class="header">${nav(opt, open)}</header>${hero}</body></html>`;
+}
+
+for (const opt of ['A', 'B', 'C']) {
+  const wrap = document.querySelector(`#${opt} .phones`);
+  for (const [w, open] of [[375, false], [375, true], [320, false]]) {
+    const cell = document.createElement('div');
+    cell.className = 'phone';
+    cell.innerHTML = `<span>${w}px · ${open ? 'menu open' : 'closed'}</span>`;
+    const f = document.createElement('iframe');
+    f.width = w; f.height = 620;
+    f.srcdoc = doc(opt, open);
+    cell.appendChild(f);
+    wrap.appendChild(cell);
+  }
+}
+</script>
+</body>
+</html>

@@ -1755,6 +1755,13 @@ body { overflow-x: clip; }
    Pill nav with a Work menu, rounded-rectangle buttons with a circle arrow icon.
    Hover lifts and deepens; colors never flip.
    ========================================================================== */
+/* Sticky lives on the header: the navbar alone fills its header, so it had nothing to stick within */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
 .navbar {
     background-color: rgba(254, 254, 254, 0.9);
     -webkit-backdrop-filter: blur(10px);
@@ -1924,16 +1931,105 @@ body { overflow-x: clip; }
     height: 14px;
 }
 
-@media (max-width: 480px) {
-    .name-links-div { gap: 0.5rem; }
-    .name-div a { font-size: 1rem; }
-    .seg { padding: 0.4rem 0.55rem; font-size: 0.875rem; }
-    .nav-right { gap: 0.5rem; }
-    .nav-cta { padding: 0.45rem 0.7rem; font-size: 0.875rem; }
-    .nav-cta svg { display: none; }
-    /* Menu spans the screen under the nav */
-    .nav-menu { position: static; }
-    .work-menu { left: 0.75rem; right: 0.75rem; width: auto; transform: none; top: calc(100% + 6px); }
+/* Phone: one Menu button. The same nav becomes a sheet under it,
+   with the case studies listed open, then About, then a full-width Contact. */
+.menu-btn {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .menu-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.55rem 0.9rem;
+        border: 0;
+        border-radius: 12px;
+        background: #F3F4F6;
+        font: 600 0.92rem var(--font-primary), sans-serif;
+        color: var(--text-dark);
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .menu-btn svg { width: 16px; height: 16px; }
+    .menu-btn .icon-close { display: none; }
+    .navbar.menu-open .menu-btn { background: var(--text-dark); color: white; }
+    .navbar.menu-open .menu-btn .icon-open { display: none; }
+    .navbar.menu-open .menu-btn .icon-close { display: block; }
+
+    .nav-right {
+        display: none;
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0.75rem;
+        right: 0.75rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 6px;
+        background: white;
+        border-radius: 14px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+        z-index: 1001;
+    }
+
+    .navbar.menu-open .nav-right { display: flex; }
+
+    .seg-nav {
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        background: none;
+        border-radius: 0;
+    }
+
+    /* Work list is always open in the sheet; its toggle becomes a label */
+    .nav-menu > .seg { display: none; }
+
+    .nav-menu::before {
+        content: 'Work';
+        display: block;
+        padding: 0.5rem 0.7rem 0.2rem;
+        font: 600 0.7rem var(--font-primary), sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9CA3AF;
+    }
+
+    .work-menu,
+    .nav-menu.open .work-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        position: static;
+        width: auto;
+        transform: none;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .work-menu::before { display: none; }
+
+    .seg-nav > li > a.seg {
+        display: flex;
+        margin-top: 4px;
+        padding: 0.7rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 0 0 9px 9px;
+        font-size: 0.95rem;
+        color: var(--text-dark);
+    }
+
+    .seg-nav > li > a.seg:hover { box-shadow: none; background: #F3F4F6; }
+    .seg-nav > li > a.seg[aria-current="page"] { background: #F3F4F6; }
+
+    .nav-cta {
+        justify-content: center;
+        margin: 4px;
+        padding: 0.8rem;
+    }
 }
 
 .btn,
