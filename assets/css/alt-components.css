@@ -775,6 +775,8 @@
 
 .case-titles > h1 {
     max-width: 1000px !important;
+    /* Case study titles stay left on phones, in line with the subtitle and body (the global hero rule centers them) */
+    text-align: left;
 }
 
 .summary-duties {
